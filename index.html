@@ -1,1 +1,438 @@
-<h1>Coming Soon</h1> 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>全球 FinTech 周报 · 2026-04-29</title>
+<style>
+:root{
+  --bg:#0a0f1a;
+  --bg-card:#121826;
+  --bg-card-hover:#1a2236;
+  --border:#1f2937;
+  --border-strong:#374151;
+  --text:#e5e7eb;
+  --text-dim:#9ca3af;
+  --text-muted:#6b7280;
+  --accent:#60a5fa;
+  --accent-warm:#fbbf24;
+  --accent-green:#34d399;
+  --accent-purple:#a78bfa;
+  --accent-cyan:#22d3ee;
+  --accent-orange:#fb923c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;line-height:1.65;font-size:15px;-webkit-font-smoothing:antialiased}
+.container{max-width:920px;margin:0 auto;padding:56px 24px 120px}
+header{border-bottom:1px solid var(--border);padding-bottom:28px;margin-bottom:40px}
+h1{font-size:34px;font-weight:700;letter-spacing:-0.6px;margin-bottom:10px;background:linear-gradient(90deg,#e5e7eb 0%,#9ca3af 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.meta{color:var(--text-dim);font-size:13.5px;letter-spacing:0.3px}
+.meta span+span:before{content:"·";margin:0 10px;color:var(--border-strong)}
+.meta .stat{color:var(--accent)}
+section{margin-bottom:44px}
+h2{font-size:19px;font-weight:600;margin-bottom:18px;padding-left:14px;border-left:3px solid var(--accent);color:var(--text);letter-spacing:0.3px}
+.section-count{color:var(--text-muted);font-size:13px;font-weight:400;margin-left:8px}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:18px 22px;margin-bottom:12px;transition:all .18s ease}
+.card:hover{border-color:var(--border-strong);background:var(--bg-card-hover)}
+.card .title{display:block;font-size:16px;font-weight:600;color:var(--text);text-decoration:none;margin-bottom:10px;line-height:1.45}
+.card .title:hover{color:var(--accent)}
+.card .source{display:inline-block;color:var(--text-dim);font-size:11px;padding:2px 8px;border-radius:4px;margin-bottom:10px;font-weight:500;letter-spacing:0.4px;background:rgba(255,255,255,0.04);border:1px solid var(--border)}
+.card .source[data-src="TechCrunch Fintech"]{color:var(--accent-purple);border-color:rgba(167,139,250,0.25)}
+.card .source[data-src="PYMNTS"]{color:var(--accent-orange);border-color:rgba(251,146,60,0.25)}
+.card .source[data-src="The Block"]{color:var(--accent-cyan);border-color:rgba(34,211,238,0.25)}
+.card .source[data-src="36氪"]{color:var(--accent-green);border-color:rgba(52,211,153,0.25)}
+.card .summary{color:var(--text-dim);font-size:14px;line-height:1.75}
+
+.goodreads h2{border-left-color:var(--accent-warm);color:var(--accent-warm)}
+.goodreads .card{background:linear-gradient(135deg,#161a2c 0%,#1e1a2a 100%);border-color:rgba(251,191,36,0.15)}
+.goodreads .card:hover{border-color:rgba(251,191,36,0.4)}
+.goodreads .card h3{font-size:15.5px;font-weight:600;color:var(--accent-warm);margin-bottom:8px;line-height:1.45}
+.goodreads .card p{font-size:13.5px;color:var(--text-dim);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.goodreads .card .mtime{font-size:11px;color:var(--text-muted);margin-top:10px;letter-spacing:0.3px}
+
+footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--border);color:var(--text-muted);font-size:12px;text-align:center;letter-spacing:0.3px}
+
+/* Lock button */
+.lock-btn{position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);color:var(--text-dim);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;box-shadow:0 4px 16px rgba(0,0,0,0.4);z-index:40}
+.lock-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.78);display:none;align-items:center;justify-content:center;z-index:100;backdrop-filter:blur(6px)}
+.modal.show{display:flex}
+.modal-box{background:var(--bg-card);border:1px solid var(--border-strong);border-radius:12px;padding:28px;min-width:340px;box-shadow:0 12px 48px rgba(0,0,0,0.6)}
+.modal-box h3{margin-bottom:16px;font-size:16px;font-weight:600;color:var(--text)}
+.modal-box input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:6px;margin-bottom:14px;font-size:14px;outline:none}
+.modal-box input:focus{border-color:var(--accent)}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end}
+.modal-box button{background:var(--accent);color:#0a0f1a;border:none;padding:9px 18px;border-radius:6px;cursor:pointer;font-size:13.5px;font-weight:600;transition:opacity .15s}
+.modal-box button:hover{opacity:0.9}
+.modal-box button.cancel{background:transparent;color:var(--text-dim);border:1px solid var(--border)}
+.modal-box button.cancel:hover{color:var(--text);border-color:var(--border-strong)}
+
+/* Editor toolbar */
+.toolbar{position:fixed;top:0;left:0;right:0;background:rgba(18,24,38,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 24px;display:none;justify-content:flex-end;align-items:center;gap:8px;z-index:50}
+.toolbar.show{display:flex}
+.toolbar .editor-tag{margin-right:auto;color:var(--accent-warm);font-size:12px;font-weight:500;letter-spacing:0.4px}
+.toolbar button{background:var(--bg);color:var(--text);border:1px solid var(--border);padding:7px 14px;border-radius:6px;cursor:pointer;font-size:13px;transition:all .15s;font-family:inherit}
+.toolbar button:hover{border-color:var(--accent);color:var(--accent)}
+.toolbar button.exit{color:var(--text-muted)}
+.toolbar button.exit:hover{border-color:#ef4444;color:#ef4444}
+body.editing{padding-top:52px}
+body.editing #content{outline:1px dashed rgba(251,191,36,0.4);outline-offset:8px;border-radius:4px}
+
+@media (max-width:640px){
+  .container{padding:32px 16px 96px}
+  h1{font-size:26px}
+  .card{padding:16px 18px}
+  .lock-btn{bottom:20px;right:20px;width:44px;height:44px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div id="content">
+<header>
+<h1>全球 FinTech 周报</h1>
+<div class="meta">
+<span>2026-04-29</span>
+<span class="stat">23 条精选</span>
+<span>6 大板块</span>
+<span>6 篇 Good Reads</span>
+</div>
+</header>
+
+<section>
+<h2>支付与清结算<span class="section-count">5 条</span></h2>
+
+<div class="card">
+<a class="title" href="https://techcrunch.com/2026/04/15/airwallex-is-about-to-take-on-stripe-and-the-rest-of-the-payments-industry-in-the-physical-world/" target="_blank" rel="noopener">Airwallex 推出多国线下 POS 终端，正面切入 Stripe 主场</a>
+<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
+<p class="summary">估值 80 亿美元的 Airwallex 推出 POS 产品，让企业通过单一平台在多个国家受理面对面支付，从跨境线上扩张到线下实体场景。这是 Airwallex 与 Stripe 在物理世界正面交锋的关键动作，也意味着跨境支付玩家的产品边界正在快速收敛。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://techcrunch.com/2026/04/17/once-close-enough-for-an-acquisition-stripe-and-airwallex-are-now-going-after-each-other/" target="_blank" rel="noopener">从濒临收购到正面竞争：Stripe 与 Airwallex 互相切入对方腹地</a>
+<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
+<p class="summary">长期在不同地域、不同客群运营的两家支付巨头开始彼此进入对方主战场。这一转变标志着全球跨境支付市场进入新一轮整合期，预示头部玩家将面临更激烈的产品和定价竞争，中小跨境支付平台的差异化空间被进一步压缩。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://techcrunch.com/2026/04/02/cash-app-launches-buy-now-pay-later-feature-for-p2p-pay-transfers/" target="_blank" rel="noopener">Cash App 上线 P2P 转账"先买后付"功能</a>
+<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
+<p class="summary">Block 旗下 Cash App 为 P2P 转账新增 BNPL 功能，并强调内置防债务陷阱保护机制。这是数字钱包向 BNPL 场景延伸、绑定年轻用户的明确信号，BNPL 的商业模式正从结账场景蔓延至个人间转账，监管对消费者保护的关注也将随之升级。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://www.pymnts.com/real-time-payments/2026/us-real-time-payments-hit-high-growth-phase-as-use-cases-multiply/" target="_blank" rel="noopener">美国实时支付进入高速增长期，使用场景持续扩展</a>
+<span class="source" data-src="PYMNTS">PYMNTS</span>
+<p class="summary">PYMNTS 与 Visa Direct 联合研究显示，美国在长期落后于英国、印度、巴西后，实时支付基础设施正加速渗透至医疗、保险、投资平台。即时到账正从可选项变为业务必需，FedNow 与 RTP 双轨推进将深刻重塑 ACH 主导的传统金融基础设施格局。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://www.pymnts.com/news/faster-payments/2026/new-data-shines-light-on-the-1-35t-race-to-move-money-faster/" target="_blank" rel="noopener">$1.35 万亿"快钱"赛道：跨行业即时支付加速取代支票/ACH</a>
+<span class="source" data-src="PYMNTS">PYMNTS</span>
+<p class="summary">PYMNTS 数据揭示众多机构仍依赖支票和 ACH 慢轨道向消费者付款，覆盖医疗、保险、投资等关键行业。即时支付从技术议题升级为商业议题，决定企业留客与运营效率的竞争位势，慢轨道留存的市场规模为后续即时化迁移提供了清晰可见的转化空间。</p>
+</div>
+</section>
+
+<section>
+<h2>数字银行与存贷<span class="section-count">4 条</span></h2>
+
+<div class="card">
+<a class="title" href="https://techcrunch.com/2026/04/21/revolut-eyes-valuation-of-up-to-200b-in-eventual-ipo/" target="_blank" rel="noopener">Revolut 瞄准 2000 亿美元 IPO 估值，最高约前次 2.7 倍</a>
+<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
+<p class="summary">英国数字银行巨头 Revolut 在 2026 年 3 月获英国全银行牌照后，最近一次二级市场估值 750 亿美元；公司预期上市估值最高 2000 亿美元。若兑现将成为欧洲史上最大金融科技 IPO 之一，并直接重定义全球数字银行可比公司估值锚点（对比 Nubank、SoFi、Chime）。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://techcrunch.com/2026/04/23/salmon-raises-100m-in-equity-and-debt-to-bring-digital-credit-to-underbanked-filipinos/" target="_blank" rel="noopener">菲律宾数字信贷 Salmon 完成 1 亿美元股权+债务融资</a>
+<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
+<p class="summary">Salmon 服务菲律宾大量信用空白人群（underbanked），主打的是传统银行可靠性问题导致的客群外溢，而非完全无银行账户客群。东南亚信用空白市场仍是全球数字银行少数仍可放量的赛道，单位经济模型对资金成本极度敏感，本轮债+股结构反映这一现实。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://techcrunch.com/2026/04/16/slash-a-ramp-competitor-founded-by-teenagers-raises-100m-at-1-4b-valuation/" target="_blank" rel="noopener">Ramp 竞品 Slash 完成 1 亿美元融资，估值 14 亿美元</a>
+<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
+<p class="summary">由 4 名青少年五年前创立的 Slash 已实现 3 亿美元年化营收。公司专注中小企业财务管理，与 Ramp/Brex/Mercury 同台竞争。这条线印证了美国 SMB 财务平台仍处放量期，但赛道头部分化加剧，独立中小玩家寻找差异化定位的难度上升。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://techcrunch.com/2026/04/21/cash-app-is-targeting-a-new-kind-of-customer-6-12-year-olds/" target="_blank" rel="noopener">Cash App 进军 6-12 岁儿童金融，提前锁定 Gen Alpha</a>
+<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
+<p class="summary">Block 通过青少年专属服务向 Gen Alpha 渗透，目标是从童年期建立用户关系。在数字银行 ARPU 增长见顶的当下，这是从用户生命周期前端切入的防御性扩张；同时家长账户管理权也强化了对家庭账户的捆绑深度。</p>
+</div>
+</section>
+
+<section>
+<h2>监管与政策<span class="section-count">4 条</span></h2>
+
+<div class="card">
+<a class="title" href="https://www.theblock.co/post/399294/canada-crypto-atm-ban" target="_blank" rel="noopener">加拿大拟全面禁止加密 ATM，定性为"诈骗主要工具"</a>
+<span class="source" data-src="The Block">The Block</span>
+<p class="summary">加拿大政府宣布将立法关停加密 ATM，称其为"诈骗与洗钱的主要载体"。继澳大利亚、新加坡之后，G7 国家对加密货币零售入口的限制趋严，监管对加密的"基础设施级"打击在加速，下一步可能波及 P2P OTC 渠道与零售换汇服务。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://www.theblock.co/post/399253/cftc-sues-wisconsin-federal-state-clash-prediction-market-oversight" target="_blank" rel="noopener">CFTC 反诉威斯康星州，预测市场监管联邦/州冲突升级</a>
+<span class="source" data-src="The Block">The Block</span>
+<p class="summary">美国商品期货交易委员会反诉威斯康星州政府，主张联邦对预测市场拥有独家监管权。该冲突将决定 Kalshi、Polymarket 等平台未来在 50 州的业务可行性，是 2026 年预测市场合法化路径的关键变量，可能形成 vs. 州博彩法的判例级裁决。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://www.theblock.co/post/399283/judge-rejects-sam-bankman-fried-new-trial-request-slams-claims-wildly-conspiratorial" target="_blank" rel="noopener">法官驳回 SBF 重审请求，称其指控"荒诞至极"</a>
+<span class="source" data-src="The Block">The Block</span>
+<p class="summary">美国地区法官 Lewis Kaplan 拒绝 FTX 前 CEO Sam Bankman-Fried 的重审申请，但其上诉仍在进行。这一裁定基本宣告 SBF 25 年刑期短期难以撼动，加密行业最大刑事案的法律链条进入收尾阶段。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://www.theblock.co/post/399308/hong-kong-warns-fake-stablecoins" target="_blank" rel="noopener">香港金管局警示假冒 HSBC 稳定币代币</a>
+<span class="source" data-src="The Block">The Block</span>
+<p class="summary">HSBC 与 Anchorpoint Financial 双双澄清当前未发行稳定币，但确认计划年内推出。香港稳定币赛道在金管局沙盒制度下进入冲刺期，竞争与诈骗活动同步升温。对覆盖标的（众安/圆币科技）的影响：拿牌窗口的市场预期波动会放大相关股票的估值催化。</p>
+</div>
+</section>
+
+<section>
+<h2>加密与 Web3 金融<span class="section-count">5 条</span></h2>
+
+<div class="card">
+<a class="title" href="https://www.theblock.co/post/399288/pump-fun-burns-370-million-pump" target="_blank" rel="noopener">Pump.fun 销毁 3.7 亿美元 PUMP 代币，承诺 50% 收入回购销毁</a>
+<span class="source" data-src="The Block">The Block</span>
+<p class="summary">Solana 上 Memecoin 发行平台 Pump.fun 推出激进通缩计划，剩余 50% 收入用于"未来 5-10 年的大型布局"。这是 Memecoin 平台从"纯发行手续费"向"代币驱动型 SaaS"转型的尝试，但模式可持续性高度依赖发行端流量周期。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://www.theblock.co/post/399196/tether-develops-modular-bitcoin-mining-systems-with-canaan-in-latest-infrastructure-push" target="_blank" rel="noopener">Tether 联手 Canaan 开发模块化比特币矿机，纵向布局加深</a>
+<span class="source" data-src="The Block">The Block</span>
+<p class="summary">Tether 与嘉楠科技、ACME Swisstech 合作推进矿机基础设施一体化布局。Tether 利用稳定币发行带来的天量准备金（万亿级 USDT），正向加密产业链上游纵向扩张，从"金融"向"产业资本"转型，形成类主权基金运作模式。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://www.theblock.co/post/399234/polymarket-eyes-return-main-exchange-us-in-talks-cftc-bloomberg" target="_blank" rel="noopener">Polymarket 与 CFTC 谈判，主交易所拟回归美国本土</a>
+<span class="source" data-src="The Block">The Block</span>
+<p class="summary">此前因合规问题离开美国本土的 Polymarket 正与 CFTC 沟通回归路径。结合 Kalshi 在亚利桑那胜诉、CFTC 反诉威州，预测市场正在快速合法化；2026 年中期选举周期为这一品类提供了天然的需求引爆点。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://www.theblock.co/post/399274/robinhoods-q1-crypto-revenue-and-trading-volume-fall-nearly-50" target="_blank" rel="noopener">Robinhood Q1 加密营收和交易量近乎腰斩</a>
+<span class="source" data-src="The Block">The Block</span>
+<p class="summary">加密业务营收和交易量同比下降近 50%，但整体交易营收仍录得 7% 同比增长至 6.23 亿美元。零售加密交易热度回落与机构资金主导的"Strategy 牛"形成鲜明分化——这一轮加密上行的钱并不是从零售口袋来的。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://www.theblock.co/post/399204/telegram-ai-powered-crypto-trading-agents-can-execute-transfers-swaps-staking" target="_blank" rel="noopener">Telegram 推出 AI 加密交易代理，可执行链上转账/兑换/质押</a>
+<span class="source" data-src="The Block">The Block</span>
+<p class="summary">用户可为代理充值专属钱包，由 AI 自动执行 DeFi 操作。这是大型即时通讯平台首次将 AI 代理与链上金融深度集成，在 1 亿+加密用户基础上推开 Agentic DeFi 的零售入口；同时也对 KYC/反洗钱合规框架形成新挑战。</p>
+</div>
+</section>
+
+<section>
+<h2>投融资动态<span class="section-count">3 条</span></h2>
+
+<div class="card">
+<a class="title" href="https://techcrunch.com/2026/04/13/openai-has-bought-ai-personal-finance-startup-hiro/" target="_blank" rel="noopener">OpenAI 收购 AI 个人理财创业公司 Hiro</a>
+<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
+<p class="summary">收购指向 ChatGPT 即将整合的财务规划能力。OpenAI 通过收购加速从聊天助手向"个人金融顾问"角色迁移，正面冲击传统 Robo-advisor（Betterment、Wealthfront）和个人理财应用（Mint、Monarch）的市场结构，分销渠道护城河面临降维打击。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://techcrunch.com/2026/03/24/doss-raises-55m-for-ai-inventory-management-that-plugs-into-erp/" target="_blank" rel="noopener">Doss 完成 5500 万美元 B 轮，AI 库存管理深度集成 ERP</a>
+<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
+<p class="summary">Madrona 与 Premji Invest 共同领投。AI 在 ERP 集成层的价值兑现路径已经清晰，库存与供应链是 AI 应用最快产生 ROI 的场景之一。这条线对 SAP、Oracle 等传统 ERP 巨头是中长期威胁——AI 原生工作流可能绕过 ERP 的应用层，仅保留数据底座。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://www.theblock.co/post/399222/rwa-yield-platform-nuva-animoca-seed-funding" target="_blank" rel="noopener">RWA 收益平台 Nuva 完成 520 万美元种子轮（Animoca 共同孵化）</a>
+<span class="source" data-src="The Block">The Block</span>
+<p class="summary">Nuva 是代币化真实资产市场，连接发行方和用户，绕过传统中介。RWA 赛道融资活跃，但"机构资金链上化"仍是真命题，零售端增量有限——市场分化为"BlackRock BUIDL 模式"和"Ondo/Maple 私营模式"两条主流。</p>
+</div>
+</section>
+
+<section>
+<h2>中国市场<span class="section-count">2 条</span></h2>
+
+<div class="card">
+<a class="title" href="https://36kr.com/newsflashes/3787631198215430?f=rss" target="_blank" rel="noopener">财达证券一季度净利润 2.53 亿元，同比 +114.53%</a>
+<span class="source" data-src="36氪">36氪</span>
+<p class="summary">公司 1Q26 营收 7.35 亿元（+51.06% YoY），归母净利润同比翻倍以上。中小券商在 2026 年初市场活跃度回升和投行业务恢复中明显受益，是 Q1 业绩季中典型的高弹性标的，但需注意低基数效应和 Q2 的可持续性。</p>
+</div>
+
+<div class="card">
+<a class="title" href="https://36kr.com/newsflashes/3787645737540871?f=rss" target="_blank" rel="noopener">"债市一姐"刘郁卸任华西证券首席经济学家，转任兴业证券固收首席</a>
+<span class="source" data-src="36氪">36氪</span>
+<p class="summary">刘郁此前历任国泰君安、招商证券、国盛证券、广发证券固收首席分析师。固收明星分析师在头部券商间的高频流动反映 2026 年券商研究业务对高端人才的争夺重新升温，与 2024-25 年研究所大规模降薪降编的周期形成对比。</p>
+</div>
+</section>
+
+<section class="goodreads">
+<h2>本周 Good Reads · Obsidian 笔记<span class="section-count">6 篇</span></h2>
+
+<div class="card">
+<h3>Chime S1 摘录 — 数字银行中的当红炸子鸡</h3>
+<p>Chime 按 80-90 亿美元估值准备 2026 年夏 IPO。最大亮点是用户活跃度极高（860 万用户、人均年支付 1.6 万美元、月支付 54 笔）。但服务低收入客群天花板与 UE 受限、商业模式依赖杜宾法案与 Visa 公共基础设施、抄袭壁垒不高——估值不贵但缺乏非线性成长叙事。</p>
+<div class="mtime">最后修改：2026-04-28 11:53</div>
+</div>
+
+<div class="card">
+<h3>公司扫描 Affirm — 美国信用卡行业的屠龙少年</h3>
+<p>Affirm CY24Q4 GMV +35%、收入 +47%，资金成本下降叠加运营效率提升推动盈利超预期。当前市值 256 亿美元，FY25/26 收入预期 32/40 亿美元。"屠龙少年"叙事的核心争议在于挑战者价值主张是否能在加息环境弱化后持续——产品差异化对信用卡的替代深度仍待验证。</p>
+<div class="mtime">最后修改：2026-04-28 11:53</div>
+</div>
+
+<div class="card">
+<h3>公司扫描 PAYP — 数字金融超级 App</h3>
+<p>PayPay 是日本 QR 支付近垄断者（65% 份额、7200 万用户），FY25 运营费用仅增 3.5% 而收入增 17.5%，Operating Margin 从 FY23 的 -10% 跃升至 9M FY26 的 22%。核心赌注不在支付，在金融服务渗透率从 30% 翻倍至 60%；治理风险是软银 91.78% 投票权集中。</p>
+<div class="mtime">最后修改：2026-04-27 19:18</div>
+</div>
+
+<div class="card">
+<h3>公司扫描 Vicor — AI 算力电源革命的挑战者</h3>
+<p>Vicor 是全球唯一商业化量产第五代电流倍增器（5A/mm²、1.5mm 厚度）的公司，"IDM 工厂+专利执法"双引擎独一无二。当前 P/E 88.2x（2026E）、46.8x（2027E）已计入两年 EPS 翻倍预期，估值锚定 Fab 1 满产 + IP 版税年化 3 亿美元——任何节奏延迟都会被放大。</p>
+<div class="mtime">最后修改：2026-04-28 11:27</div>
+</div>
+
+<div class="card">
+<h3>【周度复盘】260330-260404 — 伊朗局势 + 美联储信号</h3>
+<p>地缘：Trump 在找台阶下、伊朗在建收费站。最坏的极端情况（地面入侵）被排除后 S&P500 单日 +2.9%、Brent 跌破 100。Jamie Dimon 战略乐观但战术焦虑，关键词是"战争不被拖长"。鲍威尔哈佛演讲打消加息预期为利率定方向。</p>
+<div class="mtime">最后修改：2026-04-22 20:06</div>
+</div>
+
+<div class="card">
+<h3>Anthropic Claude Mythos System Card 解读</h3>
+<p>Anthropic 2026-04-07 发布 244 页 System Card：Claude Mythos 在所有评测大幅超越 Opus 4.6（SWE-bench 93.9%、USAMO 97.6%），但因网络安全攻防能力过强（可自主发现并利用零日漏洞）不公开发布，仅通过 Project Glasswing 服务 40+ 关键基础设施合作方。军工/情报级商业模式的起点。</p>
+<div class="mtime">最后修改：2026-04-22 17:14</div>
+</div>
+</section>
+
+<footer>
+全球 FinTech 周报 · 由 Henry 整理 · 数据来源 36氪 / TechCrunch / PYMNTS / The Block / Obsidian
+</footer>
+</div>
+</div>
+
+<button class="lock-btn" id="lockBtn" title="编辑模式">🔒</button>
+
+<div class="modal" id="loginModal">
+<div class="modal-box">
+<h3>编辑器登录</h3>
+<input type="password" id="pwdInput" placeholder="密码" autocomplete="off">
+<div class="modal-actions">
+<button class="cancel" id="cancelBtn">取消</button>
+<button id="loginBtn">登录</button>
+</div>
+</div>
+</div>
+
+<div class="toolbar" id="toolbar">
+<span class="editor-tag">⚙ 编辑模式</span>
+<button id="btnWord">⬇ Word</button>
+<button id="btnSource">⬇ Source Report</button>
+<button id="btnPublish">⬆ Publish</button>
+<button class="exit" id="btnExit">退出</button>
+</div>
+
+<script>
+var EDITOR_HASH = '52e6b9be97f5bed2bd60cc272aa3be98cdee335865375573ade8c895c8cbf810';
+var PUBLISH_URL = 'https://newsletter-save.henrysun0924.workers.dev/';
+var savedPwd = '';
+
+async function sha256(s){
+  var buf = new TextEncoder().encode(s);
+  var hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+}
+
+document.getElementById('lockBtn').addEventListener('click', function(){
+  document.getElementById('loginModal').classList.add('show');
+  var inp = document.getElementById('pwdInput');
+  inp.value = '';
+  setTimeout(function(){inp.focus();}, 50);
+});
+
+document.getElementById('cancelBtn').addEventListener('click', function(){
+  document.getElementById('loginModal').classList.remove('show');
+});
+
+async function tryLogin(){
+  var pwd = document.getElementById('pwdInput').value;
+  if(!pwd) return;
+  var h = await sha256(pwd);
+  if(h === EDITOR_HASH){
+    savedPwd = pwd;
+    document.getElementById('loginModal').classList.remove('show');
+    document.getElementById('toolbar').classList.add('show');
+    document.body.classList.add('editing');
+    document.getElementById('content').contentEditable = 'true';
+  } else {
+    alert('密码错误');
+  }
+}
+
+document.getElementById('loginBtn').addEventListener('click', tryLogin);
+document.getElementById('pwdInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter'){ e.preventDefault(); tryLogin(); }
+});
+
+document.getElementById('btnWord').addEventListener('click', function(){
+  var contentClone = document.getElementById('content').cloneNode(true);
+  // Word-friendly inline styles
+  var html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
+    '<head><meta charset="utf-8"><title>全球 FinTech 周报 2026-04-29</title>'+
+    '<style>body{font-family:"Microsoft YaHei",Arial,sans-serif;font-size:11pt;color:#222;line-height:1.6;max-width:780px;margin:24px auto}'+
+    'h1{font-size:22pt;border-bottom:2px solid #333;padding-bottom:8px}'+
+    'h2{font-size:14pt;color:#1f3a5f;margin-top:20px;border-left:4px solid #1f3a5f;padding-left:10px}'+
+    'h3{font-size:12pt;color:#a5650a;margin-bottom:4px}'+
+    '.card{border:1px solid #ddd;border-radius:4px;padding:12px 16px;margin-bottom:10px}'+
+    '.card .title{display:block;font-weight:700;color:#1f3a5f;text-decoration:none;font-size:12pt;margin-bottom:6px}'+
+    '.card .source{font-size:9pt;color:#666;background:#f0f0f0;padding:2px 8px;border-radius:3px;display:inline-block;margin-bottom:6px}'+
+    '.card .summary,.card p{font-size:10.5pt;color:#333;line-height:1.65}'+
+    '.meta{color:#666;font-size:10pt;margin-bottom:16px}'+
+    '.section-count{color:#999;font-size:10pt;font-weight:400}'+
+    '.mtime{font-size:9pt;color:#999;margin-top:6px}'+
+    'footer{margin-top:32px;padding-top:12px;border-top:1px solid #ddd;color:#999;font-size:9pt;text-align:center}'+
+    '</style></head><body>'+contentClone.innerHTML+'</body></html>';
+  var blob = new Blob(['﻿', html], {type: 'application/msword'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'fintech-weekly-2026-04-29.doc';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 200);
+});
+
+document.getElementById('btnSource').addEventListener('click', function(){
+  var a = document.createElement('a');
+  a.href = 'source_status.xlsx';
+  a.download = 'source_status.xlsx';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function(){ document.body.removeChild(a); }, 100);
+});
+
+document.getElementById('btnPublish').addEventListener('click', async function(){
+  if(!savedPwd){ alert('请先登录'); return; }
+  if(!confirm('确认将当前页面发布到 Cloudflare？')) return;
+  var html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  try{
+    var res = await fetch(PUBLISH_URL, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({password: savedPwd, content: html})
+    });
+    if(res.ok){ alert('✓ 发布成功'); }
+    else{ var t = await res.text(); alert('✗ 发布失败 ' + res.status + ': ' + t); }
+  } catch(e){
+    alert('✗ 网络错误: ' + e.message);
+  }
+});
+
+document.getElementById('btnExit').addEventListener('click', function(){
+  document.getElementById('content').contentEditable = 'false';
+  document.getElementById('toolbar').classList.remove('show');
+  document.body.classList.remove('editing');
+  savedPwd = '';
+});
+</script>
+</body>
+</html>
