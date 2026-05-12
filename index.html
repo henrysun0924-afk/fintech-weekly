@@ -1,397 +1,1082 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>全球 FinTech 周报 · 2026-04-29</title>
-<style>
-:root{
-  --bg:#0a0f1a;
-  --bg-card:#121826;
-  --bg-card-hover:#1a2236;
-  --border:#1f2937;
-  --border-strong:#374151;
-  --text:#e5e7eb;
-  --text-dim:#9ca3af;
-  --text-muted:#6b7280;
-  --accent:#60a5fa;
-  --accent-warm:#fbbf24;
-  --accent-green:#34d399;
-  --accent-purple:#a78bfa;
-  --accent-cyan:#22d3ee;
-  --accent-orange:#fb923c;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--text)}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;line-height:1.65;font-size:15px;-webkit-font-smoothing:antialiased}
-.container{max-width:920px;margin:0 auto;padding:56px 24px 120px}
-header{border-bottom:1px solid var(--border);padding-bottom:28px;margin-bottom:40px}
-h1{font-size:34px;font-weight:700;letter-spacing:-0.6px;margin-bottom:10px;background:linear-gradient(90deg,#e5e7eb 0%,#9ca3af 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.meta{color:var(--text-dim);font-size:13.5px;letter-spacing:0.3px}
-.meta span+span:before{content:"·";margin:0 10px;color:var(--border-strong)}
-.meta .stat{color:var(--accent)}
-section{margin-bottom:44px}
-h2{font-size:19px;font-weight:600;margin-bottom:18px;padding-left:14px;border-left:3px solid var(--accent);color:var(--text);letter-spacing:0.3px}
-.section-count{color:var(--text-muted);font-size:13px;font-weight:400;margin-left:8px}
-.card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:18px 22px;margin-bottom:12px;transition:all .18s ease}
-.card:hover{border-color:var(--border-strong);background:var(--bg-card-hover)}
-.card .title{display:block;font-size:16px;font-weight:600;color:var(--text);text-decoration:none;margin-bottom:10px;line-height:1.45}
-.card .title:hover{color:var(--accent)}
-.card .source{display:inline-block;color:var(--text-dim);font-size:11px;padding:2px 8px;border-radius:4px;margin-bottom:10px;font-weight:500;letter-spacing:0.4px;background:rgba(255,255,255,0.04);border:1px solid var(--border)}
-.card .source[data-src="TechCrunch Fintech"]{color:var(--accent-purple);border-color:rgba(167,139,250,0.25)}
-.card .source[data-src="PYMNTS"]{color:var(--accent-orange);border-color:rgba(251,146,60,0.25)}
-.card .source[data-src="The Block"]{color:var(--accent-cyan);border-color:rgba(34,211,238,0.25)}
-.card .source[data-src="36氪"]{color:var(--accent-green);border-color:rgba(52,211,153,0.25)}
-.card .summary{color:var(--text-dim);font-size:14px;line-height:1.75}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Fintech Weekly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f6f8; color: #1a1a2e; line-height: 1.6; }
+        .site-header { background: linear-gradient(135deg, #0f1e3c 0%, #1a3a6b 100%); color: white; padding: 32px 40px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+        .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+        .site-title { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+        .site-subtitle { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 3px; font-weight: 400; letter-spacing: 0.5px; text-transform: uppercase; }
+        .header-meta { text-align: right; font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+        .header-meta strong { display: block; font-size: 15px; color: white; font-weight: 600; }
+        .nav-bar { display: flex; gap: 2px; margin-top: 4px; }
+        .nav-bar a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 12.5px; font-weight: 500; padding: 9px 15px; border-radius: 5px 5px 0 0; transition: all 0.15s; }
+        .nav-bar a:hover { color: white; background: rgba(255,255,255,0.12); }
+        .main { max-width: 1080px; margin: 0 auto; padding: 32px 24px 48px; }
+        section { margin-bottom: 44px; scroll-margin-top: 100px; }
+        .section-title { font-size: 10.5px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: #6b7280; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #e5e7eb; display: flex; align-items: center; gap: 8px; }
+        .section-title .count { background: #e5e7eb; color: #6b7280; font-size: 10px; padding: 1px 7px; border-radius: 10px; font-weight: 600; letter-spacing: 0; }
+        .macro-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+        .index-card { background: white; border-radius: 10px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e9ecef; }
+        .index-card .label { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #9ca3af; margin-bottom: 6px; }
+        .index-card .perf-main { font-size: 24px; font-weight: 700; line-height: 1.1; }
+        .up { color: #16a34a; } .down { color: #dc2626; } .flat { color: #6b7280; }
+        .index-card .perf-sub { font-size: 12px; color: #9ca3af; margin-top: 3px; }
+        .index-card .commentary { font-size: 12px; color: #4b5563; margin-top: 12px; line-height: 1.6; border-top: 1px solid #f3f4f6; padding-top: 10px; }
+        .theme-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+        .theme-card { background: white; border-radius: 10px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e9ecef; border-left: 3px solid #3b82f6; }
+        .theme-card.orange { border-left-color: #f59e0b; }
+        .theme-title { font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 8px; }
+        .theme-body { font-size: 12.5px; color: #4b5563; line-height: 1.65; }
+        .table-wrap { background: white; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e9ecef; overflow: hidden; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+        .data-table thead th { background: #f8f9fa; padding: 9px 14px; text-align: left; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: #6b7280; border-bottom: 1px solid #e9ecef; white-space: nowrap; }
+        .data-table tbody td { padding: 10px 14px; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+        .data-table tbody tr:last-child td { border-bottom: none; }
+        .data-table tbody tr:hover { background: #fafafa; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        .badge-upgrade { background: #dcfce7; color: #15803d; }
+        .badge-downgrade { background: #fee2e2; color: #b91c1c; }
+        .badge-private { background: #fef3c7; color: #92400e; font-size: 10px; }
+        .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+        .dot-green { background: #16a34a; } .dot-amber { background: #f59e0b; }
+        .company-card { background: white; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e9ecef; overflow: hidden; }
+        .company-header { display: flex; align-items: center; padding: 14px 18px; cursor: pointer; user-select: none; gap: 12px; transition: background 0.1s; }
+        .company-header:hover { background: #fafafa; }
+        .ticker-pill { background: #0f1e3c; color: white; padding: 4px 11px; border-radius: 5px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; min-width: 54px; text-align: center; flex-shrink: 0; }
+        .company-info { flex: 1; min-width: 0; }
+        .company-name { font-size: 13.5px; font-weight: 600; color: #111827; }
+        .company-desc { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+        .perf-pill { padding: 4px 10px; border-radius: 5px; font-size: 12.5px; font-weight: 700; flex-shrink: 0; }
+        .perf-pill.up { background: #dcfce7; color: #15803d; }
+        .perf-pill.down { background: #fee2e2; color: #b91c1c; }
+        .perf-pill.flat { background: #f3f4f6; color: #6b7280; }
+        .chevron { color: #d1d5db; font-size: 11px; transition: transform 0.2s; flex-shrink: 0; }
+        .chevron.open { transform: rotate(180deg); }
+        .company-body { display: none; border-top: 1px solid #f3f4f6; }
+        .company-body.open { display: block; }
+        .tab-bar { display: flex; background: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .tab { padding: 8px 18px; font-size: 12px; font-weight: 500; color: #6b7280; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.12s; white-space: nowrap; }
+        .tab:hover { color: #374151; }
+        .tab.active { color: #0f1e3c; border-bottom-color: #0f1e3c; font-weight: 600; }
+        .tab-pane { padding: 16px 20px; display: none; font-size: 13px; color: #374151; line-height: 1.65; }
+        .tab-pane.active { display: block; }
+        .tab-pane ul { padding-left: 18px; }
+        .tab-pane ul li { margin-bottom: 9px; padding-left: 2px; }
+        .broker-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; font-size: 10.5px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-right: 5px; }
+        .workplan-card { background: white; border-radius: 10px; padding: 20px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e9ecef; }
+        .workplan-card ul { list-style: none; padding: 0; }
+        .workplan-card li { padding: 8px 0; border-bottom: 1px solid #f3f4f6; font-size: 13px; color: #374151; display: flex; align-items: flex-start; gap: 10px; }
+        .workplan-card li:last-child { border-bottom: none; }
+        .workplan-card li::before { content: "○"; color: #d1d5db; flex-shrink: 0; margin-top: 1px; }
+        .site-footer { text-align: center; padding: 24px; color: #9ca3af; font-size: 11px; border-top: 1px solid #e9ecef; }
+        @media (max-width: 768px) { .macro-grid { grid-template-columns: 1fr; } .theme-grid { grid-template-columns: 1fr; } .site-header { padding: 20px 16px 0; } .main { padding: 20px 16px; } }
 
-.goodreads h2{border-left-color:var(--accent-warm);color:var(--accent-warm)}
-.goodreads .card{background:linear-gradient(135deg,#161a2c 0%,#1e1a2a 100%);border-color:rgba(251,191,36,0.15)}
-.goodreads .card:hover{border-color:rgba(251,191,36,0.4)}
-.goodreads .card h3{font-size:15.5px;font-weight:600;color:var(--accent-warm);margin-bottom:8px;line-height:1.45}
-.goodreads .card p{font-size:13.5px;color:var(--text-dim);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.goodreads .card .mtime{font-size:11px;color:var(--text-muted);margin-top:10px;letter-spacing:0.3px}
-
-footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--border);color:var(--text-muted);font-size:12px;text-align:center;letter-spacing:0.3px}
-
-/* Lock button */
-.lock-btn{position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);color:var(--text-dim);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;box-shadow:0 4px 16px rgba(0,0,0,0.4);z-index:40}
-.lock-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-
-/* Modal */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,0.78);display:none;align-items:center;justify-content:center;z-index:100;backdrop-filter:blur(6px)}
-.modal.show{display:flex}
-.modal-box{background:var(--bg-card);border:1px solid var(--border-strong);border-radius:12px;padding:28px;min-width:340px;box-shadow:0 12px 48px rgba(0,0,0,0.6)}
-.modal-box h3{margin-bottom:16px;font-size:16px;font-weight:600;color:var(--text)}
-.modal-box input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:6px;margin-bottom:14px;font-size:14px;outline:none}
-.modal-box input:focus{border-color:var(--accent)}
-.modal-actions{display:flex;gap:8px;justify-content:flex-end}
-.modal-box button{background:var(--accent);color:#0a0f1a;border:none;padding:9px 18px;border-radius:6px;cursor:pointer;font-size:13.5px;font-weight:600;transition:opacity .15s}
-.modal-box button:hover{opacity:0.9}
-.modal-box button.cancel{background:transparent;color:var(--text-dim);border:1px solid var(--border)}
-.modal-box button.cancel:hover{color:var(--text);border-color:var(--border-strong)}
-
-/* Editor toolbar */
-.toolbar{position:fixed;top:0;left:0;right:0;background:rgba(18,24,38,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 24px;display:none;justify-content:flex-end;align-items:center;gap:8px;z-index:50}
-.toolbar.show{display:flex}
-.toolbar .editor-tag{margin-right:auto;color:var(--accent-warm);font-size:12px;font-weight:500;letter-spacing:0.4px}
-.toolbar button{background:var(--bg);color:var(--text);border:1px solid var(--border);padding:7px 14px;border-radius:6px;cursor:pointer;font-size:13px;transition:all .15s;font-family:inherit}
-.toolbar button:hover{border-color:var(--accent);color:var(--accent)}
-.toolbar button.exit{color:var(--text-muted)}
-.toolbar button.exit:hover{border-color:#ef4444;color:#ef4444}
-body.editing{padding-top:52px}
-body.editing #content{outline:1px dashed rgba(251,191,36,0.4);outline-offset:8px;border-radius:4px}
-
-@media (max-width:640px){
-  .container{padding:32px 16px 96px}
-  h1{font-size:26px}
-  .card{padding:16px 18px}
-  .lock-btn{bottom:20px;right:20px;width:44px;height:44px}
-}
-</style>
+        .section-title.sub-section {
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            padding-top: 18px;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 4px;
+        }
+        .section-group-hdr {
+            padding: 22px 0 4px 0;
+            font-size: 17px;
+            font-weight: 800;
+            color: #111827;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            border-bottom: 2px solid #1e3a5f;
+            margin-bottom: 0;
+        }
+        .sector-hdr {
+            margin: 26px 0 12px;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 13px;
+            font-weight: 700;
+            color: #374151;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sector-hdr .count {
+            background: #e5e7eb;
+            color: #6b7280;
+            font-size: 10px;
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-weight: 600;
+            letter-spacing: 0;
+        }
+        .comps-sector-hdr {
+            margin: 22px 0 8px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #374151;
+            text-transform: uppercase;
+            letter-spacing: 0.9px;
+            padding-bottom: 4px;
+        }
+        .comps-sector-hdr .count {
+            font-size: 10.5px;
+            color: #9ca3af;
+            font-weight: 500;
+            letter-spacing: 0;
+            text-transform: none;
+            margin-left: 6px;
+        }
+        .placeholder { color: #9ca3af; font-style: italic; }
+    </style>
 </head>
 <body>
-<div class="container">
-<div id="content">
-<header>
-<h1>全球 FinTech 周报</h1>
-<div class="meta">
-<span>2026-04-29</span>
-<span class="stat">23 条精选</span>
-<span>6 大板块</span>
-</div>
+
+<header class="site-header">
+    <div class="header-top">
+        <div>
+            <div class="site-title">Global Fintech Weekly</div>
+            <div class="site-subtitle">Coverage &middot; Sector &middot; Macro</div>
+        </div>
+        <div class="header-meta">
+            <strong>May 4 &ndash; 10, 2026</strong>
+            Issue #16 &nbsp;&middot;&nbsp; For internal use only
+            <a href="index_cn.html" style="display:inline-block;margin-top:7px;background:rgba(255,255,255,.18);color:white;border:1px solid rgba(255,255,255,.4);padding:3px 13px;border-radius:4px;font-size:11.5px;font-weight:600;letter-spacing:0.4px;text-decoration:none;white-space:nowrap;">中文</a>
+        </div>
+    </div>
+    <nav class="nav-bar">
+        <a href="#macro">I. Market Performance</a>
+        <a href="#macro-news">II. Macro News</a>
+        <a href="#sector-data">III. Key Sector Data</a>
+        <a href="#s3">IV. Coverage Update</a>
+    </nav>
 </header>
 
-<section>
-<h2>支付与清结算<span class="section-count">5 条</span></h2>
+<main class="main">
 
-<div class="card">
-<a class="title" href="https://techcrunch.com/2026/04/15/airwallex-is-about-to-take-on-stripe-and-the-rest-of-the-payments-industry-in-the-physical-world/" target="_blank" rel="noopener">Airwallex 推出多国线下 POS 终端，正面切入 Stripe 主场</a>
-<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
-<p class="summary">估值 80 亿美元的 Airwallex 推出 POS 产品，让企业通过单一平台在多个国家受理面对面支付，从跨境线上扩张到线下实体场景。这是 Airwallex 与 Stripe 在物理世界正面交锋的关键动作，也意味着跨境支付玩家的产品边界正在快速收敛。</p>
-</div>
+    <section id="macro">
+        <div class="section-title">I. Market Performance <span class="count" style="font-weight:400;text-transform:none;letter-spacing:0;">as of 8 May 2026</span></div>
+        <div class="table-wrap" style="margin-top:14px;">
+            <table class="data-table">
+                <thead><tr>
+                    <th>Index</th><th style="text-align:right;">Last Price</th><th style="text-align:right;">L1W</th><th style="text-align:right;">L1M</th><th style="text-align:right;">L3M</th><th style="text-align:right;">L1Y</th><th style="text-align:right;">L3Y</th>
+                </tr></thead>
+                <tbody>
+<tr><td style="font-weight:500;color:#111827;">S&P 500</td><td style="text-align:right;color:#374151;">7,398.93</td><td style="text-align:right;color:#16a34a;font-weight:500;">+2.3%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+9.1%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+8.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+30.6%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+79.6%</td></tr>
+<tr><td style="font-weight:500;color:#111827;">Nasdaq Composite</td><td style="text-align:right;color:#374151;">26,247</td><td style="text-align:right;color:#16a34a;font-weight:500;">+4.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+16.0%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+16.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+46.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+115.5%</td></tr>
+<tr><td style="font-weight:500;color:#111827;">Hang Seng Index</td><td style="text-align:right;color:#374151;">26,394</td><td style="text-align:right;color:#16a34a;font-weight:500;">+2.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+1.9%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+15.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+32.8%</td></tr>
+<tr><td style="font-weight:500;color:#111827;">Hang Seng Tech Index</td><td style="text-align:right;color:#374151;">5,102.79</td><td style="text-align:right;color:#16a34a;font-weight:500;">+4.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+3.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-5.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+9.1%</td></tr>
+<tr><td style="font-weight:500;color:#111827;">KBW Nasdaq Fintech</td><td style="text-align:right;color:#374151;">2,923.12</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+5.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+5.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-5.6%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+52.0%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-top:18px;">
+            <div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px;">Key Drivers</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:10px 12px;">
+                    <div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;">US &middot; S&amp;P 500 / Nasdaq</div>
+                    <div class="commentary" style="font-size:13px;line-height:1.6;color:#374151;min-height:50px;">S&amp;P 500 +2.3%, Nasdaq +4.5% — sixth consecutive weekly gain, both at new all-time highs. Semiconductor rally was the dominant driver: Intel +14% on Apple chip-deal report, Micron +15.5%, AMD +11.4%. April NFP +115K (consensus +55-65K) — strong beat, unemployment steady at 4.3%, wages +3.6% YoY (tame). Iran-US de-escalation hopes mid-week briefly pushed Brent -8%, supporting equities. Fed transition calm — Powell term ends May 15, Warsh confirmation expected week of May 11.</div>
+                </div>
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:10px 12px;">
+                    <div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;">HK &middot; Hang Seng / HS Tech</div>
+                    <div class="commentary" style="font-size:13px;line-height:1.6;color:#374151;min-height:50px;">HSI +2.4%, HSTECH +4.8% — snapped two-week losing streak. HK Q1 GDP +5.9% YoY beat catalysed re-rating of financials (HSBC +2.7%, AIA +2.8%). Oil decline reduced import cost pressure. Beijing AI self-reliance narrative drove HSTECH; Morgan Stanley projected $1.25-1.75B inflows on AI additions. China trade surplus $96B beat ($82.4B consensus) backstopped HK sentiment. HSI still ~5.6% below Jan 2026 peak; key resistance at 26,500.</div>
+                </div>
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:10px 12px;">
+                    <div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;">KBW Nasdaq Fintech</div>
+                    <div class="commentary" style="font-size:13px;line-height:1.6;color:#374151;min-height:50px;">KBW Nasdaq Fintech -1.7% — underperformed broader Nasdaq (+4.5%). Earnings season weighed as EPS misses drove post-result de-ratings despite revenue beats. Sticky services inflation (ISM Services Prices Paid 70.7 for second straight month) and Fed firmly on hold pushed rate-cut expectations further out, compressing the near-term NIM expansion thesis. Trading-oriented platforms outperformed on strong retail volumes; LatAm fintech supported by Banxico and BCB easing cycles.</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<a class="title" href="https://techcrunch.com/2026/04/17/once-close-enough-for-an-acquisition-stripe-and-airwallex-are-now-going-after-each-other/" target="_blank" rel="noopener">从濒临收购到正面竞争：Stripe 与 Airwallex 互相切入对方腹地</a>
-<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
-<p class="summary">长期在不同地域、不同客群运营的两家支付巨头开始彼此进入对方主战场。这一转变标志着全球跨境支付市场进入新一轮整合期，预示头部玩家将面临更激烈的产品和定价竞争，中小跨境支付平台的差异化空间被进一步压缩。</p>
-</div>
+    <section id="macro-news">
+        <div class="section-title">II. Macro News &amp; Data Releases</div>
 
-<div class="card">
-<a class="title" href="https://techcrunch.com/2026/04/02/cash-app-launches-buy-now-pay-later-feature-for-p2p-pay-transfers/" target="_blank" rel="noopener">Cash App 上线 P2P 转账"先买后付"功能</a>
-<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
-<p class="summary">Block 旗下 Cash App 为 P2P 转账新增 BNPL 功能，并强调内置防债务陷阱保护机制。这是数字钱包向 BNPL 场景延伸、绑定年轻用户的明确信号，BNPL 的商业模式正从结账场景蔓延至个人间转账，监管对消费者保护的关注也将随之升级。</p>
-</div>
+        <div class="table-wrap" id="macro-news-table">
+            <div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:8px;">Key Data Releases &nbsp;<span style="font-weight:400;text-transform:none;color:#9ca3af;font-size:11px;">w/o May 5–9, 2026 &nbsp;&middot;&nbsp; Street consensus from GS reports &nbsp;&middot;&nbsp; US CPI (Apr) next: May 12</span></div>
+            <table class="data-table">
+                <thead><tr>
+                    <th>Release</th>
+                    <th style="text-align:right;">Actual</th>
+                    <th style="text-align:right;">Street</th>
+                    <th style="text-align:center;">B/M</th>
+                    <th>Implication</th>
+                </tr></thead>
+                <tbody>
+<tr><td style="white-space:nowrap;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">US</span>Nonfarm Payrolls <span style="color:#9ca3af;font-size:11px;">(Apr)</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">+115K</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">+65K</td><td style="text-align:center;"><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">Beat</span></td><td style="font-size:12px;color:#374151;">NFP +115K well above street +65K. Private payrolls +123K. UE rate 4.34% (rounded 4.3%), LFP 61.8% (slight miss). Avg hourly earnings +0.2% MoM — below street +0.3%, tame wage read. 3M avg payroll growth 48K; GS underlying pace estimate 51K near breakeven.</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">US</span>Initial Jobless Claims <span style="color:#9ca3af;font-size:11px;">(wk May 2)</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">200K</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">205K</td><td style="text-align:center;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">In Line</span></td><td style="font-size:12px;color:#374151;">Claims 200K — below street 205K; prior revised 190K. Continuing claims 1,766K vs. median 1,800K (beat); 2-yr low. No labour stress signal. Productivity Q1 +0.8% (GS +1.0%, mdn +0.6%); unit labour costs +2.3% (below GS +2.8%).</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">US</span>ISM Manufacturing PMI <span style="color:#9ca3af;font-size:11px;">(Apr)</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">52.7</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">~52.5</td><td style="text-align:center;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">In Line</span></td><td style="font-size:12px;color:#374151;">Sixth consecutive month of expansion. Prices Paid jumped to 84.6 — 4-yr high, highest since Covid-era. Margin headwind for consumer platforms; energy cost pass-through live.</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">US</span>ISM Services PMI <span style="color:#9ca3af;font-size:11px;">(Apr)</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">53.6</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">54.0</td><td style="text-align:center;"><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">Miss</span></td><td style="font-size:12px;color:#374151;">Prices Paid 70.7 for second straight month (sticky). Employment sub-50 second month. New Orders fell sharply to 53.5 (from 60.6). Stagflationary read — Fed on hold.</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">Mexico</span>CPI Inflation <span style="color:#9ca3af;font-size:11px;">(Apr)</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">0.20% MoM / 4.45% YoY</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">0.21% MoM</td><td style="text-align:center;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">In Line</span></td><td style="font-size:12px;color:#374151;">Headline below consensus (electricity subsidy seasonal effect -23bp). Core +0.31% in-line. 2H Apr headline 0.04% — well below consensus 0.21%. Services inflation above historical norm. Trend is easing (prior 4.63% YoY); supports Banxico cut path.</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">Mexico</span>Banxico Rate Decision <span style="color:#9ca3af;font-size:11px;">(May 7)</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">6.50%</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">−25bp</td><td style="text-align:center;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">In Line</span></td><td style="font-size:12px;color:#374151;">3-2 vote; lowest rate since Apr 2022. Q1 GDP -0.8% QoQ miss created slack justifying cut. Forward guidance signals hold at next meeting given USMCA/trade uncertainty.</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">Brazil</span>Manufacturing PMI <span style="color:#9ca3af;font-size:11px;">(Apr)</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">52.6</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">prior 49.0</td><td style="text-align:center;"><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">Beat</span></td><td style="font-size:12px;color:#374151;">Rose 3.6pt to 52.6 — above neutral. Production, new export orders, employment all expansionary. Cost pressures surged +16.7pt to 86.5 (highest in 20+ years ex-Covid). Services PMI +2.2pt to 52.3. Input/output price pressures at generational highs — watch MELI margins.</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">Brazil</span>BCB Selic Decision <span style="color:#9ca3af;font-size:11px;">(Apr 29)</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">14.50%</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">−25bp</td><td style="text-align:center;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">In Line</span></td><td style="font-size:12px;color:#374151;">Unanimous cut; BCB raised 2026 IPCA forecast to 4.6% (from 3.9%) — restricts easing pace. Focus survey 2026 expectation 5.0%. Credit conditions stay elevated for NU. Next Copom: Jun 17-18.</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">Brazil</span>IGP-DI Inflation <span style="color:#9ca3af;font-size:11px;">(Apr)</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">+2.41% MoM</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">prior +1.14%</td><td style="text-align:center;"><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">Miss</span></td><td style="font-size:12px;color:#374151;">Large upside shock — leading indicator for IPCA. Implies Apr IPCA ~+0.9% MoM / ~4.5% YoY, top of BCB 3±1.5% tolerance band. Cost inflation pass-through risk for NU consumer credit.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-top:20px;">
+            <div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px;">Macro Themes &amp; Narrative</div>
+            <div class="theme-card">
+                <div class="theme-title">&#127981; Fed Rate Narrative</div>
+                <div class="theme-body">April 29 FOMC held rates at 3.50–3.75% in an 8–4 vote — highest dissent since 1992, signalling growing internal pressure for cuts. Powell's term ends May 15; Warsh Senate confirmation expected week of May 11. No cut catalyst this week: NFP +115K beat and ISM Services Prices Paid stuck at 70.7 keep the Fed on hold. Market pricing ~2 cuts by year-end (Jul and Nov), down from 3 in April. Fed-on-hold compresses near-term NIM expansion for SOFI and NU US; delays consumer credit re-acceleration into H2 2026.</div>
+            </div>
+            <div class="theme-card" style="margin-top:12px;">
+                <div class="theme-title">&#128738;&#65039; Iran / Oil</div>
+                <div class="theme-body">Brent fell ~8% to ~$101/bbl mid-week on Iran-US ceasefire diplomacy, before recovering Friday as US forces struck Iranian-flagged tankers. Net: oil -5% for the week. Lower oil is double-edged for coverage — positive for Brazil/Mexico consumer purchasing power and NU/MELI transaction volumes, but reduces inflationary pressure supporting rate-hold narratives. ISM Manufacturing Prices Paid surged to 84.6 (4-yr high), suggesting energy cost pass-through into goods inflation remains live. Watch: US-Iran nuclear talks and OPEC+ response as key swing factors for LatAm macro.</div>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<a class="title" href="https://www.pymnts.com/real-time-payments/2026/us-real-time-payments-hit-high-growth-phase-as-use-cases-multiply/" target="_blank" rel="noopener">美国实时支付进入高速增长期，使用场景持续扩展</a>
-<span class="source" data-src="PYMNTS">PYMNTS</span>
-<p class="summary">PYMNTS 与 Visa Direct 联合研究显示，美国在长期落后于英国、印度、巴西后，实时支付基础设施正加速渗透至医疗、保险、投资平台。即时到账正从可选项变为业务必需，FedNow 与 RTP 双轨推进将深刻重塑 ACH 主导的传统金融基础设施格局。</p>
-</div>
 
-<div class="card">
-<a class="title" href="https://www.pymnts.com/news/faster-payments/2026/new-data-shines-light-on-the-1-35t-race-to-move-money-faster/" target="_blank" rel="noopener">$1.35 万亿"快钱"赛道：跨行业即时支付加速取代支票/ACH</a>
-<span class="source" data-src="PYMNTS">PYMNTS</span>
-<p class="summary">PYMNTS 数据揭示众多机构仍依赖支票和 ACH 慢轨道向消费者付款，覆盖医疗、保险、投资等关键行业。即时支付从技术议题升级为商业议题，决定企业留客与运营效率的竞争位势，慢轨道留存的市场规模为后续即时化迁移提供了清晰可见的转化空间。</p>
-</div>
-</section>
+    <section id="sector-data">
+        <div class="section-title">III. Key Sector Data &amp; News</div>
+<div style="margin-bottom:24px;">
+            <div class="theme-card" style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;">Goldman Sachs &middot; Brazil Banks</span><span style="color:#9ca3af;font-size:10px;">4 May 2026</span><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">Brazil</span><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">Credit Quality</span><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">NU</span></div><div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:6px;">Desenrola 2.0 debt renegotiation launched; INSS payroll loan cap cut 45% &rarr; 40% (path to 30%)</div><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:4px;"><strong>Desenrola 2.0:</strong> Government program targets households earning up to 5x minimum wage (R$8k/month). Covers high-cost consumer debt (credit cards, overdrafts, personal loans) 90 days–2 years in arrears; discounts 30–90%, max rate 1.99%/mo, max term 4 years. FGO guarantee fund backstop up to R$7bn; government absorbs first 40% credit loss. 90-day enrollment window.</li><li style="margin-bottom:4px;"><strong>NU — net positive:</strong> GS flags NU as key beneficiary given higher exposure to lower-income segments where delinquency stress is concentrated. Modest tailwind to credit quality metrics; magnitude depends on adoption rates and effective discount depth.</li><li style="margin-bottom:4px;"><strong>INSS payroll cap cut — unexpected headwind for incumbents:</strong> Wage deduction cap reduced from 45% to 40% immediately, path toward 30%. Negative for AGBK (high INSS concentration); net neutral for NU given low payroll loan exposure. Alleviates risk of full INSS loan suspension.</li></ul></div>
+<div class="theme-card" style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;">Morgan Stanley / Jefferies / BofA &middot; Agentic Commerce</span><span style="color:#9ca3af;font-size:10px;">May 2026</span><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">Global</span><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">Agentic Payment</span><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">V / MA / PYPL / Adyen</span></div><div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:6px;">&quot;Same rails, new rules&quot;: 2026 is the infrastructure-build year for agentic payments &mdash; V/MA win on VAS, PYPL is the most exposed loser</div><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:4px;"><strong>Market sizing (MS US Internet):</strong> Agentic commerce GMV base case $8bn in 2026 (~1% of US e-commerce) growing to $192bn by 2030 (~10% of US e-commerce), CAGR ~121% vs overall e-commerce ~7.5%; bull case $385bn by 2030 (~20%). MS 2026 Outlook reiterates ~118% CAGR vs non-agentic ~5%.</li><li style="margin-bottom:4px;"><strong>V / MA &mdash; VAS, not volume, is the driver:</strong> MS flags V and MA as early beneficiaries via security, tokenization and fraud value-added services. VAS already ~40% of MA net revenue (4Q25 VAS +22% YoY) and ~28% at V (4Q25 VAS +28% YoY); near-term P&amp;L impact is small given size, but VAS take-rate expansion is the multi-year re-rating thesis.</li><li style="margin-bottom:4px;"><strong>PYPL &mdash; structural headwind, not cyclical:</strong> MS, BofA and Jefferies converge on PYPL as &quot;worst positioned&quot; (BofA US Financials 2026 Outlook) &mdash; the brand checkout button loses visibility when AI agents pick rails. This, not TPV deceleration, is the core reason for the valuation discount; watch whether mgmt can re-position into ACP/AP2/TAP as an orchestration layer.</li><li style="margin-bottom:4px;"><strong>Adyen / Stripe &mdash; clearest winners:</strong> Unified stack, real-time routing and risk orchestration align with multi-protocol, multi-rail agentic flows. Stripe has already locked in two lanes &mdash; ACP with OpenAI (powering ChatGPT Instant Checkout) on consumer side, and MPP with Paradigm/Tempo for machine micropayments.</li><li style="margin-bottom:4px;"><strong>Stablecoin rail proof point:</strong> Over the 9 months May-2025 to Feb-2026, on-chain AI agent payments hit 140mn transactions / $43mn notional, average ticket $0.31, with USDC at 98.6% share (Base 59% / Solana 38%). Validates stablecoin as the native rail for sub-cent micropayments where card economics break.</li></ul></div>
+<div class="theme-card" style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;">Internal Research &middot; China Consumer Finance</span><span style="color:#9ca3af;font-size:10px;">Updated Apr 2026</span><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">China</span><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">Rate Cap / Credit Regulation</span><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">QFIN / ZA 6060 / 2858</span></div><div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:6px;">PBOC Doc 247 small-loan rate cap is the dominant structural variable for China consumer finance through 2027; 18% stress test is the tail risk to watch</div><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:4px;"><strong>The rule (PBOC Doc 247, Dec-2025):</strong> Small-loan companies must bring all-in funding cost down to within 4x 1-year LPR (~12%); no new high-rate loans; legacy high-rate stock to be cleared by YE2027. Stacked on the Oct-2025 24% APR ceiling and the pre-Mar-2025 20% cap for licensed consumer finance companies.</li><li style="margin-bottom:4px;"><strong>QFIN &mdash; quantified impact:</strong> 4Q25 IRR -1.4ppts QoQ to 19.5%, revenue -21.4% QoQ, Non-GAAP NP Rmb1.07bn (-29% QoQ, -46% YoY). 24%+ on-book balance -44% QoQ in 4Q25; FY26 24%+ balance projected -76% to Rmb6.1bn while the sub-24% &quot;Zhixin G&quot; product grows +68% to Rmb55.2bn. FY26 loan volume -13% YoY; mgmt guides Non-GAAP NP Rmb3-4bn (our estimate Rmb2.8-3.2bn, low end of range).</li><li style="margin-bottom:4px;"><strong>ZA 6060 &mdash; consumer finance wind-down:</strong> 2H25 consumer finance GWP -39% YoY, CoR ran to 100.3%. FY26 consumer finance GWP guided -50-60% YoY with ~Rmb70mn one-off loss and ~1ppt CoR drag; full clean-up by FY27 should unlock structural CoR improvement from current 96%+.</li><li style="margin-bottom:4px;"><strong>Yixin 2858 &mdash; near-term beneficiary, watch the mix:</strong> Auto-collateral GMV +70% in 2025 as displaced borrowers spill over; mgmt running deliberately conservative (book +28% vs potential double). Subsidy regime (MoF Doc 2026/1) explicitly excludes small-loan cos &mdash; Yixin can only access via referral to 3A+ city/rural banks or AFCs.</li><li style="margin-bottom:4px;"><strong>Tail risk &mdash; 18% stress test:</strong> Regulators sounded out select internet banks in Jan-Feb 2026 on a 12-18% pricing test. If enacted, QFIN book would at least halve and ROA would fall well below 3% &mdash; the single biggest swing factor for the name beyond the current Doc 247 path.</li></ul></div>
+<div class="theme-card" style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;">Internal Research &middot; US Credit Infrastructure</span><span style="color:#9ca3af;font-size:10px;">Updated Apr 2026</span><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">US</span><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">Mortgage Credit / Bureaus</span><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">FICO / EXPN / EFX / TRU</span></div><div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:6px;">FICO doubles mortgage wholesale to $10 in 2026, but bureaus &mdash; led by Experian &mdash; capture 60-65% of tri-merge economics; Lender Choice is form, not substance</div><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:4px;"><strong>Mortgage pricing &mdash; ~10x in 7 years:</strong> FICO wholesale mortgage price has gone from ~$0.50 (1989-2018) to $4.95 (Nov-2024) to $10/file in 2026 via the Mortgage Direct License Program (alt: $4.95 + $32 success fee &mdash; same UE). Reseller all-in cost tracking from ~$60 toward $80+; triggered Sen. Hawley antitrust push and repeated public criticism from FHFA Director Pulte.</li><li style="margin-bottom:4px;"><strong>Bureaus take the bigger slice:</strong> Of a $80-100 tri-merge file, FICO captures ~$14.85 (~15-18%); the three bureaus take 60-65% of the chain. In consumer credit (cards / personal loans), FICO has not raised price in 5 years while bureaus have quietly re-priced via finer data cadence (refresh 45d&rarr;30d, more attributes) at single-digit CAGR.</li><li style="margin-bottom:4px;"><strong>Lender Choice doesn&apos;t break the moat:</strong> FHFA (Pulte) kept tri-merge and adds VantageScore 4.0 as a permitted alternative, targeted live summer 2026. But 98.8% of outstanding MBS reference FICO; VantageScore MBS-channel penetration &lt;5%. Synchrony&apos;s 2021 switch took 3 years and ~$200mn and only applies to subprime &mdash; switching costs are the binding constraint.</li><li style="margin-bottom:4px;"><strong>EXPN is the standout bureau:</strong> EBIT margin 28% with 5-yr profit CAGR 12% (vs EFX 25% / 6% and TRU 24% / 7%). Most diversified revenue (financials only 39% &mdash; the lowest), strongest 2C (28% of revenue, 200mn+ users, 12mn paying members at $15-25/month in NA), and cloud migration largely done by FY26 (&gt;85% on cloud), removing the historic 800-900bp annual drag and unlocking further margin upside.</li><li style="margin-bottom:4px;"><strong>LatAm read-across:</strong> Serasa (Experian Brazil, 65% share) sustains EBIT margin &gt;30% and is opening up feature-data commercialization (Quod has already moved &mdash; 50 attributes priced at R$0.5, same as one model score); 2026 push to onboard Serasa is the next leg. Mexico stays a closed duopoly (Bur&oacute; 60% / C&iacute;rculo 40%, Bur&oacute; EBITDA margin 48%) with no pricing relief in 5 years.</li></ul></div>
+        </div>
+        <div style="border-top:1px solid #e5e7eb;margin-bottom:20px;"></div>
+    </section>
 
-<section>
-<h2>数字银行与存贷<span class="section-count">4 条</span></h2>
 
-<div class="card">
-<a class="title" href="https://techcrunch.com/2026/04/21/revolut-eyes-valuation-of-up-to-200b-in-eventual-ipo/" target="_blank" rel="noopener">Revolut 瞄准 2000 亿美元 IPO 估值，最高约前次 2.7 倍</a>
-<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
-<p class="summary">英国数字银行巨头 Revolut 在 2026 年 3 月获英国全银行牌照后，最近一次二级市场估值 750 亿美元；公司预期上市估值最高 2000 亿美元。若兑现将成为欧洲史上最大金融科技 IPO 之一，并直接重定义全球数字银行可比公司估值锚点（对比 Nubank、SoFi、Chime）。</p>
-</div>
+    <div class="section-group-hdr" id="s3">
+        <span>IV. Coverage Update</span>
+        <span id="coverage-asof" style="font-weight:400;font-size:13px;color:#9ca3af;margin-left:10px;"></span>
+    </div>
 
-<div class="card">
-<a class="title" href="https://techcrunch.com/2026/04/23/salmon-raises-100m-in-equity-and-debt-to-bring-digital-credit-to-underbanked-filipinos/" target="_blank" rel="noopener">菲律宾数字信贷 Salmon 完成 1 亿美元股权+债务融资</a>
-<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
-<p class="summary">Salmon 服务菲律宾大量信用空白人群（underbanked），主打的是传统银行可靠性问题导致的客群外溢，而非完全无银行账户客群。东南亚信用空白市场仍是全球数字银行少数仍可放量的赛道，单位经济模型对资金成本极度敏感，本轮债+股结构反映这一现实。</p>
-</div>
+    <section id="ratings">
+        <div class="section-title sub-section">3.1 &nbsp; Rating Changes</div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead><tr><th>Date</th><th>Broker</th><th>Ticker</th><th>Action</th><th>New Rating</th><th>New PT</th><th>Prior PT</th><th>Key Rationale</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>~5 May</td><td>Goldman Sachs</td><td><strong>FUTU</strong></td>
+                        <td><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;">Conviction Add</span></td>
+                        <td>Buy (APAC Conv. List)</td><td>$205</td><td>—</td>
+                        <td>HK IPO pipeline recovery, retail trading volume uplift on US-China re-engagement. ~30% upside at time of add; stock -12% week-of on earnings profit-taking</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-<div class="card">
-<a class="title" href="https://techcrunch.com/2026/04/16/slash-a-ramp-competitor-founded-by-teenagers-raises-100m-at-1-4b-valuation/" target="_blank" rel="noopener">Ramp 竞品 Slash 完成 1 亿美元融资，估值 14 亿美元</a>
-<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
-<p class="summary">由 4 名青少年五年前创立的 Slash 已实现 3 亿美元年化营收。公司专注中小企业财务管理，与 Ramp/Brex/Mercury 同台竞争。这条线印证了美国 SMB 财务平台仍处放量期，但赛道头部分化加剧，独立中小玩家寻找差异化定位的难度上升。</p>
-</div>
+    <section id="comps">
+        <div class="section-title sub-section">3.2 &nbsp; Comps Table by Sector <span class="count" style="font-weight:400;text-transform:none;letter-spacing:0;">as of 11-05-26</span></div>
 
-<div class="card">
-<a class="title" href="https://techcrunch.com/2026/04/21/cash-app-is-targeting-a-new-kind-of-customer-6-12-year-olds/" target="_blank" rel="noopener">Cash App 进军 6-12 岁儿童金融，提前锁定 Gen Alpha</a>
-<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
-<p class="summary">Block 通过青少年专属服务向 Gen Alpha 渗透，目标是从童年期建立用户关系。在数字银行 ARPU 增长见顶的当下，这是从用户生命周期前端切入的防御性扩张；同时家长账户管理权也强化了对家庭账户的捆绑深度。</p>
-</div>
-</section>
+        <div class="comps-sector-hdr">Digital Banks &amp; LatAm Platform <span class="count">4 names</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">Company</th>
+                        <th rowspan="2">Ticker</th>
+                        <th rowspan="2">Ccy</th>
+                        <th rowspan="2" style="text-align:right;">Last (LCY)</th>
+                        <th rowspan="2" style="text-align:right;">Mkt Cap<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">Price Movement</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">Short Int.<br><span style="font-weight:400;font-size:10px;">(Days)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">Nubank</td><td style="color:#6b7280;font-size:11px;">NU</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">13.50</td><td style="text-align:right;color:#374151;">67,008</td><td style="text-align:right;color:#dc2626;font-weight:500;">-4.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-9.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-22.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+5.2%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+128.4%</td><td style="text-align:right;color:#374151;">16.2x</td><td style="text-align:right;color:#374151;">12.2x</td><td style="text-align:right;color:#374151;">0.44</td><td style="text-align:right;color:#374151;">5.80</td><td style="text-align:right;color:#374151;">2.36</td><td style="text-align:right;color:#374151;">1.49</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Mercado Libre</td><td style="color:#6b7280;font-size:11px;">MELI</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">1,557.30</td><td style="text-align:right;color:#374151;">82,764</td><td style="text-align:right;color:#dc2626;font-weight:500;">-14.1%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-12.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-22.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-36.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+20.1%</td><td style="text-align:right;color:#374151;">35.6x</td><td style="text-align:right;color:#374151;">25.2x</td><td style="text-align:right;color:#374151;">1.48</td><td style="text-align:right;color:#374151;">10.80</td><td style="text-align:right;color:#374151;">0.49</td><td style="text-align:right;color:#374151;">0.74</td></tr>
+<tr><td style="font-weight:600;color:#111827;">SoFi</td><td style="color:#6b7280;font-size:11px;">SOFI</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">16.26</td><td style="text-align:right;color:#374151;">20,203</td><td style="text-align:right;color:#16a34a;font-weight:500;">+0.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+0.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-20.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+23.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+216.3%</td><td style="text-align:right;color:#374151;">27.3x</td><td style="text-align:right;color:#374151;">20.4x</td><td style="text-align:right;color:#374151;">0.58</td><td style="text-align:right;color:#374151;">1.90</td><td style="text-align:right;color:#374151;">2.50</td><td style="text-align:right;color:#374151;">2.49</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Revolut <span class="badge badge-private" style="margin-left:4px;">PRIVATE</span></td><td style="color:#6b7280;font-size:11px;">—</td><td style="color:#6b7280;font-size:11px;">—</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-<section>
-<h2>监管与政策<span class="section-count">4 条</span></h2>
+        <div class="comps-sector-hdr">Online Brokerage <span class="count">3 names</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">Company</th>
+                        <th rowspan="2">Ticker</th>
+                        <th rowspan="2">Ccy</th>
+                        <th rowspan="2" style="text-align:right;">Last (LCY)</th>
+                        <th rowspan="2" style="text-align:right;">Mkt Cap<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">Price Movement</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">Short Int.<br><span style="font-weight:400;font-size:10px;">(Days)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">Futu</td><td style="color:#6b7280;font-size:11px;">FUTU</td><td style="color:#6b7280;font-size:11px;">HKD</td><td style="text-align:right;color:#374151;">139.86</td><td style="text-align:right;color:#374151;">20,271</td><td style="text-align:right;color:#dc2626;font-weight:500;">-10.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-9.5%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-9.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+36.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+225.6%</td><td style="text-align:right;color:#374151;">11.5x</td><td style="text-align:right;color:#374151;">10.1x</td><td style="text-align:right;color:#374151;">0.69</td><td style="text-align:right;color:#374151;">3.80</td><td style="text-align:right;color:#374151;">1.14</td><td style="text-align:right;color:#374151;">1.04</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Robinhood</td><td style="color:#6b7280;font-size:11px;">HOOD</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">80.78</td><td style="text-align:right;color:#374151;">69,366</td><td style="text-align:right;color:#16a34a;font-weight:500;">+5.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+16.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+3.6%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+47.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+737.1%</td><td style="text-align:right;color:#374151;">42.6x</td><td style="text-align:right;color:#374151;">32.4x</td><td style="text-align:right;color:#374151;">4.00</td><td style="text-align:right;color:#374151;">7.80</td><td style="text-align:right;color:#374151;">1.43</td><td style="text-align:right;color:#374151;">5.82</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Webull</td><td style="color:#6b7280;font-size:11px;">BULL</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">7.07</td><td style="text-align:right;color:#374151;">3,818</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+43.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+13.3%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-56.9%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-32.8%</td><td style="text-align:right;color:#374151;">40.0x</td><td style="text-align:right;color:#374151;">24.8x</td><td style="text-align:right;color:#374151;">3.54</td><td style="text-align:right;color:#374151;">3.60</td><td style="text-align:right;color:#374151;">2.26</td><td style="text-align:right;color:#374151;">-0.34</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-<div class="card">
-<a class="title" href="https://www.theblock.co/post/399294/canada-crypto-atm-ban" target="_blank" rel="noopener">加拿大拟全面禁止加密 ATM，定性为"诈骗主要工具"</a>
-<span class="source" data-src="The Block">The Block</span>
-<p class="summary">加拿大政府宣布将立法关停加密 ATM，称其为"诈骗与洗钱的主要载体"。继澳大利亚、新加坡之后，G7 国家对加密货币零售入口的限制趋严，监管对加密的"基础设施级"打击在加速，下一步可能波及 P2P OTC 渠道与零售换汇服务。</p>
-</div>
+        <div class="comps-sector-hdr">China Consumer Finance <span class="count">3 names</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">Company</th>
+                        <th rowspan="2">Ticker</th>
+                        <th rowspan="2">Ccy</th>
+                        <th rowspan="2" style="text-align:right;">Last (LCY)</th>
+                        <th rowspan="2" style="text-align:right;">Mkt Cap<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">Price Movement</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">Short Int.<br><span style="font-weight:400;font-size:10px;">(Days)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">ZhongAn Online</td><td style="color:#6b7280;font-size:11px;">6060.HK</td><td style="color:#6b7280;font-size:11px;">CNY</td><td style="text-align:right;color:#374151;">12.00</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#16a34a;font-weight:500;">+0.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-11.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-27.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+0.0%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-51.9%</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">0.70</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">1.01</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Yixin Group</td><td style="color:#6b7280;font-size:11px;">2858.HK</td><td style="color:#6b7280;font-size:11px;">CNY</td><td style="text-align:right;color:#374151;">1.90</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.0%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-13.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-28.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-5.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+108.8%</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">0.70</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">-0.21</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Qifu Technology</td><td style="color:#6b7280;font-size:11px;">QFIN</td><td style="color:#6b7280;font-size:11px;">CNY</td><td style="text-align:right;color:#374151;">13.18</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.5%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.9%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-16.5%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-69.0%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-24.9%</td><td style="text-align:right;color:#374151;">3.1x</td><td style="text-align:right;color:#374151;">2.6x</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">0.50</td><td style="text-align:right;color:#374151;">1.91</td><td style="text-align:right;color:#374151;">0.47</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-<div class="card">
-<a class="title" href="https://www.theblock.co/post/399253/cftc-sues-wisconsin-federal-state-clash-prediction-market-oversight" target="_blank" rel="noopener">CFTC 反诉威斯康星州，预测市场监管联邦/州冲突升级</a>
-<span class="source" data-src="The Block">The Block</span>
-<p class="summary">美国商品期货交易委员会反诉威斯康星州政府，主张联邦对预测市场拥有独家监管权。该冲突将决定 Kalshi、Polymarket 等平台未来在 50 州的业务可行性，是 2026 年预测市场合法化路径的关键变量，可能形成 vs. 州博彩法的判例级裁决。</p>
-</div>
+        <div class="comps-sector-hdr">Credit Scoring / Bureau <span class="count">4 names</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">Company</th>
+                        <th rowspan="2">Ticker</th>
+                        <th rowspan="2">Ccy</th>
+                        <th rowspan="2" style="text-align:right;">Last (LCY)</th>
+                        <th rowspan="2" style="text-align:right;">Mkt Cap<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">Price Movement</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">Short Int.<br><span style="font-weight:400;font-size:10px;">(Days)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">Fair Isaac</td><td style="color:#6b7280;font-size:11px;">FICO</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">1,092.00</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#16a34a;font-weight:500;">+3.0%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+18.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-19.9%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-47.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+45.7%</td><td style="text-align:right;color:#374151;">25.3x</td><td style="text-align:right;color:#374151;">20.1x</td><td style="text-align:right;color:#374151;">0.71</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">4.91</td><td style="text-align:right;color:#374151;">1.09</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Equifax</td><td style="color:#6b7280;font-size:11px;">EFX</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">167.82</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-5.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-15.1%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-37.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-17.6%</td><td style="text-align:right;color:#374151;">19.5x</td><td style="text-align:right;color:#374151;">16.3x</td><td style="text-align:right;color:#374151;">1.20</td><td style="text-align:right;color:#374151;">4.40</td><td style="text-align:right;color:#374151;">3.85</td><td style="text-align:right;color:#374151;">1.00</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Experian</td><td style="color:#6b7280;font-size:11px;">EXPN.L</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">26.56</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+3.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+11.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-30.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-3.2%</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">6.00</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">1.02</td></tr>
+<tr><td style="font-weight:600;color:#111827;">TransUnion</td><td style="color:#6b7280;font-size:11px;">TRU</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">69.99</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#16a34a;font-weight:500;">+1.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+3.1%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.5%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-18.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+5.1%</td><td style="text-align:right;color:#374151;">14.7x</td><td style="text-align:right;color:#374151;">12.5x</td><td style="text-align:right;color:#374151;">1.02</td><td style="text-align:right;color:#374151;">2.80</td><td style="text-align:right;color:#374151;">6.57</td><td style="text-align:right;color:#374151;">1.17</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-<div class="card">
-<a class="title" href="https://www.theblock.co/post/399283/judge-rejects-sam-bankman-fried-new-trial-request-slams-claims-wildly-conspiratorial" target="_blank" rel="noopener">法官驳回 SBF 重审请求，称其指控"荒诞至极"</a>
-<span class="source" data-src="The Block">The Block</span>
-<p class="summary">美国地区法官 Lewis Kaplan 拒绝 FTX 前 CEO Sam Bankman-Fried 的重审申请，但其上诉仍在进行。这一裁定基本宣告 SBF 25 年刑期短期难以撼动，加密行业最大刑事案的法律链条进入收尾阶段。</p>
-</div>
+        <div class="comps-sector-hdr">Payments <span class="count">8 names</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">Company</th>
+                        <th rowspan="2">Ticker</th>
+                        <th rowspan="2">Ccy</th>
+                        <th rowspan="2" style="text-align:right;">Last (LCY)</th>
+                        <th rowspan="2" style="text-align:right;">Mkt Cap<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">Price Movement</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">Short Int.<br><span style="font-weight:400;font-size:10px;">(Days)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">Visa</td><td style="color:#6b7280;font-size:11px;">V</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">323.86</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-0.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+6.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-8.1%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+40.2%</td><td style="text-align:right;color:#374151;">24.7x</td><td style="text-align:right;color:#374151;">21.8x</td><td style="text-align:right;color:#374151;">1.78</td><td style="text-align:right;color:#374151;">17.40</td><td style="text-align:right;color:#374151;">3.01</td><td style="text-align:right;color:#374151;">0.36</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Mastercard</td><td style="color:#6b7280;font-size:11px;">MA</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">497.81</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-0.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-7.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-12.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+29.8%</td><td style="text-align:right;color:#374151;">25.3x</td><td style="text-align:right;color:#374151;">21.9x</td><td style="text-align:right;color:#374151;">1.44</td><td style="text-align:right;color:#374151;">65.70</td><td style="text-align:right;color:#374151;">1.60</td><td style="text-align:right;color:#374151;">0.56</td></tr>
+<tr><td style="font-weight:600;color:#111827;">American Express</td><td style="color:#6b7280;font-size:11px;">AXP</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">312.32</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-0.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-11.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+9.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+111.0%</td><td style="text-align:right;color:#374151;">17.7x</td><td style="text-align:right;color:#374151;">15.5x</td><td style="text-align:right;color:#374151;">1.25</td><td style="text-align:right;color:#374151;">6.30</td><td style="text-align:right;color:#374151;">2.24</td><td style="text-align:right;color:#374151;">1.27</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Stripe <span class="badge badge-private" style="margin-left:4px;">PRIVATE</span></td><td style="color:#6b7280;font-size:11px;">—</td><td style="color:#6b7280;font-size:11px;">—</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Adyen</td><td style="color:#6b7280;font-size:11px;">ADYEN.AS</td><td style="color:#6b7280;font-size:11px;">EUR</td><td style="text-align:right;color:#374151;">921.00</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-5.1%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+7.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-20.3%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-41.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-36.8%</td><td style="text-align:right;color:#374151;">23.8x</td><td style="text-align:right;color:#374151;">19.4x</td><td style="text-align:right;color:#374151;">1.13</td><td style="text-align:right;color:#374151;">5.50</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">2.05</td></tr>
+<tr><td style="font-weight:600;color:#111827;">PayPal</td><td style="color:#6b7280;font-size:11px;">PYPL</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">45.07</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-10.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-0.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+11.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-35.9%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-29.8%</td><td style="text-align:right;color:#374151;">8.5x</td><td style="text-align:right;color:#374151;">7.8x</td><td style="text-align:right;color:#374151;">2.15</td><td style="text-align:right;color:#374151;">2.00</td><td style="text-align:right;color:#374151;">2.73</td><td style="text-align:right;color:#374151;">0.92</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Toast</td><td style="color:#6b7280;font-size:11px;">TOST</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">24.19</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-17.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-4.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-13.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-40.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+16.3%</td><td style="text-align:right;color:#374151;">18.6x</td><td style="text-align:right;color:#374151;">14.3x</td><td style="text-align:right;color:#374151;">0.63</td><td style="text-align:right;color:#374151;">7.10</td><td style="text-align:right;color:#374151;">1.14</td><td style="text-align:right;color:#374151;">2.77</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Shopify</td><td style="color:#6b7280;font-size:11px;">SHOP</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">102.54</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-19.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-7.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-13.6%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+11.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+63.0%</td><td style="text-align:right;color:#374151;">56.2x</td><td style="text-align:right;color:#374151;">44.2x</td><td style="text-align:right;color:#374151;">2.12</td><td style="text-align:right;color:#374151;">10.70</td><td style="text-align:right;color:#374151;">1.31</td><td style="text-align:right;color:#374151;">2.45</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-<div class="card">
-<a class="title" href="https://www.theblock.co/post/399308/hong-kong-warns-fake-stablecoins" target="_blank" rel="noopener">香港金管局警示假冒 HSBC 稳定币代币</a>
-<span class="source" data-src="The Block">The Block</span>
-<p class="summary">HSBC 与 Anchorpoint Financial 双双澄清当前未发行稳定币，但确认计划年内推出。香港稳定币赛道在金管局沙盒制度下进入冲刺期，竞争与诈骗活动同步升温。对覆盖标的（众安/圆币科技）的影响：拿牌窗口的市场预期波动会放大相关股票的估值催化。</p>
-</div>
-</section>
+        <div class="comps-sector-hdr">BNPL / Consumer Credit <span class="count">2 names</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">Company</th>
+                        <th rowspan="2">Ticker</th>
+                        <th rowspan="2">Ccy</th>
+                        <th rowspan="2" style="text-align:right;">Last (LCY)</th>
+                        <th rowspan="2" style="text-align:right;">Mkt Cap<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">Price Movement</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">Short Int.<br><span style="font-weight:400;font-size:10px;">(Days)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">Affirm</td><td style="color:#6b7280;font-size:11px;">AFRM</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">66.45</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-0.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+36.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+17.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+43.2%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+432.9%</td><td style="text-align:right;color:#374151;">21.2x</td><td style="text-align:right;color:#374151;">17.1x</td><td style="text-align:right;color:#374151;">0.54</td><td style="text-align:right;color:#374151;">5.90</td><td style="text-align:right;color:#374151;">2.15</td><td style="text-align:right;color:#374151;">2.96</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Klarna</td><td style="color:#6b7280;font-size:11px;">KLAR</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">14.39</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-3.3%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+10.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-24.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-68.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-68.6%</td><td style="text-align:right;color:#374151;">153.7x</td><td style="text-align:right;color:#374151;">15.2x</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">2.20</td><td style="text-align:right;color:#374151;">5.56</td><td style="text-align:right;color:#374151;">6.34</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-<section>
-<h2>加密与 Web3 金融<span class="section-count">5 条</span></h2>
+    <section id="earnings">
+        <div class="section-title sub-section">3.3 &nbsp; Earnings Calendar</div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead><tr><th>Company</th><th>Ticker</th><th>Expected Date</th><th>Cons. EPS</th><th>Cons. Revenue</th><th>Key Watch Items</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Nu Holdings</strong></td><td>NU</td><td>~13 May 2026</td><td>$0.12</td><td>$3.1bn</td><td>Mexico loan growth, NPL trajectory, BRL/MXN FX impact</td></tr>
+                    <tr><td><strong>Futu Holdings</strong></td><td>FUTU</td><td>~20 May 2026</td><td>HK$9.85</td><td>HK$3.2bn</td><td>Paying client growth, international expansion (Singapore / Japan)</td></tr>
+                    <tr><td><strong>Webull</strong></td><td>BULL</td><td>~15 May 2026</td><td>&mdash;</td><td>&mdash;</td><td>SEPA termination impact, crypto volume trend reversal</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-<div class="card">
-<a class="title" href="https://www.theblock.co/post/399288/pump-fun-burns-370-million-pump" target="_blank" rel="noopener">Pump.fun 销毁 3.7 亿美元 PUMP 代币，承诺 50% 收入回购销毁</a>
-<span class="source" data-src="The Block">The Block</span>
-<p class="summary">Solana 上 Memecoin 发行平台 Pump.fun 推出激进通缩计划，剩余 50% 收入用于"未来 5-10 年的大型布局"。这是 Memecoin 平台从"纯发行手续费"向"代币驱动型 SaaS"转型的尝试，但模式可持续性高度依赖发行端流量周期。</p>
-</div>
+    <section id="coverage">
+        <div class="section-title sub-section">3.4 &nbsp; Coverage Universe <span class="count">24 names</span></div>
 
-<div class="card">
-<a class="title" href="https://www.theblock.co/post/399196/tether-develops-modular-bitcoin-mining-systems-with-canaan-in-latest-infrastructure-push" target="_blank" rel="noopener">Tether 联手 Canaan 开发模块化比特币矿机，纵向布局加深</a>
-<span class="source" data-src="The Block">The Block</span>
-<p class="summary">Tether 与嘉楠科技、ACME Swisstech 合作推进矿机基础设施一体化布局。Tether 利用稳定币发行带来的天量准备金（万亿级 USDT），正向加密产业链上游纵向扩张，从"金融"向"产业资本"转型，形成类主权基金运作模式。</p>
-</div>
+        <div class="sector-hdr">Digital Banks &amp; LatAm Platform <span class="count">4 names</span></div>
 
-<div class="card">
-<a class="title" href="https://www.theblock.co/post/399234/polymarket-eyes-return-main-exchange-us-in-talks-cftc-bloomberg" target="_blank" rel="noopener">Polymarket 与 CFTC 谈判，主交易所拟回归美国本土</a>
-<span class="source" data-src="The Block">The Block</span>
-<p class="summary">此前因合规问题离开美国本土的 Polymarket 正与 CFTC 沟通回归路径。结合 Kalshi 在亚利桑那胜诉、CFTC 反诉威州，预测市场正在快速合法化；2026 年中期选举周期为这一品类提供了天然的需求引爆点。</p>
-</div>
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">NU</div>
+                <div class="company-info"><div class="company-name">Nu Holdings</div><div class="company-desc">Brazil / LatAm Digital Bank</div></div>
+                <span class="perf-pill down">-4.7%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'nu-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'nu-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'nu-co')">Company News Run</div>
+                </div>
+                <div id="nu-ov" class="tab-pane active">Down -4.4% in a broadly positive week. Primary drag: LatAm contagion from MELI&rsquo;s post-Q1 selloff (-11.8%). Macro overlay: IGP-DI +2.41% MoM in April &mdash; leading IPCA indicator implies ~+0.9% MoM / ~4.5% YoY, at the top of BCB&rsquo;s 3&plusmn;1.5% tolerance band and constraining the easing path. Partial offset: Desenrola 2.0 (GS May 4) &mdash; government debt renegotiation targets NU&rsquo;s core low-income borrower segment; GS flags net positive for credit quality. Options market cautious into May 14 earnings: put/call ratio 1.11 vs avg 0.86; implied vol at upper end of 1-year range.
+            </div>
+                <div id="nu-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">GS &middot; 4 May</span><strong>Desenrola 2.0 &mdash; net positive for NU:</strong> Government renegotiation program targets households earning up to R$8K/month (5x min wage). Covers credit cards, overdrafts, personal loans 90 days&ndash;2 years in arrears at max 1.99%/mo and max 4-year term. FGO guarantee fund up to R$7bn; govt absorbs first 40% of credit losses. 90-day enrollment window. GS flags NU as key beneficiary given higher exposure to lower-income segments where delinquency stress is concentrated &mdash; modest tailwind to credit quality metrics; magnitude depends on adoption rate and effective discount depth.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">GS &middot; 4 May</span><strong>INSS payroll cap cut (45% &rarr; 40%, path to 30%) &mdash; net neutral for NU:</strong> Wage deduction cap reduced immediately. Negative for incumbents with high INSS concentration (AGBK); NU has low payroll loan exposure so direct impact is minimal. Alleviates risk of full INSS loan suspension that had been flagged as a tail risk. <em>See Key Sector Data section for full note summary.</em></li></ul>
+            </div>
+                <div id="nu-co" class="tab-pane"><ul><li>Earnings May 14 (next week): Street ~$3.1B revenue / ~$0.12 EPS. Key watch: Mexico loan growth pace (March preliminary data showed +61% YoY), NPL trajectory, BRL/MXN FX impact on reported USD figures, and first management commentary on Desenrola 2.0 enrollment.</li><li>Options positioning skewed bearish ahead of earnings: put/call 1.11 vs 12-month avg 0.86; put skew steepening indicates demand for downside protection &mdash; not unusual pre-earnings but elevated vs peers.</li></ul>
+            </div>
+            </div>
+        </div>
 
-<div class="card">
-<a class="title" href="https://www.theblock.co/post/399274/robinhoods-q1-crypto-revenue-and-trading-volume-fall-nearly-50" target="_blank" rel="noopener">Robinhood Q1 加密营收和交易量近乎腰斩</a>
-<span class="source" data-src="The Block">The Block</span>
-<p class="summary">加密业务营收和交易量同比下降近 50%，但整体交易营收仍录得 7% 同比增长至 6.23 亿美元。零售加密交易热度回落与机构资金主导的"Strategy 牛"形成鲜明分化——这一轮加密上行的钱并不是从零售口袋来的。</p>
-</div>
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">MELI</div>
+                <div class="company-info"><div class="company-name">MercadoLibre</div><div class="company-desc">LatAm E-commerce &amp; Fintech</div></div>
+                <span class="perf-pill down">-14.1%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'meli-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'meli-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'meli-co')">Company News Run</div>
+                </div>
+                <div id="meli-ov" class="tab-pane active">Q1 reported May 7. Revenue $8.85B (+49% YoY, +46% FX-neutral) beat estimates by ~5%; EPS $8.23 missed street by ~6%. Stock -11.8% for the week &mdash; margin compression was the sell trigger. Management guided continued heavy investment over near-term margin recovery: 2/3 of compression from competitive logistics spend (free shipping threshold cut to BRL 19, Meli+ expansion); 1/3 from Brazil consumer credit normalisation (still profitable, less so than a year ago). Credit portfolio nearly doubled YoY to $14.6B; AUM grew 77%. Advertising +73% YoY &mdash; highest-margin, fastest-growing segment.
+            </div>
+                <div id="meli-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260506%20-%20JPMorgan%20Research%20-%20MELI%20-%20MercadoLibre%20Inc%20Traffic%20Tracker%20-%209%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">JPMorgan &middot; 6 May</span></a><strong>Brazil sessions +53% YoY (April):</strong> Slight decel from +55% in March, but MELI holds dominant share. All competitors weakened &mdash; Shopee -3pp to 23% session share, Amazon -1pp to 14%. MELI still leads on absolute volume. Session-to-GMV correlation weak (R&sup2; = 47% in Brazil) &mdash; limits predictive power for GMV this cycle, especially as credit and advertising diverge from pure-GMV drivers.</li><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260506%20-%20JPMorgan%20Research%20-%20MELI%20-%20MercadoLibre%20Inc%20Traffic%20Tracker%20-%209%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">JPMorgan &middot; 6 May</span></a><strong>Mexico accelerating &mdash; key positive:</strong> Sessions +27% YoY in April vs +23% in March, now outpacing Amazon (21%, down from 24%). Online penetration still early-stage; MELI taking share as the market expands. Argentina +16% YoY (from +14%) &mdash; momentum improving on a high base post-inflation stabilization.</li></ul>
+            </div>
+                <div id="meli-co" class="tab-pane"><ul><li>Q1 2026 results (May 7): Revenue $8.85B beat (+49% YoY); EPS $8.23 miss. Brazil conversion rate +1pp YoY &mdash; management called it a "huge increase" driving record market share. Argentina GMV +41% YoY FX-neutral on a high base.</li><li>Management on Amazon competition: "our numbers speak for themselves &mdash; supply grows, GMV grows, successful items sold accelerating, retention improving." Competition bringing new consumers online &mdash; framed as net TAM expansion.</li><li>Advertising revenue +73% YoY (+63% FX-neutral) &mdash; accelerating; structural margin tailwind as ad mix grows vs logistics-heavy GMV.</li></ul>
+            </div>
+            </div>
+        </div>
 
-<div class="card">
-<a class="title" href="https://www.theblock.co/post/399204/telegram-ai-powered-crypto-trading-agents-can-execute-transfers-swaps-staking" target="_blank" rel="noopener">Telegram 推出 AI 加密交易代理，可执行链上转账/兑换/质押</a>
-<span class="source" data-src="The Block">The Block</span>
-<p class="summary">用户可为代理充值专属钱包，由 AI 自动执行 DeFi 操作。这是大型即时通讯平台首次将 AI 代理与链上金融深度集成，在 1 亿+加密用户基础上推开 Agentic DeFi 的零售入口；同时也对 KYC/反洗钱合规框架形成新挑战。</p>
-</div>
-</section>
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">SOFI</div>
+                <div class="company-info"><div class="company-name">SoFi Technologies</div><div class="company-desc">US Digital Bank</div></div>
+                <span class="perf-pill up">+0.4%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'sofi-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'sofi-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'sofi-co')">Company News Run</div>
+                </div>
+                <div id="sofi-ov" class="tab-pane active">Continued pressure post-Q1 (reported Apr 29): stock -4.1% this week. Q1 was record: revenue $1.1B (+43% YoY), net income $166.7M (>2x YoY). Market reaction negative on unchanged FY2026 guidance &mdash; adj. revenue ~$4.655B, EBITDA margin ~34%, adj. EPS ~$0.60 &mdash; interpreted as lacking conviction to raise. Stock at ~$16, down 52% from $33 peak. CEO Noto bought ~15,878 shares personally on May 9 (~$250K) &mdash; notable insider signal. Loan Platform >$3.6B in new partner commitments, growing the capital-light fee stream.
+            </div>
+                <div id="sofi-br" class="tab-pane"><ul><li><i style="color:#9ca3af;">No new single-stock notes in folder this week. Citi PT cut ($37&rarr;$30, Buy maintained) was prior-week action &mdash; excluded per rating change rules.</i></li></ul>
+            </div>
+                <div id="sofi-co" class="tab-pane"><ul><li>CEO Anthony Noto purchased ~15,878 shares (~$250K) on May 9 &mdash; insider buy at ~$16, first notable purchase in recent quarters.</li><li>Q2 guide: adj. revenue ~$1.115B (+30% YoY), EBITDA margin ~30%. FY2026: adj. revenue ~$4.655B (+30%), EBITDA ~$1.6B (34% margin), adj. EPS ~$0.60.</li><li>Loan Platform new partner commitments >$3.6B &mdash; capital-light fee revenue reducing balance sheet sensitivity to interest rate trajectory.</li><li>Muddy Waters short report (Mar 30) overhang persists; no new MW actions or rebuttals this week. Stock -57% vs Citi PT of $30.</li></ul>
+            </div>
+            </div>
+        </div>
 
-<section>
-<h2>投融资动态<span class="section-count">3 条</span></h2>
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill" style="background:#6d28d9;">REV</div>
+                <div class="company-info">
+                    <div class="company-name">Revolut &nbsp;<span class="badge badge-private">PRIVATE</span></div>
+                    <div class="company-desc">UK Digital Bank &middot; Business Updates Only</div>
+                </div>
+                <span style="font-size:11px;color:#9ca3af;padding:0 8px;">No stock data</span>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar"><div class="tab active" onclick="switchTab(this,'rev-up')">Company News Run</div></div>
+                <div id="rev-up" class="tab-pane active"><ul><li>Mexico: $64M invested in April (Reuters, May 5) &mdash; total $167M in Mexico since Jan 2026 launch. 290K+ customers by end of March; deposits 3.75B pesos ($218M) nine weeks post-launch; total assets +275% QoQ. Net loss 153M pesos &mdash; consistent with ramp phase. Credit portfolio 99.98% Stage 1 (low risk); 12,000+ active credit card customers.</li><li>BTC pricing glitch (May 8): third-party data provider error caused Bitcoin to display at $0.02 on Revolut&rsquo;s app (~23:45 UTC). ETH, SOL, XRP also affected. Resolved same night; no trades confirmed at erroneous prices. External provider failure &mdash; operational risk flag.</li><li>Chile expansion: CEO interviewed ahead of Chile FinTech Forum &mdash; targeting full banking licence route (not intermediary), consistent with Mexico playbook. LatAm geographic footprint building.</li></ul>
+            </div>
+            </div>
+        </div>
 
-<div class="card">
-<a class="title" href="https://techcrunch.com/2026/04/13/openai-has-bought-ai-personal-finance-startup-hiro/" target="_blank" rel="noopener">OpenAI 收购 AI 个人理财创业公司 Hiro</a>
-<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
-<p class="summary">收购指向 ChatGPT 即将整合的财务规划能力。OpenAI 通过收购加速从聊天助手向"个人金融顾问"角色迁移，正面冲击传统 Robo-advisor（Betterment、Wealthfront）和个人理财应用（Mint、Monarch）的市场结构，分销渠道护城河面临降维打击。</p>
-</div>
+        <div class="sector-hdr">Online Brokerage <span class="count">3 names</span></div>
 
-<div class="card">
-<a class="title" href="https://techcrunch.com/2026/03/24/doss-raises-55m-for-ai-inventory-management-that-plugs-into-erp/" target="_blank" rel="noopener">Doss 完成 5500 万美元 B 轮，AI 库存管理深度集成 ERP</a>
-<span class="source" data-src="TechCrunch Fintech">TechCrunch Fintech</span>
-<p class="summary">Madrona 与 Premji Invest 共同领投。AI 在 ERP 集成层的价值兑现路径已经清晰，库存与供应链是 AI 应用最快产生 ROI 的场景之一。这条线对 SAP、Oracle 等传统 ERP 巨头是中长期威胁——AI 原生工作流可能绕过 ERP 的应用层，仅保留数据底座。</p>
-</div>
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill" style="background:#1e40af;">FUTU</div>
+                <div class="company-info"><div class="company-name">Futu Holdings</div><div class="company-desc">HK / China Online Brokerage</div></div>
+                <span class="perf-pill down">-10.4%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'futu-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'futu-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'futu-co')">Company News Run</div>
+                </div>
+                <div id="futu-ov" class="tab-pane active">Sold off -6.6% ahead of Q1 2026 earnings (due June 4). Three broker previews (BofA, JPM, UBS &mdash; all May 7) model softer Q1 QoQ: revenue -6% QoQ / +29% YoY (~HKD6.1B), net income -7-8% QoQ / +44-52% YoY (~HKD3.1-3.3B). Headline softness from NII normalization (stock lending -12-13% QoQ, softer HIBOR) and new client deceleration (~223K in Q1 vs ~240K in Q4). Structurally intact: client AUM flat at HKD1.24tn with record net inflows (~HKD90B) offsetting MTM losses; trading volume at record HKD4tn. GS added to Conviction List this week. Q2 setup more positive: HSI +7.4%, Nasdaq +20.5% QTD as of early May.
+            </div>
+                <div id="futu-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260507%20-%20Bank%20of%20America%20Global%20Research%20-%20FUTU%20-%20Estimates%20Down%20-%20Futu%20Holdings%201Q26%20preview%20-%209%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">BofA &middot; 7 May</span></a><strong>1Q26 revenue HKD6.21B (-3.5% QoQ):</strong> Primary drag is securities lending -12.3% QoQ as stock lending normalizes from elevated 4Q25. Brokerage +6.1% QoQ to HKD2.94B partially offsets. Net income HKD3.27B (-3.7% QoQ / <strong>+52% YoY</strong>). New funded accounts 223K (-5% QoQ / -15% YoY); CAC HKD2.4K (+11% QoQ) but still below guided range of HKD2.5-3.0K &mdash; cost discipline intact. PT $235 &rarr; $223.50 on 5-6% EPS cut. Buy maintained.</li><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260507%20-%20JPMorgan%20Research%20-%20FUTU%20-%20Revision%20-%20Futu%20Holdings%20Look%20through%20-%2016%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">JPMorgan &middot; 7 May</span></a><strong>NII mid-teens decline QoQ, brokerage +3% QoQ:</strong> Revenue -6% QoQ / +29% YoY. NII contraction driven by stock lending normalization and softer HIBOR &mdash; structural or cyclical depends on HIBOR path. <strong>Net inflows HKD90B vs HKD65B in 4Q &mdash; near record:</strong> Client AUM held at HKD1.24tn despite MTM losses; paying clients +218K in Q1. Margin financing +4% QoQ to HKD70B (+40% YoY) &mdash; upside lever if HIBOR stabilizes. CAC HKD2.3K, tracking below FY guidance. PT $300 (24x 2026E). OW.</li><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260507%20-%20UBS%20Research%20-%20FUTU%20-%20First%20Read%20Futu%20Holdings%20-%2014%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">UBS &middot; 7 May</span></a><strong>NPAT HKD3.1B (-8% QoQ / +45% YoY), ~2% below consensus:</strong> Interest income -13% QoQ on softer stock lending and margin demand. <strong>Trading volume at record HKD4tn (+25% YoY)</strong> &mdash; velocity and commission rates stable, showing underlying client activity is robust. <strong>NFA approval received for US prediction market brokerage (May):</strong> New product line for moomoo US, expanding addressable market beyond core HK/China retail. New competitive flags: Ant/Bright Smart Securities deal targeting overlapping HK retail base; Webull stepping up HK marketing. PT $231.</li></ul>
+            </div>
+                <div id="futu-co" class="tab-pane"><ul><li>GS added FUTU to Asia Conviction Buy List (~5 May) &mdash; cited HK IPO pipeline recovery and retail trading volume uplift on US-China re-engagement. Stock -12% on the week of add on earnings profit-taking.</li><li>NFA approval received for US prediction market brokerage (per UBS) &mdash; new product line adjacent to core retail brokerage, expanding US monetization beyond moomoo.</li><li>Q1 earnings June 4: Key watch &mdash; net new paying clients vs 800K full-year target, NII trajectory on HIBOR normalization, Japan/Singapore geographic mix.</li></ul>
+            </div>
+            </div>
+        </div>
 
-<div class="card">
-<a class="title" href="https://www.theblock.co/post/399222/rwa-yield-platform-nuva-animoca-seed-funding" target="_blank" rel="noopener">RWA 收益平台 Nuva 完成 520 万美元种子轮（Animoca 共同孵化）</a>
-<span class="source" data-src="The Block">The Block</span>
-<p class="summary">Nuva 是代币化真实资产市场，连接发行方和用户，绕过传统中介。RWA 赛道融资活跃，但"机构资金链上化"仍是真命题，零售端增量有限——市场分化为"BlackRock BUIDL 模式"和"Ondo/Maple 私营模式"两条主流。</p>
-</div>
-</section>
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill" style="background:#065f46;">HOOD</div>
+                <div class="company-info"><div class="company-name">Robinhood Markets</div><div class="company-desc">US Retail Brokerage</div></div>
+                <span class="perf-pill up">+5.5%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'hood-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'hood-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'hood-co')">Company News Run</div>
+                </div>
+                <div id="hood-ov" class="tab-pane active">+4.6% &mdash; outperformed sector (KBW Fintech -1.7%). Post-Q1 recovery. Q1 (Apr 28): Revenue $1.07B (+15% YoY), diluted EPS $0.38, Total Platform Assets $307B (+39%), Gold Subscribers 4.3M (+36%). Record volumes in Prediction Markets, Futures, and Index Options. Key competitive development: Morgan Stanley launched crypto on E-Trade at 50bps (May 8) &mdash; cheapest mainstream platform, undercutting Robinhood&rsquo;s spread (up to 95bps). Escalates take-rate compression in crypto. CEO Tenev on CNBC (May 5) positioned prediction markets as legitimate financial information infrastructure ahead of potential regulatory scrutiny.
+            </div>
+                <div id="hood-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260507%20-%20Barclays%20Research%20-%20HOOD%20-%20Robinhood%20Markets%20Inc%20Americas%20-%2010%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Barclays &middot; 7 May</span></a><strong>UK as proof-of-concept for international monetization:</strong> ~1M international users currently. UK ISA product: free accounts vs &pound;12 charged by traditional brokers &mdash; same structural moat as US commission-free model. <strong>Monetization without PFOF works:</strong> 50&cent;/trade on options + 10bps FX conversion on equities achieves comparable take rates to US. Model exports across regulatory regimes. Crypto/tokenization UK product event planned early July.</li><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260507%20-%20Barclays%20Research%20-%20HOOD%20-%20Robinhood%20Markets%20Inc%20Americas%20-%2010%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Barclays &middot; 7 May</span></a><strong>Crypto take rates under pressure from volume tiering:</strong> Active traders get lower fees, creating adverse mix shift. Partial offset: highest tier moving from 85bps &rarr; 95bps in coming weeks. Management: tiering net-additive to volumes and bottom line. <strong>Product velocity supports premium multiple:</strong> Robinhood Social (10K beta users), Cortex Assistant (AI-powered real-time insights), Gold Card on track for $100M ARR. PT $82 (~3.7% upside from $79.05 on 5/6). 33x F27 EPS.</li></ul>
+            </div>
+                <div id="hood-co" class="tab-pane"><ul><li>Morgan Stanley launched crypto trading on E-Trade (May 8) at 50bps &mdash; cheaper than Coinbase (50bps+), Schwab (75bps), and Robinhood (spread up to 95bps). Signals crypto fee compression cycle accelerating.</li><li>CEO Tenev on CNBC Squawk Box (May 5): prediction markets "a great source of information" &mdash; regulatory narrative management. Robinhood holds vertical integration edge via Rothera JV with Susquehanna.</li><li>Trump Accounts: $100M invested in 2026 (~half in Q2 for app launch), 5.5M children already signed up. Robinhood technology runs the US Treasury initiative &mdash; structural public-sector distribution.</li><li>Singapore MAS in-principle approval for brokerage services &mdash; first Asia regulatory entry point; crypto/tokenization UK product event planned early July.</li></ul>
+            </div>
+            </div>
+        </div>
 
-<section>
-<h2>中国市场<span class="section-count">2 条</span></h2>
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill" style="background:#4b5563;">BULL</div>
+                <div class="company-info"><div class="company-name">Webull</div><div class="company-desc">US / Global Retail Brokerage &middot; Post-SPAC</div></div>
+                <span class="perf-pill down">-1.4%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'bull-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'bull-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'bull-co')">Company News Run</div>
+                </div>
+                <div id="bull-ov" class="tab-pane active">Flat (+0.0%) on limited new catalysts. Yong Rong (HK) Asset Management disclosed full exit of 5M shares (SEC filing May 4, Q1 trade) &mdash; position was 11.8% of fund AUM, estimated value ~$32M. Stock at ~$7, down ~67% from 52-week high of $21.65. Pre-earnings positioning ahead of May 21 results &mdash; first detailed look at SEPA termination (Apr 7) financial impact and crypto volume trajectory.
+            </div>
+                <div id="bull-br" class="tab-pane"><ul><li><i style="color:#9ca3af;">No broker notes in folder this week. 2 analysts cover BULL, both Strong Buy, avg PT $15 (~115% upside from current ~$7).</i></li></ul>
+            </div>
+                <div id="bull-co" class="tab-pane"><ul><li>Yong Rong (HK) Asset Management exited entire 5M-share stake in Q1 (disclosed May 4). Fund went from 11.8% AUM allocation to zero. Not company-specific but removes a known Asia-Pacific institutional anchor.</li><li>No new company announcements from the week of May 4-9. Key watch: May 21 Q1 earnings &mdash; SEPA termination impact on platform revenue, crypto volume trend after prior-quarter decline, and update on $100M buyback (authorized Apr 21).</li></ul>
+            </div>
+            </div>
+        </div>
 
-<div class="card">
-<a class="title" href="https://36kr.com/newsflashes/3787631198215430?f=rss" target="_blank" rel="noopener">财达证券一季度净利润 2.53 亿元，同比 +114.53%</a>
-<span class="source" data-src="36氪">36氪</span>
-<p class="summary">公司 1Q26 营收 7.35 亿元（+51.06% YoY），归母净利润同比翻倍以上。中小券商在 2026 年初市场活跃度回升和投行业务恢复中明显受益，是 Q1 业绩季中典型的高弹性标的，但需注意低基数效应和 Q2 的可持续性。</p>
-</div>
+        <div class="sector-hdr">China Consumer Finance <span class="count">3 names</span></div>
 
-<div class="card">
-<a class="title" href="https://36kr.com/newsflashes/3787645737540871?f=rss" target="_blank" rel="noopener">"债市一姐"刘郁卸任华西证券首席经济学家，转任兴业证券固收首席</a>
-<span class="source" data-src="36氪">36氪</span>
-<p class="summary">刘郁此前历任国泰君安、招商证券、国盛证券、广发证券固收首席分析师。固收明星分析师在头部券商间的高频流动反映 2026 年券商研究业务对高端人才的争夺重新升温，与 2024-25 年研究所大规模降薪降编的周期形成对比。</p>
-</div>
-</section>
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">ZA</div>
+                <div class="company-info"><div class="company-name">ZhongAn Online P&amp;C Insurance</div><div class="company-desc">China Digital Insurance &middot; 6060.HK</div></div>
+                <span class="perf-pill up">+0.6%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'za-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'za-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'za-co')">Company News Run</div>
+                </div>
+                <div id="za-ov" class="tab-pane active">ZhongAn is best read as a capital-markets vehicle wearing an insurance jacket: founder Ou Yaping uses premium scale to anchor valuation while a tech-output label and stablecoin optionality earn the premium. The 2025 print (NPAT RMB 1.1B, +83% YoY; underwriting profit RMB 1.4B, +42%; CoR 95.8%) confirmed five consecutive years of underwriting profit, but the central debate is whether 2026 can sustain it. Consumer-finance run-off (-50/-60% premium guide, ~RMB 70M one-off loss) drags reported growth; auto unbundling from PingAn's 55-split is the real margin lever; the stablecoin story (Yuancoin in HKMA sandbox, ZA Bank as custodian) is a re-rating call option but interest has cooled. Investment yield of 5.3% is unlikely to repeat.</div>
+                <div id="za-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Morgan Stanley &middot; Apr</span><strong>OW, PT HK$18.10:</strong> DCF (WACC 12.2%) implies 0.9x 2026E P/B. Models 2026E GWP +3.1%, CoR 96.2%. Bull HK$32.40 on stablecoin/tech re-rating; bear HK$12.60 if underwriting deteriorates.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">UBS &middot; Apr</span><strong>Neutral, PT HK$16.10:</strong> 15x PE + 0.9x P/B. Sees stablecoin narrative and earnings recovery already priced in; lacks a near-term catalyst.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Guotai Haitong &middot; Apr</span><strong>Buy, PT HK$25.09:</strong> 1.4x 2026E P/B &mdash; the most bullish on the Street, leaning on auto unbundling and self-channel mix expansion.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Mgmt Guide &middot; FY26</span><strong>CoR 95-96%, underwriting profit flat YoY:</strong> Premium growth positive (Auto&gt;Health&gt;Lifestyle&gt;Consumer Finance); ex-ConsumerFin targeting &gt;10%. 2M26 premium +11% YoY. No buyback; capital prioritised for AI and auto.</li></ul></div>
+                <div id="za-co" class="tab-pane"><ul><li>FY25 results (Apr 1): GWP RMB 35.7B (+6.9%), NPAT RMB 1.1B (+83%), adj. NPAT RMB 1.8B (+198% ex RMB 700M ZA International impairment). CoR 95.8% (-1.1ppt), better than Street 96.8%.</li><li>Consumer Finance H2 CoR hit 100.3% (+20ppt YoY); premium -39% YoY. Mgmt accelerating run-off in 2026 (~RMB 70M one-off loss); on-book balance already cut to RMB 17.9B by Feb 2026.</li><li>Auto unbundling: Shanghai/Zhejiang compulsory insurance independence completed; Shanghai commercial pilot live. Target 5-10 provinces within a year &mdash; reduces 55-split with PingAn.</li><li>ZA Bank turned profitable: HK$17M FY25 net profit (vs HK$230M loss FY24); non-interest income +277.9% on crypto-related services. Yuancoin in HKMA stablecoin sandbox with ZA Bank as custodian.</li></ul></div>
+            </div>
+        </div>
 
-<footer>
-全球 FinTech 周报 · 由 Henry 整理 · 数据来源 36氪 / TechCrunch / PYMNTS / The Block
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">YX</div>
+                <div class="company-info"><div class="company-name">Yixin Group</div><div class="company-desc">China Auto Finance &middot; 2858.HK</div></div>
+                <span class="perf-pill down">-1.0%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'yx-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'yx-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'yx-co')">Company News Run</div>
+                </div>
+                <div id="yx-ov" class="tab-pane active">Yixin is China's largest independent auto-finance platform; the real moat is the nationwide "mortgage-release-disposal" offline ops capability that survived the 2020 violent-repo crackdown and which banks and internet platforms cannot replicate within 2-3 years. The growth engine is car-collateral lending ("chedaidai"): 2025 GMV +70% to ~RMB 22B, ~53% of used-car GMV. SaaS (no guarantee) is the second leg — revenue +150% YoY to RMB 4.5B (39% of total), with 24 core institutional partners. The central debate for 2026: Ant Group and other giants are building self-operated car-collateral books, shifting pricing power toward traffic platforms. Yixin is guiding RMB 1.7B Non-GAAP NPAT vs our RMB 1.3B — reflecting our concern that overflow consumer-finance customers will pressure asset quality and take rates.</div>
+                <div id="yx-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Mgmt Guide &middot; FY26</span><strong>Loan vol ~RMB 80B+, NPAT RMB 1.7B:</strong> Transaction volume slightly faster than loan volume; used/new mix held at 60/40. Targets 50% base dividend payout + 10-20% special dividend; buyback unlikely (30% float).</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">House View &middot; FY26</span><strong>More cautious than mgmt: GMV RMB 76.9B (+3%), NPAT RMB 1.3B (+6%):</strong> Three reasons &mdash; (i) Ant et al. accelerating in-house car-collateral build; (ii) overflow consumer-finance clients are lower quality and Yixin is intentionally measured; (iii) cross-platform consumer-finance credit risk contagion.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Valuation Note &middot; Apr</span><strong>12x 2026E P/E vs 9.5x historical avg (26% premium):</strong> Rare high-growth in China internet finance (10%+ revenue, 50%+ profit growth) justifies some premium, but 8x forward on 2027E NPAT RMB 1.83B yields ~RMB 14.6B market cap &mdash; little upside vs current.</li></ul></div>
+                <div id="yx-co" class="tab-pane"><ul><li>FY25 results: Total GMV RMB 75.1B (+9%, ahead of guide RMB 72B); revenue first time over RMB 10B at RMB 11.56B (+17%); Non-GAAP NPAT RMB 1.43B (+33%). Gross margin 56% (+9ppt).</li><li>SaaS revenue RMB 4.5B (+150% YoY), now 39% of total and the largest segment. Core institutional partners up from 17 to 24; avg revenue per core client RMB 186M.</li><li>Used-car (incl. car-collateral) GMV RMB 42.1B (+38%); platform take rate up to 5.1% from 3.7%. New-car GMV RMB 33.1B (-15%) as company deliberately retreats from the price-war-stricken segment.</li><li>FY25 dividend HK$0.14/share, ~RMB 840M payout (58% payout ratio). 2025 launched proprietary financial LLM XinMM-AM1 &mdash; auto-approval rate raised to 63%.</li><li>Overseas: Singapore stable profit with ~RMB 1.5B GMV (top-3 non-bank); Malaysia entered 4Q25, &gt;US$15M/mo new loans within 3 months.</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">QFIN</div>
+                <div class="company-info"><div class="company-name">Qifu Technology</div><div class="company-desc">China Consumer Credit Tech &middot; QFIN</div></div>
+                <span class="perf-pill down">-1.5%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'qfin-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'qfin-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'qfin-co')">Company News Run</div>
+                </div>
+                <div id="qfin-ov" class="tab-pane active">Qifu is the bellwether for China's loan-facilitation industry, and the small-loan rules (PBoC notice 247/2025) make 2026 the structural earnings trough. The strategic shift is from APR 24+ (high-rate, run-off) to APR 24- products like Zhixin G, where premium customers migrate at lower yields and risk sits with funders. 4Q25 loan vol RMB 70.3B (-16% QoQ); on-book RMB 126B; new-loan IRR 19.5% and heading to ~18%. Non-GAAP NPAT RMB 1.07B (-46% YoY) with a one-off CB gain inside. The central debate: will the rumoured 12-18% rate compression test on internet banks land (potentially halving the business) or remain structural/partial? At 3x 2026E P/E with a ~9% dividend yield and RMB 460M buyback dry powder, downside looks anchored by capital return — upside hinges on H2 credit cost normalisation.</div>
+                <div id="qfin-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">UBS &middot; Mar</span><strong>Buy, PT US$20.70:</strong> Models 2026E Non-GAAP NPAT RMB 3.4B. Base case assumes 18% rate cap lands; downside scenario sees quarterly earnings declining through 2027Q2.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Citi &middot; Mar</span><strong>Buy, PT US$32 (modest cut):</strong> Most bullish on Street &mdash; sees regulatory overhang as priced in at 3x forward P/E.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">JPMorgan &middot; Mar</span><strong>Neutral, PT US$14:</strong> 2026E Non-GAAP NPAT RMB 3.3B but extreme tail-risk weighting on regulatory scenarios drives a depressed target.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Mgmt Guide &middot; FY26</span><strong>Non-GAAP NPAT RMB 3-4B; 1Q26 loan vol ~RMB 60B (-15% QoQ):</strong> 1Q26 IRR 19-19.5%, ROA ~3%, NPAT RMB 0.9-0.95B (RMB 0.75-0.8B ex CB gain). House view RMB 2.8-3.2B, biased to low end.</li></ul></div>
+                <div id="qfin-co" class="tab-pane"><ul><li>4Q25 results: Loan vol RMB 70.3B (-21.8% YoY); revenue RMB 4.1B (-8.7%, 10% below house); Non-GAAP NPAT RMB 1.07B incl. RMB 270M one-off CB gain. C-M2 ratio 0.97% (+18bps QoQ, near COVID peak); 30-day recovery rate 84% (-400bps YoY).</li><li>Dec 2025: PBoC notice 247 issued &mdash; small-loan new originations to be gradually capped at 4x 1Y LPR (~12%); high-rate balances must be zero by year-end 2027 (2-year transition).</li><li>Jan-Feb 2026: regulators ran 12-18% rate-compression stress tests on selected internet banks. Mgmt says 18% manageable with scale haircut; 12% would be severe.</li><li>Capital return: repurchased US$460M face of CB for US$399M (US$420M one-time gain split RMB 270M in 4Q25 / RMB 150M in 1Q26). US$460M of US$450M buyback authorisation paused pending regulatory clarity. FY25 dividend RMB 1.4B (24% payout).</li></ul></div>
+            </div>
+        </div>
+
+        <div class="sector-hdr">Credit Scoring / Bureau <span class="count">4 names</span></div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">FICO</div>
+                <div class="company-info"><div class="company-name">Fair Isaac Corp.</div><div class="company-desc">US Credit Scoring &middot; FICO</div></div>
+                <span class="perf-pill flat">[待填充]</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'fico-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'fico-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'fico-co')">Company News Run</div>
+                </div>
+                <div id="fico-ov" class="tab-pane active placeholder">[待填充]</div>
+                <div id="fico-br" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+                <div id="fico-co" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">EFX</div>
+                <div class="company-info"><div class="company-name">Equifax</div><div class="company-desc">US Credit Bureau &middot; EFX</div></div>
+                <span class="perf-pill down">-2.6%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'efx-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'efx-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'efx-co')">Company News Run</div>
+                </div>
+                <div id="efx-ov" class="tab-pane active">Equifax reported 1Q26 on Apr 21: revenue $1.65B (+14.3% YoY / +13% organic) beat consensus $1.62B; adj. EBITDA $477M ~4% above Street; adj. EPS $1.86 vs consensus $1.69. USIS surged +21.1% (Online +23.6%, mortgage-linked +60%) but mostly via FICO wholesale pass-through &mdash; near-zero margin. Workforce Solutions / The Work Number (the real moat, 52% EBITDA margin) grew +10.4%, with Verification +13.8%. Two pressure points dragged the stock: (1) mortgage strength reversed mid-quarter as the Iran flare-up pushed rates back up; (2) Government Verifier 1Q only +14-17% (below Jefferies' 17.5%) and 2Q guided flat YoY as state-level OB3 contracts ramp slower than hoped &mdash; benefits shift into 2H26 / 2027. FY26 EPS guide nudged to $8.34-$8.74 on FX. Real tail risk: FHFA Director Pulte has now redirected attention from FICO pricing toward credit bureau fees.</div>
+                <div id="efx-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">GS &middot; 21 Apr</span><strong>Mixed 1Q &mdash; mortgage reversed mid-quarter, OB3 benefits shifted out (Neutral):</strong> Highlights the strong headline beat but flags FICO zero-margin pass-through structurally pressuring reported EBITDA margin (FY25 ~3% of revenue, FY26 ~6%). Government Verifier ramp slower than expected; concerns over the durability of the &ldquo;organic ex-FICO&rdquo; growth profile.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">MS &middot; 21 Apr</span><strong>1Q beat on mortgage, lighter govt outlook (Overweight, PT $243 from $244):</strong> DCF-based, ~14x 2026 EV/EBITDA. Ex-FICO margin expansion +70-80bps YoY is the real signal; FY26 organic ex-FICO revenue growth +5.5%~7.5%, ex-FICO margin expansion +50-100bps held.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Jefferies &middot; 24 Apr</span><strong>Regulatory risk &amp; govt verification outlook top of mind (Buy, PT $200 from $220):</strong> Cuts PT but keeps Buy. Two anchors: (1) FHFA Director Pulte has redirected from FICO pricing to bureau fees &mdash; potentially a much bigger tail risk than VantageScore 4.0 (which adds only ~$1/score even at 100% adoption); (2) State-level OB3 contracts moved from &ldquo;2026 acceleration&rdquo; to &ldquo;2H26 start, 2027 ramp.&rdquo;</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Citi &middot; 21 Apr</span><strong>Model update, PT $238 from $256:</strong> Cuts 2Q26-4Q26 mortgage volume assumption from +20% to flat YoY. Applies 21.6x P/E to 2027E EPS $11.04. Bull case requires 2027 mortgage volumes returning to normal (+20%) plus VS4 not taking share plus no further regulatory pressure.</li></ul></div>
+                <div id="efx-co" class="tab-pane"><ul><li>1Q26 results (Apr 21): Revenue $1.65B (+14.3% YoY / +13% organic, vs consensus $1.62B); adj. EBITDA $477M (~4% above); adj. EBITDA margin -30bps reported but +70-80bps ex-FICO; adj. operating margin 17.8% (consensus 16.3%); adj. EPS $1.86 (vs $1.69 consensus, $1.63 MS, $1.74 Jefferies).</li><li>By segment: USIS $606M (+21.1%, Online +23.6%, Financial Marketing +0.2%) &mdash; mortgage-linked USIS +60% driven by FICO wholesale price hike pass-through. Workforce Solutions $683M (+10.4%); Verification Services +13.8% (Mortgage Verifier +14%, Government Verifier +14-17%, Diversified Markets +14%, Talent HSD); Employer Services -4.0%. International $360M (+4% CC).</li><li>FY26 guide reaffirmed/raised: revenue growth +5.5-7.5% ex-FICO at constant FX, +7-9% with FICO &amp; FX; adj. EPS raised to $8.34-$8.74 (+$0.04 on FX); ex-FICO EBITDA margin expansion +50-100bps; mortgage volumes -low-single-digits FY (more conservative than Street). 2Q26 guide: ex-FICO revenue +5.5-7.5%, EPS $2.15-$2.25; 2Q Government Verifier flat YoY on SSA high-base and slow state-level OB3 contracting.</li><li>FICO-related items: FICO revenue rising from ~3% of revenue in FY25 to ~6% in FY26 as the wholesale price hike passes through (largely zero-margin). Mgmt FY26 assumes (i) FICO Mortgage Direct License Program does not impact EFX, (ii) VantageScore takes no mortgage share. ~$75M annual AI-driven cost saves targeted over 3 years; ~90% of revenue is proprietary data.</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">EXPN</div>
+                <div class="company-info"><div class="company-name">Experian</div><div class="company-desc">UK / Global Credit Bureau &middot; EXPN.L</div></div>
+                <span class="perf-pill flat">[待填充]</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'expn-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'expn-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'expn-co')">Company News Run</div>
+                </div>
+                <div id="expn-ov" class="tab-pane active placeholder">[待填充]</div>
+                <div id="expn-br" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+                <div id="expn-co" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">TRU</div>
+                <div class="company-info"><div class="company-name">TransUnion</div><div class="company-desc">US Credit Bureau &middot; TRU</div></div>
+                <span class="perf-pill up">+1.4%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'tru-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'tru-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'tru-co')">Company News Run</div>
+                </div>
+                <div id="tru-ov" class="tab-pane active">TransUnion reported 1Q26 on Apr 28: revenue $1.246B beat the $1.195-1.205B guide top end by ~$41M; OCC +11% (ex-FICO Royalty +7%); adj. EPS $1.18 beat the high end by $0.08. US Markets OCC +14% &mdash; US Financial Services ex-mortgage +14%, with consumer lending +13%, auto +11%, card/banking +5%. Mortgage revenue +50% (ex-FICO +24%) on a mere +7% inquiry volume &mdash; pure FICO wholesale-hike pass-through plus TRU's own pricing. EBITDA margin 35.2% (-100bps YoY) on FICO Royalty drag (-120bps). International OCC flat: India -5% (still better than guide), Canada +9%, UK +7%, Africa +10%, APAC -18%. FY26 EPS guide raised to $4.68-$4.75 (from $4.63-$4.71) on the TU de Mexico close (~$660M). VantageScore 4.0 inclusion at GSEs / FHA was confirmed the same week at $0.99/score &mdash; mgmt explicitly says &ldquo;no share-shift revenue&rdquo; in FY26 guide; 2026 is &ldquo;a learning, testing, transition year.&rdquo;</div>
+                <div id="tru-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">GS &middot; 28 Apr</span><strong>First Take &mdash; revenue upside on mortgage strength (Neutral):</strong> Headline beat clean, but GS flags that growth ex-FICO Royalty pass-through is decelerating to +7% and EBITDA margin is structurally pressured by zero-margin Royalty revenue (-120bps drag in 1Q26).</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">MS &middot; 28 Apr</span><strong>Solid 1Q, guidance maintained = expected (Overweight, PT $100):</strong> Implies ~11x 2026 EV/EBITDA and ~30% upside. Conservative guide leaves room to beat the upper end if trends hold. India FY26 revised down to +2% from +6%; views India recovery to low-double-digit as the key medium-term unlock.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Jefferies &middot; 28 Apr</span><strong>Solid results, in line with expectations (Buy, PT $95 from $105):</strong> Trims PT. Flags that guide reliability is declining &mdash; management is so conservative that the gap between guide and actual makes modelling harder, which has eroded the &ldquo;positive surprise&rdquo; element from quarterly prints.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Mgmt &middot; 28 Apr</span><strong>FY26 guide raised on TU de Mexico, organic unchanged:</strong> Revenue raised to $5,100-5,135M (+11-12% YoY, M&amp;A +3.5%); organic OCC +8-9% (ex-FICO +5-6%) held; adj. EBITDA $1,796-1,816M (margin 35.2-35.4%, -60-80bps on FICO Royalty -90bps + M&amp;A -40bps offsetting base +50-70bps); adj. EPS $4.68-$4.75 (was $4.63-$4.71). Net interest expense raised to $245M (from $220M). Mortgage inquiry volume guide cut to mid-single-digit decline. &ldquo;If current trends hold, expect to meet or exceed the upper end of guidance.&rdquo;</li></ul></div>
+                <div id="tru-co" class="tab-pane"><ul><li>1Q26 results (Apr 28): Revenue $1.246B beat $1.195-1.205B guide top end by $41M ($22M ex-TU de Mexico); adj. EBITDA +10% YoY (beat top by $18M, $8M ex-M&amp;A); EBITDA margin 35.2% (-100bps YoY, FICO Royalty -120bps, M&amp;A +25bps); adj. EPS $1.18 (+12% YoY, $0.08 above guide top, vs consensus $1.11).</li><li>US Markets OCC +14% (ex-FICO Royalty +11%); Financial Services ex-mortgage +14% with consumer lending +13%, auto +11%, card/banking +5%. Mortgage +50% reported / +24% ex-FICO on inquiry volume just +7% (Pass-through and TRU's own pricing). Emerging Verticals +6% (Insurance double-digit, Public Sector HSD); Consumer Interactive flat.</li><li>International OCC flat: India -5% (slightly better than guide), Canada +9%, UK +7%, Africa +10%, APAC -18% (Hong Kong MCRA high base + Philippines power), Latam flat organically, +56% YoY including TU de Mexico.</li><li>Capital: closed TU de Mexico acquisition ~$660M (stake 26% &rarr; 94%) using $520M revolver + cash; net debt $5.6B / cash $733M / leverage 2.8x (target ≤2.5x); $25M YTD buyback under $1B authorisation, pace to accelerate. VantageScore 4.0 confirmed at Fannie/Freddie + FHA the same week at $0.99/score; mgmt explicitly excludes share-shift revenue from FY26 guide and frames 2026 as &ldquo;a learning, testing, transition year.&rdquo;</li></ul></div>
+            </div>
+        </div>
+
+        <div class="sector-hdr">Payments <span class="count">8 names</span></div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">V</div>
+                <div class="company-info"><div class="company-name">Visa</div><div class="company-desc">Global Card Network &middot; V</div></div>
+                <span class="perf-pill down">-0.9%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'v-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'v-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'v-co')">Company News Run</div>
+                </div>
+                <div id="v-ov" class="tab-pane active">Visa reported F2Q26 on Apr 29: net revenue $11.2B (+17% YoY, CC +16%) — strongest growth since 2022 and a 5ppt beat vs Street, the widest in four years. Adj EPS $3.31 (+20%) beat $3.07 consensus. The print neutralized three bear theses: cross-border isn't collapsing (April +9% CC ex-EU, mostly Ramadan/Mideast timing), stablecoins aren't disintermediating yet (managed flows still small), and Agentic Commerce can ride Visa rails. Management raised FY26 revenue growth to 'low double-digit to low-teens'. Single-quarter buyback hit $7.9-8.0B — Visa's largest ever — plus a new $20B multi-year authorization (~$33B total capacity), an aggressive capital-return signal that argues against the disintermediation narrative.</div>
+                <div id="v-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">JPMorgan &middot; 29 Apr</span><strong>OW reiterated, 2026 top pick:</strong> F2Q26 beat Street by 5ppts on net revenue &mdash; widest in 4 years. Tokenization repricing kicks in F3Q26 (~+1ppt revenue contribution). PT framework implies ~$411 territory.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Morgan Stanley &middot; 29 Apr</span><strong>Overweight, PT $411 &mdash; 'Proof Points of an Expanding Moat':</strong> VAS at $3.3B (CC +27%, 30% of revenue) is the structural re-rating anchor. Stock +5% on print as FY26 guide raised.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Citi &middot; 28 Apr</span><strong>Buy, PT $400 &mdash; 'Material Upside Despite the Fears':</strong> Cross-border ex-EU +11% CC matched Q1 despite April Ramadan/Mideast drag; CEMEA only ~6% of total PV. FIFA + US inbound low-base lapping drives 2H rebound.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Goldman &middot; 29 Apr</span><strong>'Large beat and raise', valuation at historic low end:</strong> Earnings estimates raised. VAS growth + revenue yield expansion not yet reflected in multiple; Agentic/stablecoin discount creates re-rating optionality.</li></ul></div>
+                <div id="v-co" class="tab-pane"><ul><li>F2Q26 (Apr 29): Net revenue $11.2B (+17% YoY, CC +16%); Adj EPS $3.31 (+20%, beat $3.07); global payment volume $3.73T CC +9%; cross-border ex-EU CC +11%; processed transactions 66B (+9%).</li><li>VAS revenue $3.3B, CC +27%, now 30% of total revenue. Stablecoin-linked card programs hit 160+ globally with transaction volume +200% YoY; stablecoin settlement at $7B annualized run-rate (+50% QoQ), added 5 new chains to 9.</li><li>Capital return: $7.9-8.0B single-quarter buyback (record); $1.3B dividend; April board authorized new $20B multi-year buyback &mdash; total capacity ~$33B vs $13B remaining prior.</li><li>FY26 guidance raised: CC net revenue growth to 'low double-digit to low-teens' (from 'low double-digit'); CC EPS growth to 'low-teens' (from 'low double-digit high end'). Tokenization repricing effective F3Q26.</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">MA</div>
+                <div class="company-info"><div class="company-name">Mastercard</div><div class="company-desc">Global Card Network &middot; MA</div></div>
+                <span class="perf-pill down">-1.4%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'ma-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'ma-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'ma-co')">Company News Run</div>
+                </div>
+                <div id="ma-ov" class="tab-pane active">Mastercard reported Q1 2026 on Apr 30: adj EPS $4.60 beat $4.39 consensus by ~5%; organic revenue +12% CC (vs guide 'low-double-digit low end'); payment network net revenue +12%; VAS +18% CC (vs total +12%) extending its 6ppt outperformance over the network business. Operating margin expanded ~150bps, double sell-side expectations. Despite the beat, stock fell -4% on report day as April cross-border decelerated to +9% (from Q1 +13%), with high-yield ex-Europe down to just +6% — pressured by Mideast conflict, OTA/UK issuer portfolio losses, and holiday timing. Citi PT $675, MS PT $678; both highlight MA trades in-line with V but has higher long-term growth and is at a discount to its own history. Agent Pay (active across all branded cards) and pending BVNK stablecoin acquisition reposition MA from disruption defendant to network-extension offensive.</div>
+                <div id="ma-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Morgan Stanley &middot; 1 May</span><strong>Overweight, PT $678 &mdash; 'Durability Through Tough Macro':</strong> MA/V trade inversely with bank stocks; recent underperformance is rotation-driven, not fundamental. Mideast travel exposure only 1-2% of revenue. Disruption fears from Agentic/stablecoins overdone &mdash; network economics, settlement speed, and compliance moats remain intact.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Citi &middot; 1 May</span><strong>Buy, PT $675 &mdash; 'Portfolio Shifts Surprise in X-Border Travel':</strong> April cross-border at +9% vs Q1 +13% explained by Mideast + OTA/UK issuer portfolio losses + holiday timing. If Mideast conflict extends past Q2, estimates -1ppt full-year revenue drag.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Goldman &middot; 10 May</span><strong>Management meetings &mdash; constructive on Agent Pay + BVNK:</strong> Management posture on Agentic Commerce shifted from 'evaluate threat' to 'execute as catalyst'. Bullish on BVNK acquisition (shortens stablecoin time-to-market, bulk regulatory licenses). MA trades at material discount to its own history despite faster growth than V.</li></ul></div>
+                <div id="ma-co" class="tab-pane"><ul><li>Q1 2026 (Apr 30): Adj EPS $4.60 beat $4.39 (+5%); organic revenue +12% CC; payment network net revenue +12%; VAS +18% CC; US purchase volume +5.0% (+30bps QoQ); cross-border +13% CC; operating margin +150bps YoY.</li><li>April trends (per JPM tracking): cross-border decelerated to +9% (-4ppts vs Q1); high-yield ex-Europe cross-border at just +6% (-6ppts); US switched volume stable at +5%; intra-Europe cross-border +11% (-3ppts).</li><li>Strategic moves: Mastercard Agent Pay (launched Apr 2025) now active across nearly all branded cards via LLM partnerships &mdash; first transaction processed Q3 2025; BVNK stablecoin acquisition announced, pending closing &mdash; brings compliant stablecoin platform into MA's rails.</li><li>FY26 guidance: CC organic revenue 'low-double-digit high end' maintained, reported metrics raised to 'low-double-digit mid' on FX. Q2 guide 'low-double-digit low end' CC &mdash; viewed as conservative pending Mideast resolution assumed in Q2.</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">AXP</div>
+                <div class="company-info"><div class="company-name">American Express</div><div class="company-desc">US Card Issuer &middot; AXP</div></div>
+                <span class="perf-pill down">-2.2%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'axp-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'axp-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'axp-co')">Company News Run</div>
+                </div>
+                <div id="axp-ov" class="tab-pane active">American Express reported 1Q26 on Apr 23: adj EPS $4.28 beat $4.07 by ~$0.22; revenue $18.9B (+11%, FX-neutral +9.9%) beat $18.6B; billed business $485B (+10%, FX-adj +9%) ran hot vs seasonality. International billings +13% FX-adj led growth; T&E +9%, first-class airfare +12%; Millennial/Gen-Z US billings +13%/+38%. Despite the beat, stock fell -4.31% on report day (vs sector -1.46%) as management plowed the entire upside into reinvestment: marketing growth guide raised from 'low single-digit' to 'mid single-digit', FY26 EPS guide unchanged at $17.30-$17.90 (implying remaining 3 quarters only +10-15%). Two structural headwinds for 2Q/3Q: Lowe's ($0.7B) and Amazon ($1.6B) commercial card portfolio exits will mechanically slow billed business growth. Platinum refresh customer retention 'very high' post-fee hike validates the premium-club thesis.</div>
+                <div id="axp-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Jefferies &middot; 23 Apr</span><strong>PT raised to $350 &mdash; 'Spend Momentum Drives EPS Upside; But Comes w/ Higher Costs':</strong> 1Q $4.28 EPS beat clean, but management lifted FY26 marketing growth from low single-digit to mid single-digit &mdash; superior near-term spend trends being reinvested vs flowing to EPS.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Morgan Stanley &middot; 24 Apr</span><strong>'Reinvesting for Long-term Growth' &mdash; 2026E EPS $17.65:</strong> VCE/revenue ratio at 44.7% in 1Q (vs FY guide 44%) suggests remaining quarters must moderate. 8 new/refreshed commercial card products planned over next 12 months &mdash; largest product expansion in nearly a year.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Citi &middot; 28 Apr</span><strong>1Q26 Model Update &mdash; 2026E/2027E EPS $17.60/$19.95:</strong> NCO 2.3% (-10bps YoY) approaching pre-pandemic 1.84% mean &mdash; second-derivative improvement narrowing. Reserve rate cut from 2.9% to 2.8%. Provision $1.25B beat $1.34B Street estimate.</li></ul></div>
+                <div id="axp-co" class="tab-pane"><ul><li>1Q26 (Apr 23): Adj EPS $4.28 vs $4.07 Street; revenue $18.9B (+11%, FX-adj +9.9%); billed business $485B (+10%); NII $4.69B (+13%); card member loans $97.5B (+8.2% YoY, +2.5% QoQ); 3.1M new cards (vs 2.9M prior quarter).</li><li>FY26 guide: revenue +9-10% maintained; EPS $17.30-$17.90 maintained; marketing growth raised low single-digit &rarr; mid single-digit; VCE/revenue ratio ~44% maintained (implies moderation from 1Q's 44.7%).</li><li>Commercial card portfolio runoff: Lowe's $0.7B exited 2Q26; Amazon $1.6B exits 3Q26 &mdash; mechanical drag on billed business growth in 2H. Related provisions previously released when classified held-for-sale.</li><li>Capital: dividend raised 16% early 2026; ~3.7% capital return yield. Basel III endgame impact 'neutral-to-modestly-positive' on CET1 per management (vs original proposal which would have consumed excess capital). Cat II compliance grace period granted via Fed letter (Mar 10).</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill" style="background:#635bff;">STRP</div>
+                <div class="company-info">
+                    <div class="company-name">Stripe &nbsp;<span class="badge badge-private">PRIVATE</span></div>
+                    <div class="company-desc">US Payment Infrastructure &middot; Business Updates Only</div>
+                </div>
+                <span style="font-size:11px;color:#9ca3af;padding:0 8px;">No stock data</span>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body">
+                <div class="tab-bar"><div class="tab active" onclick="switchTab(this,'strp-up')">Company News Run</div></div>
+                <div id="strp-up" class="tab-pane active placeholder"><ul><li>[待填充]</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">ADYN</div>
+                <div class="company-info"><div class="company-name">Adyen</div><div class="company-desc">EU Payment Platform &middot; ADYEN.AS</div></div>
+                <span class="perf-pill flat">[待填充]</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'adyn-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'adyn-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'adyn-co')">Company News Run</div>
+                </div>
+                <div id="adyn-ov" class="tab-pane active placeholder">[待填充]</div>
+                <div id="adyn-br" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+                <div id="adyn-co" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">PYPL</div>
+                <div class="company-info"><div class="company-name">PayPal</div><div class="company-desc">US Digital Payments &middot; PYPL</div></div>
+                <span class="perf-pill down">-10.6%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'pypl-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'pypl-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'pypl-co')">Company News Run</div>
+                </div>
+                <div id="pypl-ov" class="tab-pane active">PayPal reported Q1 2026 on May 5 under new CEO Enrique Lores (former HP CEO, took over March 2026). Headline beat: adj EPS $1.34 vs $1.27 Street (+1% YoY), TPV +11% CC (vs Street +7%), branded checkout TPV +2% FXN (acceleration of +1ppt QoQ), transaction margin dollars +3%. But stock fell -8% on report day as 2Q EPS guide came in -9% YoY (vs Street -5%), branded checkout QTD slowed back to ~+1%, and hopes for fast-acting asset divestitures were extinguished. Key strategic announcement: $1.5B gross annualized cost-savings program over 2-3 years (~16% of 2025 non-transaction opex), with 100% of savings reinvested into checkout, Venmo, and payment services. Citi PT $48 (Buy), JPM Neutral, Morgan Stanley UW PT $34 — sell-side split between FCF-yield bulls (~15%) and share-loss bears (Apple Pay, Shop Pay, Stripe).</div>
+                <div id="pypl-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">JPMorgan &middot; 5 May</span><strong>'Fine Results, Reiterating FY Guide Though 2Q Comes in Light' &mdash; PT $46:</strong> 1Q beat largely OVAS/credit-driven, not core branded. $1.5B cost-savings = ~5% of 2027E adj opex (~15% of non-transaction). Branded FXN QTD back to ~1% &mdash; momentum reset risk dominates near-term narrative.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Citi &middot; 5 May</span><strong>Buy, PT $48 &mdash; 'Last Stand for Self-Rescue':</strong> 2Q progression underwhelms, growth small-step constrained. $1.5B cost-savings implies ~16% headcount reduction. Supports thesis on FCF yield (~15%) as downside protection.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Morgan Stanley &middot; 30 Apr</span><strong>Underweight, PT $34 &mdash; 'Business Split Signals Focus But Reinvestment Too Light':</strong> Venmo checkout button saw historical-first net merchant attrition (5.6% gross churn) in 1Q26. 15x FCF ex-SBC implies ~20% downside; share loss to Apple Pay/Shop Pay/Stripe structural, not cyclical.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">UBS &middot; 5 May</span><strong>PT $44 &mdash; 'Recap':</strong> 2026 reinvestment expected to compress branded take rate by ~6bps. 2026 adj FCF ~$6B (~$5B net of $1B SBC). Branded checkout net take rate 1.6-1.7%.</li></ul></div>
+                <div id="pypl-co" class="tab-pane"><ul><li>Q1 2026 (May 5): Adj EPS $1.34 (+1%, vs $1.27 Street); TPV +11% FXN; branded checkout TPV +2% FXN (+1ppt QoQ); Venmo TPV +14% FXN; PSP TPV +11% FXN; OVAS revenue +10%; adj operating margin 18.4%; non-transaction opex +8% YoY (above +5% Street).</li><li>$1.5B gross cost-savings program announced &mdash; achieved over 2-3 years via org simplification, AI in dev/customer service, ops upgrade, engineering efficiency. 100% reinvested into checkout solutions, Venmo, and payment services.</li><li>Guidance: FY26 TMD modest decline maintained; FY26 adj EPS revised from low-single-digit decline to small positive growth; 2Q26 TMD low-single-digit decline; 2Q26 EPS ~-9% YoY. $400M consumer-engagement investment in 2026 (~$270M to branded checkout, ~$130M to Agentic + Venmo loyalty).</li><li>New CEO Enrique Lores (took over March 2026 from board role; ex-HP CEO) confirmed three new business segments: Checkout Solutions &amp; PayPal; Consumer Financial Services &amp; Venmo; Payment Services (incl. Braintree). Explicitly rejected divestitures &mdash; rules out fast-acting catalysts.</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">TOST</div>
+                <div class="company-info"><div class="company-name">Toast</div><div class="company-desc">US Restaurant Payments / SaaS &middot; TOST</div></div>
+                <span class="perf-pill down">-17.7%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'tost-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'tost-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'tost-co')">Company News Run</div>
+                </div>
+                <div id="tost-ov" class="tab-pane active">Toast posted a 'Growth AND Margin' 1Q26 print on May 8: revenue $1.63B (+22% YoY), 171K active locations (+22%, 7K net adds beating Street), GPV $51.3B (+22%), SaaS gross margin breaking 80% for the first time at 81%, and GAAP operating margin clearing 20%. Adj. EBITDA $179M (33.8% margin) beat consensus $169M by 6%. The sell-side debate is the 2Q26 EBITDA guide of $185-195M (~7-8% below consensus) and management's flag that 2027 hardware drag will exceed 2026 due to DRAM price hikes and tariffs (~150bps FY26 EBITDA hit). Counterweight: FY26 EBITDA guide raised to $790-810M, long-term 40%+ EBITDA target reaffirmed, $400M YTD repurchased. Forward P/E <15x and PEG ~0.5x make this the sell-side's preferred entry window.</div>
+                <div id="tost-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">GS &middot; 8 May</span><strong>Solid quarter but EBITDA below consensus &mdash; hardware commentary to weigh:</strong> Will Nance frames 1Q26 as a clean beat on recurring gross profit (+27% YoY, ~4% above consensus) and operating leverage, but flags the soft 2Q26 EBITDA guide and the unusual call-out that 2027 hardware P&amp;L drag will be larger than 2026 as DRAM and tariff costs hit. Valuation ~16x 2027 EBITDA-SBC; problems characterised as &ldquo;real but temporary.&rdquo;</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">MS &middot; 8 May</span><strong>Growth AND Margin story intact:</strong> Josh Baer highlights the 20th consecutive quarter of accelerating YoY net location adds, SaaS GM crossing 80%, GAAP op margin clearing 20%, and total monetization take rate first time above 1% (103bps, +5bps YoY). Frames AI risk as low / AI opportunity full; forward P/E &lt;15x and PEG ~0.5x for a 20%+ grower called &ldquo;clearly mispriced.&rdquo; Overweight.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Jefferies &middot; 8 May</span><strong>Outlook dampened by persistent memory headwind:</strong> Samad Samana keeps a Hold &mdash; recurring GP guide midpoint (~$570M) is ~1% below Street and 2Q EBITDA guide ~8% below; warns same-store GPV at -1% YoY is a tell on SMB restaurant softness. Acknowledges Toast Capital and Toast IQ Grow (pilot drove +8% merchant GPV) as the right longer-term levers.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Mgmt &middot; 8 May</span><strong>FY26 guide raised, long-term 40%+ EBITDA margin held:</strong> Recurring GP raised to $2,290-2,320M (+21-23% YoY); adj. EBITDA raised to $790-810M (~34.7% margin midpoint). Hardware: ~150bps FY26 EBITDA drag, 2027 impact larger than 2026 but &ldquo;not structural.&rdquo; AI internal: engineering coding efficiency +60% YoY, AI resolving 40% of support interactions. YTD bought back 14M shares / ~$400M, ~$200M remaining.</li></ul></div>
+                <div id="tost-co" class="tab-pane"><ul><li>1Q26 results (May 8): Revenue $1.63B (+22% YoY), 171K active locations (+22%, 7K net adds, 20th consecutive quarter of YoY net-add acceleration per MS), GPV $51.3B (+22%), ARR $2,151M (+26%). Payments take rate 51bps (+2bps); fintech net take rate 61bps; total monetization take rate 103bps &mdash; first time above 1%.</li><li>SaaS gross margin 81% (+~300bps YoY, first time above 80%); recurring gross profit $529M (+27%, ~4% above consensus); adj. EBITDA $179M / 33.8% margin (consensus $169M); GAAP operating margin 21% (first time above 20%); GAAP EPS $0.20 (more than doubled).</li><li>2Q26 guide: recurring GP $565-575M, adj. EBITDA $185-195M (33.3% margin, ~8% below consensus); FY26 guide raised &mdash; recurring GP $2,290-2,320M, adj. EBITDA $790-810M; FY26 net store adds to exceed FY25; SaaS ARPU mid-single-digit growth.</li><li>Toast IQ now 40K weekly active locations (covers &gt;50% of base); Toast IQ Grow pilot drove +8% GPV at participating merchants. Same-store GPV -1% YoY (called &ldquo;in a reasonable range&rdquo;); new TAM pushes in drive-thru (~140K potential locations), pizza (Hungry Howe's, Papa Murphy's signed), grocery (&gt;20K independents) and international (Tier-1 city playbook).</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">SHOP</div>
+                <div class="company-info"><div class="company-name">Shopify</div><div class="company-desc">Global E-commerce / Payments &middot; SHOP</div></div>
+                <span class="perf-pill down">-19.6%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'shop-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'shop-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'shop-co')">Company News Run</div>
+                </div>
+                <div id="shop-ov" class="tab-pane active">Shopify's 1Q26 (reported May 5) was the fourth straight quarter of 30%+ GMV growth: GMV $100.7B (+35% YoY / +30% FX-neutral), revenue $3.17B (+34%), adj. operating margin 16.5% (+256bps), FCF margin 15.0%. North America +33% (strongest in 4 years), Europe +42%. The real story is the Agentic Commerce repositioning: Shopify co-built the Universal Commerce Protocol (UCP) with Google and pulled Amazon, Meta, Microsoft, Salesforce and Stripe onto its Tech Council; AI-driven traffic +8x YoY, AI-search orders +13x, Shop Pay GMV +59% (international +70%+). Stock pressure comes from 2Q26 FCF margin guide of 'mid-teens' (~<15% ex-accounting change) and gross margin compression from larger merchants + payments penetration. Sell-side cut targets (Citi $156, UBS $130) but kept Buy ratings; YTD -19%.</div>
+                <div id="shop-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Citi &middot; 6 May</span><strong>Top-line momentum holds, building agentic traction:</strong> Buy/High-Risk, PT cut to $156 (from $163) on ~10.5x 2027 EV/Sales. Revenue beat ~2.5%, Merchant Solutions take rate up 6bps QoQ to 2.40%, and UCP plus Stripe-as-default BNPL framing is positioned as offence on Agentic Commerce. 2Q26 guide 'high 20s' revenue / 'mid 20s' GP / 35-36% OpEx / mid-teens FCF margin &mdash; weakness called &ldquo;a buying opportunity.&rdquo;</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">MS &middot; 5 May</span><strong>AI accelerating the flywheel:</strong> Overweight. Sidekick weekly-active merchants +4x YoY, &gt;12K custom apps created in the quarter, nearly half of new Shopify flows AI-built. Internal AI lets headcount stay flat/down &mdash; OpEx ratio fell from 41% (1Q25) to 37%. View on LLM-cost drag on gross margin: &ldquo;likely to prove misplaced.&rdquo;</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Jefferies &middot; 5 May</span><strong>Strong results, a little less juice in the outlook:</strong> Hold-leaning-positive. Long-term thesis intact but 2Q26 FCF margin ex-accounting tweak &lt;15% and the smaller beat magnitude (~3.5pt vs prior quarters) will cap multiple expansion near-term. Expert calls: Agentic Commerce will become a meaningful sales channel; Shopify best positioned to help merchants deploy via developer ecosystem and UCP.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">UBS &middot; 5 May</span><strong>PT cut to $130 from $145:</strong> 18x EV / 2027 non-GAAP gross profit (from 20x). Shopify Payments still processes merchant payments in nearly every Agentic scenario UBS mapped (ACP, UCP, Meta checkout) &mdash; only Amazon and TikTok Shop bypass &mdash; so unit economics framed as defensible.</li></ul></div>
+                <div id="shop-co" class="tab-pane"><ul><li>1Q26 results (May 5-6): GMV $100.7B (+35% YoY / +30% FX-neutral); revenue $3.17B (+34%); Merchant Solutions $2.42B (+39%, take rate 2.40%, +6bps QoQ); Subscription $0.75B (+21%, MRR $212M); GAAP operating margin 12.1% (vs Street 10.8%); adj. operating margin 16.5% (+256bps); FCF $476M (15.0% margin); non-GAAP EPS $0.36.</li><li>Shopify Payments GPV $67B (+41%), penetration 67%; Shop Pay GMV $35B (+59%, international +70%+); &ldquo;Sign in with Shop&rdquo; verifications +3x YoY. B2B GMV +80%; offline GMV +33%; international GMV +45% (16% of total). New enterprise wins: LVMH, Victoria's Secret's Body, Lands' End, Mulberry, BevMo!, Rag &amp; Bone, Reitmans, Vail Resorts' Epic Shop.</li><li>Agentic Commerce stack: UCP co-built with Google, with Amazon, Meta, Microsoft, Salesforce, Stripe on the Tech Council. AI-driven traffic +8x YoY; AI-search orders +13x; AI-channel new-buyer order rate is 2x other channels. Catalogue now structures &gt;1B products; AI search powered by the catalogue converts at 2x normal AI search.</li><li>2Q26 guide: revenue growth 'high 20s' YoY, GP 'mid 20s', OpEx 35-36% of revenue, FCF margin 'mid-teens' (includes ~50bps from a merchant cash-advance accounting change; &lt;15% ex-tweak). Shopify Capital launched in France; $2B buyback authorisation in flight.</li></ul></div>
+            </div>
+        </div>
+
+        <div class="sector-hdr">BNPL / Consumer Credit <span class="count">2 names</span></div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">AFRM</div>
+                <div class="company-info"><div class="company-name">Affirm</div><div class="company-desc">US BNPL &middot; AFRM</div></div>
+                <span class="perf-pill down">-0.9%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'afrm-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'afrm-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'afrm-co')">Company News Run</div>
+                </div>
+                <div id="afrm-ov" class="tab-pane active">Affirm is the largest independent US BNPL, positioned as challenger to revolving credit cards by locking the online-installment top-of-funnel via exclusive Amazon and Shopify deals, then extending offline through the Affirm Card (Evolve Bank-issued debit) and white-label rails with Apple Pay, Google Pay and Visa's Flexible Credential. CY24Q4 was the inflection: GMV US$10.1B (+35.4%, 5% beat), revenue US$866M (+47%, 7% beat), Non-GAAP operating margin 27.4% vs 22.1% expected, full-year OPM guide lifted from 20% to 22.5-25%. The thesis-vs-doubt split: the "revolving credit cards are usury" narrative is bullet-proof (US revolving APR ~22.8%, avg balance ~US$5,300); the open questions are (i) Amazon contract renewal (~40% combined Amazon+Shopify GMV, expires Jan 31 2025), (ii) Affirm Card depth (US$165 avg monthly spend vs Max's US$7,500 target = 45x gap), and (iii) recession non-linearity on loss rates (5.5% reserve vs historical <4% actual).</div>
+                <div id="afrm-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Mgmt Guide &middot; CY24Q4</span><strong>Full-year OPM raised to 22.5-25%</strong> (from 20%). Max's Affirm Card mid-term ambition: 20M active cards, US$7,500 spend/user/year, US$150B total payment volume.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Visible Alpha &middot; FY25/26</span><strong>Consensus FY25 revenue ~US$3.2B, FY26 ~US$4.0B:</strong> Implied Non-GAAP operating profit ~US$700M / US$1B. At diluted market cap ~US$28.4B: 7.1x FY26 P/S, ~28x FY26 EV/EBIT &mdash; 'slay the dragon' narrative already partly priced in.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">House View &middot; May</span><strong>Recession is the asymmetric risk:</strong> 2024 Jan-Sep drawdown was -50% on recession narrative. Mechanism is non-linear &mdash; Affirm tightens underwriting (GMV decel) while losses creep above 5.5% reserve simultaneously. Max himself flags stable rates matter more than the level.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">House View &middot; May</span><strong>Apple Pay = call option not base case:</strong> Apple Pay annual volume &gt;US$1tn, offline &gt;US$500B. Even 1% Affirm penetration would be US$10B incremental GMV (~25% of FY24 GMV). No disclosed take rate yet.</li></ul></div>
+                <div id="afrm-co" class="tab-pane"><ul><li>CY24Q4 results: GMV US$10.1B (+35.4% YoY, 5% beat); revenue US$866M (+47%, 7% beat); Non-GAAP operating margin 27.4% vs expected 22.1%. Funding cost averaged 7.2%, down sequentially.</li><li>Affirm Card: US$845M payment volume in the quarter (still doubling YoY); 1.7M active cardholders; avg US$165 spend/user/month. Total quarterly active users 21M; trailing 12M users average 5.3 transactions at US$266 each.</li><li>Amazon contract (expires Jan 31, 2025) renewal in progress. Walmart exclusivity was terminated in 2024 (Walmart added a second BNPL provider) &mdash; first concrete read on big-customer concentration risk.</li><li>Strategic rail expansions: Apple Pay relationship live since Jun 2024 (Apple shut its own BNPL); Visa Flexible Credential launch partner (Nov 2024) lets community banks issue BNPL-capable debit cards with Affirm as the credit engine.</li><li>34 retail merchant network; 136 merchants doing &gt;US$1M/year (+25% YoY). CEO Levchin's Value Creation Award: 12.5M options across 10 tranches with strike $49 and triggers from $65.66 up to $371.91.</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">KLAR</div>
+                <div class="company-info"><div class="company-name">Klarna</div><div class="company-desc">Global BNPL &middot; KLAR</div></div>
+                <span class="perf-pill down">-3.3%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'klar-ov')">Stock Driver</div>
+                    <div class="tab" onclick="switchTab(this,'klar-br')">Broker Notes</div>
+                    <div class="tab" onclick="switchTab(this,'klar-co')">Company News Run</div>
+                </div>
+                <div id="klar-ov" class="tab-pane active">Klarna sits #2 globally in BNPL behind Affirm, with 118M active users, 966K merchants, 26 markets &mdash; but the moat is funding engineering, not exclusive merchant deals. In the run-up to 1Q26 (preview week, results May), KLAR doubled its Elliott Forward Flow facility to $2bn on Mar 24 (supports up to $17bn of Fair Financing originations over 3-5 years, $1.6bn loans already sold), and on Apr 1 closed a $1.7bn Värde-led Significant Risk Transfer &mdash; its 6th and largest SRT &mdash; freeing capital to back $40bn+ of lending over 3 years. 4Q25 GMV +31.9% YoY but TMD $372M missed the $390-400M guide; FY26 guide implies adj. operating margin ≥6.9% vs Street 12.1%. Stock is ~70% below IPO highs at ~1.1x FY26 EV/Sales; the bull case is multiple repair if 1Q26 TMD lands in the upper half of the $300-340M guide.</div>
+                <div id="klar-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">GS &middot; 24 Mar</span><strong>Forward Flow facility doubled to $2bn (Buy, PT $20):</strong> Will Nance flags Elliott extension &mdash; can fund up to $17bn of Fair Financing originations over 3-5 years (1-3 yrs longer than prior plan), $1.6bn already sold. GS had previously estimated KLAR needed $2-2.5bn of incremental funding; deal &ldquo;materially reduces near-term earnings uncertainty,&rdquo; though expect balance-sheet shrinkage in early 2Q26 as loans move off.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">GS &middot; 1 Apr</span><strong>Värde-led SRT covers $1.7bn loans, backs $40bn+ over 3 years:</strong> KLAR's 6th and largest SRT (per MS). Unlike Forward Flow, loans stay on balance sheet &mdash; KLAR pays a premium for risk transfer, lowers risk weights and frees regulatory capital. GS reads the print as confirmation private credit appetite for consumer loans remains, but with spreads &ldquo;wider than the late-2025 lows.&rdquo;</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Citi &middot; 20 Apr</span><strong>Watching Transaction Margin Dollars (Buy/High-Risk, PT $25 from $45):</strong> Bryan Keane keeps Buy but takes the PT down sharply post-4Q miss. TMD is the single variable that needs to land &mdash; 4Q25 TMD $372M was below the $390-400M guide as Fair Financing front-loaded CECL provisioning. 1Q26 TMD guide $300-340M (+11-26% YoY) is well below the FY26 +30% framework, implying improvement back-half-loaded.</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">BofA &middot; 22 Apr</span><strong>Prefer AFRM over KLAR into prints (PT $21, 4x EV/GP):</strong> BofA frames the core gap as underwriting credibility &mdash; AFRM has the through-cycle track record, KLAR still needs to prove underwriting and earnings stability at scale. &ldquo;Any small miss and the market will immediately re-question earnings quality.&rdquo;</li></ul></div>
+                <div id="klar-co" class="tab-pane"><ul><li>4Q25 print: GMV +31.9% YoY (+23% FX-neutral), revenue +38.6% (above $1B), US GMV +43%; TMD $372M missed $390-400M guide as Fair Financing balance reached $4.5B (+165% YoY, 11.6% of GMV) and CECL provisioning weighed; Klarna Card +209% YoY; 966K merchants (+43.1%, 20% Fair Financing enabled); 118M active users (29M in US, ~11% of US population).</li><li>Mar 24: Forward Flow with Elliott Investment Management doubled to $2bn; $1.6bn loans already sold; supports up to $17bn of Fair Financing originations over the next 3-5 years.</li><li>Apr 1: Closed a $1.7bn euro-denominated Significant Risk Transfer with a Värde Partners-led consortium &mdash; 6th and largest SRT to date; backs $40bn+ of new lending over 3 years; loans remain on balance sheet but risk weights drop.</li><li>1Q26 guide: GMV $32.0-33.0B (+26-30% YoY); revenue $900-980M (+28-40%); TMD $300-340M (+11-26%); adj. operating profit $0.5-3.5M. FY26 guide: GMV ≥$155B, revenue/GMV ≥2.80% (revenue ≥$4.34B), TM/GMV ≥1.04%, TM/Revenue ≥37%, adj. operating margin ≥6.9% vs Street 12.1%. Distribution wins ramping in 2026: Nexi, Worldpay, JPM, Adyen; Stripe already default BNPL.</li></ul></div>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    Global Fintech Weekly &nbsp;&middot;&nbsp; For internal use only &nbsp;&middot;&nbsp; May 4&ndash;10, 2026
 </footer>
-</div>
-</div>
 
-<button class="lock-btn" id="lockBtn" title="编辑模式">🔒</button>
+<!-- Floating edit button -->
+<button id="edit-fab" title="Edit mode" style="
+    position: fixed; bottom: 28px; right: 28px;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: #0f1e3c; color: white; font-size: 20px;
+    border: none; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    z-index: 999; display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;">&#9998;</button>
 
-<div class="modal" id="loginModal">
-<div class="modal-box">
-<h3>编辑器登录</h3>
-<input type="password" id="pwdInput" placeholder="密码" autocomplete="off">
-<div class="modal-actions">
-<button class="cancel" id="cancelBtn">取消</button>
-<button id="loginBtn">登录</button>
-</div>
-</div>
-</div>
-
-<div class="toolbar" id="toolbar">
-<span class="editor-tag">⚙ 编辑模式</span>
-<button id="btnWord">⬇ Word</button>
-<button id="btnSource">⬇ Source Report</button>
-<button id="btnPublish">⬆ Publish</button>
-<button class="exit" id="btnExit">退出</button>
+<!-- Edit mode top bar -->
+<div id="edit-bar" style="
+    display: none; position: fixed; top: 0; left: 0; right: 0;
+    background: #1d4ed8; color: white; padding: 8px 20px;
+    font-size: 13px; font-weight: 500; z-index: 1000;
+    align-items: center; gap: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+    <span>&#9998; Edit Mode &mdash; click any text to edit</span>
+    <button id="save-btn" style="
+        background: white; color: #1d4ed8; border: none;
+        padding: 5px 16px; border-radius: 5px; font-size: 12.5px;
+        font-weight: 600; cursor: pointer;">&#128190; Save to file</button>
+    <span id="save-status" style="font-size: 12px; opacity: 0.85;">Click any text to edit it</span>
 </div>
 
 <script>
-var EDITOR_HASH = '52e6b9be97f5bed2bd60cc272aa3be98cdee335865375573ade8c895c8cbf810';
-var PUBLISH_URL = 'https://newsletter-save.henrysun0924.workers.dev/';
-var savedPwd = '';
+    function toggleCard(header) {
+        const body = header.nextElementSibling;
+        const chevron = header.querySelector('.chevron');
+        const isOpen = body.classList.contains('open');
+        body.classList.toggle('open', !isOpen);
+        chevron.classList.toggle('open', !isOpen);
+    }
+    function switchTab(tabEl, paneId) {
+        const card = tabEl.closest('.company-card');
+        card.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        card.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        tabEl.classList.add('active');
+        document.getElementById(paneId).classList.add('active');
+    }
 
-async function sha256(s){
-  var buf = new TextEncoder().encode(s);
-  var hash = await crypto.subtle.digest('SHA-256', buf);
-  return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
-}
 
-document.getElementById('lockBtn').addEventListener('click', function(){
-  document.getElementById('loginModal').classList.add('show');
-  var inp = document.getElementById('pwdInput');
-  inp.value = '';
-  setTimeout(function(){inp.focus();}, 50);
-});
+    // ── Edit mode ──────────────────────────────────────────────
+    let editMode = false;
+    let fileHandle = null;
 
-document.getElementById('cancelBtn').addEventListener('click', function(){
-  document.getElementById('loginModal').classList.remove('show');
-});
+    const fab = document.getElementById('edit-fab');
+    const bar = document.getElementById('edit-bar');
+    const saveBtn = document.getElementById('save-btn');
+    const statusMsg = document.getElementById('save-status');
 
-async function tryLogin(){
-  var pwd = document.getElementById('pwdInput').value;
-  if(!pwd) return;
-  var h = await sha256(pwd);
-  if(h === EDITOR_HASH){
-    savedPwd = pwd;
-    document.getElementById('loginModal').classList.remove('show');
-    document.getElementById('toolbar').classList.add('show');
-    document.body.classList.add('editing');
-    document.getElementById('content').contentEditable = 'true';
-  } else {
-    alert('密码错误');
-  }
-}
+    const EDITABLE = [
+        '.commentary', '.theme-body', '.tab-pane',
+        '.workplan-card li', '.header-meta strong',
+        '.data-table tbody td'
+    ];
 
-document.getElementById('loginBtn').addEventListener('click', tryLogin);
-document.getElementById('pwdInput').addEventListener('keydown', function(e){
-  if(e.key === 'Enter'){ e.preventDefault(); tryLogin(); }
-});
-
-document.getElementById('btnWord').addEventListener('click', function(){
-  var contentClone = document.getElementById('content').cloneNode(true);
-  // Word-friendly inline styles
-  var html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
-    '<head><meta charset="utf-8"><title>全球 FinTech 周报 2026-04-29</title>'+
-    '<style>body{font-family:"Microsoft YaHei",Arial,sans-serif;font-size:11pt;color:#222;line-height:1.6;max-width:780px;margin:24px auto}'+
-    'h1{font-size:22pt;border-bottom:2px solid #333;padding-bottom:8px}'+
-    'h2{font-size:14pt;color:#1f3a5f;margin-top:20px;border-left:4px solid #1f3a5f;padding-left:10px}'+
-    'h3{font-size:12pt;color:#a5650a;margin-bottom:4px}'+
-    '.card{border:1px solid #ddd;border-radius:4px;padding:12px 16px;margin-bottom:10px}'+
-    '.card .title{display:block;font-weight:700;color:#1f3a5f;text-decoration:none;font-size:12pt;margin-bottom:6px}'+
-    '.card .source{font-size:9pt;color:#666;background:#f0f0f0;padding:2px 8px;border-radius:3px;display:inline-block;margin-bottom:6px}'+
-    '.card .summary,.card p{font-size:10.5pt;color:#333;line-height:1.65}'+
-    '.meta{color:#666;font-size:10pt;margin-bottom:16px}'+
-    '.section-count{color:#999;font-size:10pt;font-weight:400}'+
-    '.mtime{font-size:9pt;color:#999;margin-top:6px}'+
-    'footer{margin-top:32px;padding-top:12px;border-top:1px solid #ddd;color:#999;font-size:9pt;text-align:center}'+
-    '</style></head><body>'+contentClone.innerHTML+'</body></html>';
-  var blob = new Blob(['﻿', html], {type: 'application/msword'});
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.href = url;
-  a.download = 'fintech-weekly-2026-04-29.doc';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 200);
-});
-
-document.getElementById('btnSource').addEventListener('click', function(){
-  var a = document.createElement('a');
-  a.href = 'source_status.xlsx';
-  a.download = 'source_status.xlsx';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function(){ document.body.removeChild(a); }, 100);
-});
-
-document.getElementById('btnPublish').addEventListener('click', async function(){
-  if(!savedPwd){ alert('请先登录'); return; }
-  if(!confirm('确认将当前页面发布到 Cloudflare？')) return;
-  var html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-  try{
-    var res = await fetch(PUBLISH_URL, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({password: savedPwd, content: html})
+    fab.addEventListener('click', () => {
+        editMode = !editMode;
+        fab.textContent = editMode ? '✕' : '✏️';
+        fab.title = editMode ? 'Exit edit mode' : 'Edit mode';
+        bar.style.display = editMode ? 'flex' : 'none';
+        EDITABLE.forEach(sel => {
+            document.querySelectorAll(sel).forEach(el => {
+                el.contentEditable = editMode ? 'true' : 'false';
+                el.style.outline = editMode ? '1px dashed #3b82f6' : '';
+                el.style.borderRadius = editMode ? '3px' : '';
+            });
+        });
+        if (editMode) statusMsg.textContent = 'Click any text to edit it';
     });
-    if(res.ok){ alert('✓ 发布成功'); }
-    else{ var t = await res.text(); alert('✗ 发布失败 ' + res.status + ': ' + t); }
-  } catch(e){
-    alert('✗ 网络错误: ' + e.message);
-  }
-});
 
-document.getElementById('btnExit').addEventListener('click', function(){
-  document.getElementById('content').contentEditable = 'false';
-  document.getElementById('toolbar').classList.remove('show');
-  document.body.classList.remove('editing');
-  savedPwd = '';
-});
+    saveBtn.addEventListener('click', async () => {
+        try {
+            if (!fileHandle) {
+                fileHandle = await window.showSaveFilePicker({
+                    suggestedName: 'index.html',
+                    types: [{ description: 'HTML file', accept: { 'text/html': ['.html'] } }]
+                });
+            }
+            const writable = await fileHandle.createWritable();
+            // Strip edit-mode markers before saving
+            bar.style.display = 'none';
+            const editEls = document.querySelectorAll(EDITABLE.join(', '));
+            editEls.forEach(el => {
+                el.removeAttribute('contenteditable');
+                el.style.outline = '';
+                el.style.borderRadius = '';
+            });
+            const htmlToSave = document.documentElement.outerHTML;
+            // Restore edit mode
+            bar.style.display = 'flex';
+            editEls.forEach(el => {
+                el.contentEditable = 'true';
+                el.style.outline = '1px dashed #3b82f6';
+                el.style.borderRadius = '3px';
+            });
+            await writable.write(htmlToSave);
+            await writable.close();
+            statusMsg.textContent = '✓ Saved to ' + fileHandle.name;
+            setTimeout(() => { statusMsg.textContent = 'Click any text to edit it'; }, 3000);
+        } catch (e) {
+            if (e.name !== 'AbortError') statusMsg.textContent = '✗ Save failed: ' + e.message;
+        }
+    });
 </script>
 </body>
 </html>

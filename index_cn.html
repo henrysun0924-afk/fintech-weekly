@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球金融科技周报</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f6f8; color: #1a1a2e; line-height: 1.6; }
+        .site-header { background: linear-gradient(135deg, #0f1e3c 0%, #1a3a6b 100%); color: white; padding: 32px 40px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+        .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+        .site-title { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+        .site-subtitle { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 3px; font-weight: 400; letter-spacing: 0.5px; text-transform: uppercase; }
+        .header-meta { text-align: right; font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+        .header-meta strong { display: block; font-size: 15px; color: white; font-weight: 600; }
+        .nav-bar { display: flex; gap: 2px; margin-top: 4px; }
+        .nav-bar a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 12.5px; font-weight: 500; padding: 9px 15px; border-radius: 5px 5px 0 0; transition: all 0.15s; }
+        .nav-bar a:hover { color: white; background: rgba(255,255,255,0.12); }
+        .main { max-width: 1080px; margin: 0 auto; padding: 32px 24px 48px; }
+        section { margin-bottom: 44px; scroll-margin-top: 100px; }
+        .section-title { font-size: 10.5px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: #6b7280; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #e5e7eb; display: flex; align-items: center; gap: 8px; }
+        .section-title .count { background: #e5e7eb; color: #6b7280; font-size: 10px; padding: 1px 7px; border-radius: 10px; font-weight: 600; letter-spacing: 0; }
+        .macro-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+        .index-card { background: white; border-radius: 10px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e9ecef; }
+        .index-card .label { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #9ca3af; margin-bottom: 6px; }
+        .index-card .perf-main { font-size: 24px; font-weight: 700; line-height: 1.1; }
+        .up { color: #16a34a; } .down { color: #dc2626; } .flat { color: #6b7280; }
+        .index-card .perf-sub { font-size: 12px; color: #9ca3af; margin-top: 3px; }
+        .index-card .commentary { font-size: 12px; color: #4b5563; margin-top: 12px; line-height: 1.6; border-top: 1px solid #f3f4f6; padding-top: 10px; }
+        .theme-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+        .theme-card { background: white; border-radius: 10px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e9ecef; border-left: 3px solid #3b82f6; }
+        .theme-card.orange { border-left-color: #f59e0b; }
+        .theme-title { font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 8px; }
+        .theme-body { font-size: 12.5px; color: #4b5563; line-height: 1.65; }
+        .table-wrap { background: white; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e9ecef; overflow: hidden; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+        .data-table thead th { background: #f8f9fa; padding: 9px 14px; text-align: left; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: #6b7280; border-bottom: 1px solid #e9ecef; white-space: nowrap; }
+        .data-table tbody td { padding: 10px 14px; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+        .data-table tbody tr:last-child td { border-bottom: none; }
+        .data-table tbody tr:hover { background: #fafafa; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        .badge-upgrade { background: #dcfce7; color: #15803d; }
+        .badge-downgrade { background: #fee2e2; color: #b91c1c; }
+        .badge-private { background: #fef3c7; color: #92400e; font-size: 10px; }
+        .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+        .dot-green { background: #16a34a; } .dot-amber { background: #f59e0b; }
+        .company-card { background: white; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e9ecef; overflow: hidden; }
+        .company-header { display: flex; align-items: center; padding: 14px 18px; cursor: pointer; user-select: none; gap: 12px; transition: background 0.1s; }
+        .company-header:hover { background: #fafafa; }
+        .ticker-pill { background: #0f1e3c; color: white; padding: 4px 11px; border-radius: 5px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; min-width: 54px; text-align: center; flex-shrink: 0; }
+        .company-info { flex: 1; min-width: 0; }
+        .company-name { font-size: 13.5px; font-weight: 600; color: #111827; }
+        .company-desc { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+        .perf-pill { padding: 4px 10px; border-radius: 5px; font-size: 12.5px; font-weight: 700; flex-shrink: 0; }
+        .perf-pill.up { background: #dcfce7; color: #15803d; }
+        .perf-pill.down { background: #fee2e2; color: #b91c1c; }
+        .perf-pill.flat { background: #f3f4f6; color: #6b7280; }
+        .chevron { color: #d1d5db; font-size: 11px; transition: transform 0.2s; flex-shrink: 0; }
+        .chevron.open { transform: rotate(180deg); }
+        .company-body { display: none; border-top: 1px solid #f3f4f6; }
+        .company-body.open { display: block; }
+        .tab-bar { display: flex; background: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .tab { padding: 8px 18px; font-size: 12px; font-weight: 500; color: #6b7280; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.12s; white-space: nowrap; }
+        .tab:hover { color: #374151; }
+        .tab.active { color: #0f1e3c; border-bottom-color: #0f1e3c; font-weight: 600; }
+        .tab-pane { padding: 16px 20px; display: none; font-size: 13px; color: #374151; line-height: 1.65; }
+        .tab-pane.active { display: block; }
+        .tab-pane ul { padding-left: 18px; }
+        .tab-pane ul li { margin-bottom: 9px; padding-left: 2px; }
+        .broker-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; font-size: 10.5px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-right: 5px; }
+        .workplan-card { background: white; border-radius: 10px; padding: 20px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e9ecef; }
+        .workplan-card ul { list-style: none; padding: 0; }
+        .workplan-card li { padding: 8px 0; border-bottom: 1px solid #f3f4f6; font-size: 13px; color: #374151; display: flex; align-items: flex-start; gap: 10px; }
+        .workplan-card li:last-child { border-bottom: none; }
+        .workplan-card li::before { content: "○"; color: #d1d5db; flex-shrink: 0; margin-top: 1px; }
+        .site-footer { text-align: center; padding: 24px; color: #9ca3af; font-size: 11px; border-top: 1px solid #e9ecef; }
+        @media (max-width: 768px) { .macro-grid { grid-template-columns: 1fr; } .theme-grid { grid-template-columns: 1fr; } .site-header { padding: 20px 16px 0; } .main { padding: 20px 16px; } }
+
+        .section-title.sub-section {
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            padding-top: 18px;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 4px;
+        }
+        .section-group-hdr {
+            padding: 22px 0 4px 0;
+            font-size: 17px;
+            font-weight: 800;
+            color: #111827;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            border-bottom: 2px solid #1e3a5f;
+            margin-bottom: 0;
+        }
+        .sector-hdr {
+            margin: 26px 0 12px;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 13px;
+            font-weight: 700;
+            color: #374151;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sector-hdr .count {
+            background: #e5e7eb;
+            color: #6b7280;
+            font-size: 10px;
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-weight: 600;
+            letter-spacing: 0;
+        }
+        .comps-sector-hdr {
+            margin: 22px 0 8px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #374151;
+            text-transform: uppercase;
+            letter-spacing: 0.9px;
+            padding-bottom: 4px;
+        }
+        .comps-sector-hdr .count {
+            font-size: 10.5px;
+            color: #9ca3af;
+            font-weight: 500;
+            letter-spacing: 0;
+            text-transform: none;
+            margin-left: 6px;
+        }
+        .placeholder { color: #9ca3af; font-style: italic; }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-top">
+        <div>
+            <div class="site-title">Global Fintech Weekly</div>
+            <div class="site-subtitle">覆盖 &middot; 行业 &middot; 宏观</div>
+        </div>
+        <div class="header-meta">
+            <strong>2026 年 5 月 4 日 &ndash; 10 日</strong>
+            第 16 期 &nbsp;&middot;&nbsp; 仅供内部使用
+            <a href="index.html" style="display:inline-block;margin-top:7px;background:rgba(255,255,255,.18);color:white;border:1px solid rgba(255,255,255,.4);padding:3px 13px;border-radius:4px;font-size:11.5px;font-weight:600;letter-spacing:0.4px;text-decoration:none;white-space:nowrap;">EN</a>
+        </div>
+    </div>
+    <nav class="nav-bar">
+        <a href="#macro">一、市场表现</a>
+        <a href="#macro-news">二、宏观新闻</a>
+        <a href="#sector-data">三、关键行业数据</a>
+        <a href="#s3">四、覆盖更新</a>
+    </nav>
+</header>
+
+<main class="main">
+
+    <section id="macro">
+        <div class="section-title">一、市场表现 <span class="count" style="font-weight:400;text-transform:none;letter-spacing:0;">截至 2026 年 5 月 8 日</span></div>
+        <div class="table-wrap" style="margin-top:14px;">
+            <table class="data-table">
+                <thead><tr>
+                    <th>指数</th><th style="text-align:right;">最新价</th><th style="text-align:right;">L1W</th><th style="text-align:right;">L1M</th><th style="text-align:right;">L3M</th><th style="text-align:right;">L1Y</th><th style="text-align:right;">L3Y</th>
+                </tr></thead>
+                <tbody>
+<tr><td style="font-weight:500;color:#111827;">标普 500</td><td style="text-align:right;color:#374151;">7,398.93</td><td style="text-align:right;color:#16a34a;font-weight:500;">+2.3%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+9.1%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+8.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+30.6%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+79.6%</td></tr>
+<tr><td style="font-weight:500;color:#111827;">纳斯达克综合指数</td><td style="text-align:right;color:#374151;">26,247</td><td style="text-align:right;color:#16a34a;font-weight:500;">+4.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+16.0%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+16.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+46.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+115.5%</td></tr>
+<tr><td style="font-weight:500;color:#111827;">恒生指数</td><td style="text-align:right;color:#374151;">26,394</td><td style="text-align:right;color:#16a34a;font-weight:500;">+2.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+1.9%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+15.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+32.8%</td></tr>
+<tr><td style="font-weight:500;color:#111827;">恒生科技指数</td><td style="text-align:right;color:#374151;">5,102.79</td><td style="text-align:right;color:#16a34a;font-weight:500;">+4.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+3.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-5.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+9.1%</td></tr>
+<tr><td style="font-weight:500;color:#111827;">KBW 纳斯达克金融科技指数</td><td style="text-align:right;color:#374151;">2,923.12</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+5.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+5.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-5.6%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+52.0%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-top:18px;">
+            <div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px;">核心驱动</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:10px 12px;">
+                    <div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;">美国 &middot; 标普 500 / 纳斯达克</div>
+                    <div class="commentary" style="font-size:13px;line-height:1.6;color:#374151;min-height:50px;">标普 500 +2.3%、纳斯达克 +4.5% —— 连续第六周上涨，两大指数均刷新历史新高。半导体板块为主要驱动：Intel 涨 14%（消息称获得 Apple 芯片订单），Micron +15.5%，AMD +11.4%。4 月非农 +11.5 万（市场一致预期 +5.5–6.5 万）大幅超预期，失业率持稳于 4.3%，时薪同比 +3.6%（温和）。周中伊朗与美国局势缓和预期一度推动布伦特原油下跌 8%，支撑权益市场。美联储交接平稳 —— 鲍威尔任期 5 月 15 日结束，Warsh 提名预计于 5 月 11 日当周获参议院确认。</div>
+                </div>
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:10px 12px;">
+                    <div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;">香港 &middot; 恒指 / 恒生科技</div>
+                    <div class="commentary" style="font-size:13px;line-height:1.6;color:#374151;min-height:50px;">恒指 +2.4%、恒生科技 +4.8% —— 终结连续两周下跌。香港一季度 GDP 同比 +5.9% 超预期，推动金融板块重估（汇丰 +2.7%、友邦 +2.8%）。油价回落缓解进口成本压力。北京 AI 自主可控叙事推动恒生科技走强；摩根士丹利预计 AI 标的纳入将带来 12.5–17.5 亿美元被动流入。中国贸易顺差 960 亿美元（预期 824 亿美元）支撑港股情绪。恒指仍较 2026 年 1 月高点低约 5.6%，关键阻力位 26,500。</div>
+                </div>
+                <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:10px 12px;">
+                    <div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;">KBW 纳斯达克金融科技指数</div>
+                    <div class="commentary" style="font-size:13px;line-height:1.6;color:#374151;min-height:50px;">KBW 纳斯达克金融科技 -1.7% —— 跑输大盘纳斯达克（+4.5%）。财报季拖累板块：尽管收入端普遍超预期，EPS 不及预期触发业绩后估值下杀。服务业通胀粘性（ISM 服务业支付价格指数连续第二个月录得 70.7）叠加美联储坚定按兵不动，将降息预期进一步推后，压制了近端 NIM 扩张的逻辑。交易类平台受零售交易活跃带动跑赢；拉美金融科技受墨西哥央行与巴西央行宽松周期支撑。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="macro-news">
+        <div class="section-title">二、宏观新闻与数据发布</div>
+
+        <div class="table-wrap" id="macro-news-table">
+            <div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:8px;">核心数据发布 &nbsp;<span style="font-weight:400;text-transform:none;color:#9ca3af;font-size:11px;">w/o 2026 年 5 月 5–9 日 &nbsp;&middot;&nbsp; 市场一致预期来自高盛报告 &nbsp;&middot;&nbsp; 下周关注：4 月美国 CPI（5 月 12 日）</span></div>
+            <table class="data-table">
+                <thead><tr>
+                    <th>数据</th>
+                    <th style="text-align:right;">实际值</th>
+                    <th style="text-align:right;">市场预期</th>
+                    <th style="text-align:center;">超/不及</th>
+                    <th>含义</th>
+                </tr></thead>
+                <tbody>
+<tr><td style="white-space:nowrap;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">美国</span>非农就业 <span style="color:#9ca3af;font-size:11px;">（4 月）</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">+115K</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">+65K</td><td style="text-align:center;"><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">超预期</span></td><td style="font-size:12px;color:#374151;">非农 +11.5 万远高于市场 +6.5 万。私营部门就业 +12.3 万。失业率 4.34%（四舍五入 4.3%），劳动参与率 61.8%（小幅低于预期）。时薪环比 +0.2%，低于市场 +0.3%，工资读数温和。3 个月平均新增就业 4.8 万；高盛估计的潜在节奏 5.1 万接近盈亏平衡线。</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">美国</span>初请失业金 <span style="color:#9ca3af;font-size:11px;">（5 月 2 日当周）</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">200K</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">205K</td><td style="text-align:center;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">符合</span></td><td style="font-size:12px;color:#374151;">初请 20 万，低于市场 20.5 万；前值修正为 19 万。续请 176.6 万 vs 中值 180 万（超预期），创两年新低。无劳动力市场承压信号。一季度生产率 +0.8%（高盛 +1.0%，中值 +0.6%）；单位劳动力成本 +2.3%（低于高盛 +2.8%）。</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">美国</span>ISM 制造业 PMI <span style="color:#9ca3af;font-size:11px;">（4 月）</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">52.7</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">~52.5</td><td style="text-align:center;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">符合</span></td><td style="font-size:12px;color:#374151;">连续第六个月处于扩张区间。支付价格分项跳升至 84.6 —— 4 年新高，疫情以来最高。对消费类平台构成利润率逆风；能源成本传导仍在发酵。</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">美国</span>ISM 服务业 PMI <span style="color:#9ca3af;font-size:11px;">（4 月）</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">53.6</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">54.0</td><td style="text-align:center;"><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">不及</span></td><td style="font-size:12px;color:#374151;">支付价格分项连续第二个月录得 70.7（粘性高）。就业分项连续第二个月低于 50。新订单从 60.6 大幅回落至 53.5。滞胀式读数 —— 美联储维持按兵不动。</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">墨西哥</span>CPI 通胀 <span style="color:#9ca3af;font-size:11px;">（4 月）</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">环比 0.20% / 同比 4.45%</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">环比 0.21%</td><td style="text-align:center;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">符合</span></td><td style="font-size:12px;color:#374151;">总体通胀低于预期（电价补贴季节性效应 -23bp）。核心 +0.31% 符合预期。4 月下半月总体通胀 0.04%，远低于预期 0.21%。服务业通胀仍高于历史均值。整体趋势缓和（前值同比 4.63%），支持墨西哥央行降息路径。</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">墨西哥</span>墨西哥央行利率决议 <span style="color:#9ca3af;font-size:11px;">（5 月 7 日）</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">6.50%</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">−25bp</td><td style="text-align:center;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">符合</span></td><td style="font-size:12px;color:#374151;">3-2 投票通过；为 2022 年 4 月以来最低利率水平。一季度 GDP 环比 -0.8% 不及预期，经济产出缺口为降息提供理由。前瞻指引暗示在下次会议按兵不动，主因 USMCA/贸易不确定性。</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">巴西</span>制造业 PMI <span style="color:#9ca3af;font-size:11px;">（4 月）</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">52.6</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">前值 49.0</td><td style="text-align:center;"><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">超预期</span></td><td style="font-size:12px;color:#374151;">环比上升 3.6 个点至 52.6，重回扩张区间。生产、新出口订单、就业均处扩张。成本压力激增 16.7 点至 86.5（除疫情期外 20 余年新高）。服务业 PMI 上升 2.2 点至 52.3。投入/产出价格压力均处于一代人内的高位 —— 关注对 MELI 利润率的影响。</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">巴西</span>巴西央行 Selic 利率决议 <span style="color:#9ca3af;font-size:11px;">（4 月 29 日）</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">14.50%</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">−25bp</td><td style="text-align:center;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">符合</span></td><td style="font-size:12px;color:#374151;">一致通过降息；央行将 2026 年 IPCA 预测上调至 4.6%（前值 3.9%）—— 制约后续宽松节奏。Focus 调查 2026 年通胀预期 5.0%。对 NU 而言信贷条件仍偏紧。下次 Copom 会议：6 月 17-18 日。</td></tr>
+<tr><td style="white-space:nowrap;"><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;">巴西</span>IGP-DI 通胀 <span style="color:#9ca3af;font-size:11px;">（4 月）</span></td><td style="text-align:right;font-weight:600;white-space:nowrap;">环比 +2.41%</td><td style="text-align:right;color:#6b7280;white-space:nowrap;">前值 +1.14%</td><td style="text-align:center;"><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap;">不及</span></td><td style="font-size:12px;color:#374151;">大幅上行的负面冲击 —— 作为 IPCA 的领先指标，意味着 4 月 IPCA 环比约 +0.9% / 同比约 4.5%，处于央行 3±1.5% 容忍区间上限。对 NU 消费信贷构成成本通胀传导风险。</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-top:20px;">
+            <div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px;">宏观主题与叙事</div>
+            <div class="theme-card">
+                <div class="theme-title">&#127981; 美联储利率叙事</div>
+                <div class="theme-body">4 月 29 日 FOMC 会议以 8-4 票维持利率于 3.50–3.75%，为 1992 年以来最高异议票数，显示内部降息压力上升。鲍威尔任期 5 月 15 日结束；Warsh 提名预计于 5 月 11 日当周获参议院确认。本周无降息催化剂：非农 +11.5 万超预期叠加 ISM 服务业支付价格分项停留于 70.7，美联储维持按兵不动。市场目前定价年内约 2 次降息（7 月与 11 月），较 4 月的 3 次有所收敛。美联储按兵不动压缩 SOFI 与 NU 美国业务的近端 NIM 扩张空间，并将消费信贷重新加速的时点推后至 2026 年下半年。</div>
+            </div>
+            <div class="theme-card" style="margin-top:12px;">
+                <div class="theme-title">&#128738;&#65039; 伊朗 / 油价</div>
+                <div class="theme-body">布伦特原油周中受伊朗与美国停火外交推动一度下跌约 8% 至约 101 美元/桶，周五因美军袭击伊朗船籍油轮而反弹。全周净下跌约 5%。油价下行对覆盖范围而言是双刃剑 —— 利好巴西/墨西哥消费者购买力以及 NU/MELI 的交易量，但同时削弱通胀压力，削弱「按兵不动」叙事的支撑。ISM 制造业支付价格分项跳升至 84.6（4 年新高），显示能源成本向商品通胀的传导仍在进行。关注：美伊核谈判与 OPEC+ 的反应，是拉美宏观的关键摆动因子。</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sector-data">
+        <div class="section-title">三、关键行业数据与新闻</div>
+<div style="margin-bottom:24px;">
+            <div class="theme-card" style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;">高盛 &middot; 巴西银行</span><span style="color:#9ca3af;font-size:10px;">2026 年 5 月 4 日</span><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">巴西</span><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">资产质量</span><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">NU</span></div><div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:6px;">Desenrola 2.0 债务重组启动；INSS 工资代扣贷款上限由 45% 下调至 40%（目标 30%）</div><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:4px;"><strong>Desenrola 2.0：</strong>政府方案面向月收入不超过 5 倍最低工资（约 8,000 雷亚尔）的家庭。覆盖逾期 90 天至 2 年的高息消费债务（信用卡、透支、个人贷款）；折扣 30–90%，月最高利率 1.99%，最长期限 4 年。FGO 担保基金后备资金最高 70 亿雷亚尔；政府承担前 40% 信贷损失。报名窗口 90 天。</li><li style="margin-bottom:4px;"><strong>NU —— 净利好：</strong>高盛指出，NU 因对低收入客群敞口更高（违约压力主要集中在此），是核心受益方。对资产质量指标构成温和顺风；幅度取决于参与率和实际折扣力度。</li><li style="margin-bottom:4px;"><strong>INSS 工资代扣上限下调 —— 现有银行的意外逆风：</strong>工资代扣上限从 45% 立即下调至 40%，路径指向 30%。对 AGBK（INSS 集中度高）负面；对 NU 中性（其工资代扣贷款敞口很低）。同时缓解了 INSS 贷款被全面叫停的风险。</li></ul></div>
+<div class="theme-card" style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;">摩根士丹利 / 杰富瑞 / 美银 &middot; 代理商务</span><span style="color:#9ca3af;font-size:10px;">2026 年 5 月</span><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">全球</span><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">Agentic Payment</span><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">V / MA / PYPL / Adyen</span></div><div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:6px;">「同一轨道、新规则」：2026 年是 Agentic 支付的基础设施建设年 —— V/MA 凭借增值服务取胜，PYPL 是受冲击最大的输家</div><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:4px;"><strong>市场规模（摩根士丹利美国互联网）：</strong>Agentic 商务 GMV 基准情形 2026 年 80 亿美元（约美国电商的 1%），到 2030 年增长至 1,920 亿美元（约 10%），CAGR 约 121%，对比电商整体 ~7.5%；乐观情形 2030 年 3,850 亿美元（约 20%）。摩根士丹利 2026 展望重申约 118% CAGR vs 非 Agentic 约 5%。</li><li style="margin-bottom:4px;"><strong>V / MA —— 增值服务（非交易量）才是驱动：</strong>摩根士丹利将 V 与 MA 视为早期受益方，路径是安全、代币化、反欺诈等增值服务。VAS 已占 MA 净收入约 40%（4Q25 同比 +22%），V 约 28%（4Q25 同比 +28%）；近期对损益影响较小，但 VAS take-rate 扩张是多年估值重估的核心逻辑。</li><li style="margin-bottom:4px;"><strong>PYPL —— 结构性逆风，非周期性：</strong>摩根士丹利、美银与杰富瑞均认为 PYPL「定位最差」（美银美国金融 2026 展望）—— 当 AI 代理选择支付轨道时，PYPL 的品牌结账按钮会失去可见性。这（而非 TPV 减速）才是估值折价的根本原因；关注管理层能否将自身重新定位为 ACP/AP2/TAP 中的编排层。</li><li style="margin-bottom:4px;"><strong>Adyen / Stripe —— 最清晰的赢家：</strong>统一栈、实时路由与风险编排与多协议、多轨道的 Agentic 流契合。Stripe 已锁定两条赛道 —— 消费端与 OpenAI 合作 ACP（驱动 ChatGPT Instant Checkout），机器微支付端与 Paradigm/Tempo 合作 MPP。</li><li style="margin-bottom:4px;"><strong>稳定币轨道验证点：</strong>2025 年 5 月至 2026 年 2 月的 9 个月内，链上 AI 代理支付达 1.4 亿笔 / 4,300 万美元名义金额，平均单笔 0.31 美元，其中 USDC 份额 98.6%（Base 59% / Solana 38%）。验证稳定币是亚厘级微支付的原生轨道（卡组织经济性在此失效）。</li></ul></div>
+<div class="theme-card" style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;">内部研究 &middot; 中国消费金融</span><span style="color:#9ca3af;font-size:10px;">更新于 2026 年 4 月</span><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">中国</span><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">利率上限 / 信贷监管</span><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">QFIN / ZA 6060 / 2858</span></div><div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:6px;">央行 247 号文小贷利率上限是 2027 年前中国消费金融最重要的结构性变量；18% 压力测试是值得关注的尾部风险</div><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:4px;"><strong>规则（央行 247 号文，2025 年 12 月）：</strong>小贷公司综合资金成本须降至 1 年期 LPR 的 4 倍以内（约 12%）；不得新增高息贷款；存量高息余额须在 2027 年底前清理完毕。叠加在 2025 年 10 月 24% APR 上限与 2025 年 3 月前持牌消费金融公司 20% 上限之上。</li><li style="margin-bottom:4px;"><strong>QFIN —— 量化影响：</strong>4Q25 IRR 环比 -1.4ppt 至 19.5%，收入环比 -21.4%，Non-GAAP 净利 10.7 亿元（环比 -29%、同比 -46%）。4Q25 24%+ 在贷余额环比 -44%；FY26 24%+ 余额预计 -76% 至 61 亿元，而 24% 以下的「智信 G」产品增长 +68% 至 552 亿元。FY26 贷款投放量同比 -13%；管理层指引 Non-GAAP 净利 30–40 亿元（我们预测 28–32 亿元，区间下沿）。</li><li style="margin-bottom:4px;"><strong>ZA 6060 —— 消费金融业务退出：</strong>2H25 消金保费同比 -39%，CoR 升至 100.3%。FY26 消金保费指引同比 -50–60%，伴随约 7,000 万元一次性损失及约 1ppt CoR 拖累；FY27 全面清退后有望释放结构性 CoR 改善空间（当前 96%+）。</li><li style="margin-bottom:4px;"><strong>易鑫 2858 —— 短期受益方，关注结构：</strong>2025 年汽车抵押 GMV +70%（被挤出的借款人转移而来）；管理层主动保守经营（账面 +28%，潜力可翻倍）。补贴机制（财政部 2026/1 号文）明确将小贷公司排除在外 —— 易鑫只能通过转介接入 3A+ 城商行/农商行或汽车金融公司。</li><li style="margin-bottom:4px;"><strong>尾部风险 —— 18% 压力测试：</strong>监管在 2026 年 1–2 月就 12–18% 定价测试向部分互联网银行进行非正式问询。一旦落地，QFIN 在贷余额至少减半，ROA 将远低于 3% —— 是除当前 247 号文路径外，对该标的最大的摆动因子。</li></ul></div>
+<div class="theme-card" style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;"><span style="background:#f3f4f6;color:#374151;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;">内部研究 &middot; 美国信贷基础设施</span><span style="color:#9ca3af;font-size:10px;">更新于 2026 年 4 月</span><span style="background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">美国</span><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">按揭信贷 / 征信局</span><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:5px;">FICO / EXPN / EFX / TRU</span></div><div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:6px;">FICO 在 2026 年将按揭批发价翻倍至 10 美元，但征信局 —— 以 Experian 为首 —— 拿走三局合并查询经济价值的 60–65%；Lender Choice 仅是形式而非实质</div><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:4px;"><strong>按揭定价 —— 7 年涨约 10 倍：</strong>FICO 按揭批发价已从约 0.50 美元（1989–2018）涨至 4.95 美元（2024 年 11 月），再至 2026 年通过 Mortgage Direct License Program 涨至 10 美元/份（替代方案：4.95 美元 + 32 美元成功费 —— 单位经济相同）。经销商终端价从约 60 美元逼近 80+ 美元；触发了 Hawley 参议员的反垄断推动以及 FHFA 局长 Pulte 的多次公开批评。</li><li style="margin-bottom:4px;"><strong>征信局拿走更大份额：</strong>在 80–100 美元的三局合并查询文件中，FICO 获约 14.85 美元（约 15–18%）；三大征信局拿走整个链条的 60–65%。在消费信贷（信用卡 / 个贷）业务中，FICO 已 5 年未涨价，而征信局通过更精细的数据更新（刷新频率 45 天→30 天、增加属性数）以个位数 CAGR 悄然提价。</li><li style="margin-bottom:4px;"><strong>Lender Choice 不破坏护城河：</strong>FHFA（Pulte）保留三局合并机制，并将 VantageScore 4.0 加入可选名单，目标 2026 年夏季上线。但 98.8% 的存量 MBS 仍参考 FICO；VantageScore 在 MBS 渠道的渗透率 &lt;5%。Synchrony 2021 年的切换耗时 3 年、花费约 2 亿美元，且仅适用于次贷 —— 切换成本是核心约束。</li><li style="margin-bottom:4px;"><strong>EXPN 是征信局中的领头羊：</strong>EBIT 利润率 28%，5 年利润 CAGR 12%（vs EFX 25%/6%、TRU 24%/7%）。收入最分散（金融客户仅 39%，最低），最强的 2C 业务（占收入 28%，2 亿+ 用户，北美 1,200 万付费会员每月 15–25 美元），云迁移 FY26 基本完成（&gt;85% 已上云），消除了历史上每年 800–900bp 的拖累，进一步释放利润率上行空间。</li><li style="margin-bottom:4px;"><strong>拉美映射：</strong>Serasa（Experian 巴西，市占 65%）EBIT 利润率持续保持 &gt;30%，并开始商业化特征数据（Quod 已经迈出一步 —— 50 个属性定价 0.5 雷亚尔，相当于一份模型评分）；2026 年推动 Serasa 接入是下一阶段催化剂。墨西哥仍是封闭的双寡头格局（Buró 60% / Círculo 40%，Buró EBITDA 利润率 48%），5 年内无定价放松。</li></ul></div>
+        </div>
+        <div style="border-top:1px solid #e5e7eb;margin-bottom:20px;"></div>
+    </section>
+
+
+    <div class="section-group-hdr" id="s3">
+        <span>四、覆盖更新</span>
+        <span id="coverage-asof" style="font-weight:400;font-size:13px;color:#9ca3af;margin-left:10px;"></span>
+    </div>
+
+    <section id="ratings">
+        <div class="section-title sub-section">3.1 &nbsp; 评级变动</div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead><tr><th>日期</th><th>卖方</th><th>代码</th><th>操作</th><th>新评级</th><th>新目标价</th><th>前目标价</th><th>核心逻辑</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>~5 月 5 日</td><td>高盛</td><td><strong>FUTU</strong></td>
+                        <td><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;">纳入确信榜</span></td>
+                        <td>买入（亚太确信榜）</td><td>$205</td><td>—</td>
+                        <td>香港 IPO 管道复苏、中美关系缓和下零售交易量回升。纳入时上行空间约 30%；当周受财报获利了结影响 -12%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="comps">
+        <div class="section-title sub-section">3.2 &nbsp; 分行业可比公司表（截至 2026-05-11）</div>
+
+        <div class="comps-sector-hdr">数字银行与拉美平台 <span class="count">4 家</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">公司</th>
+                        <th rowspan="2">代码</th>
+                        <th rowspan="2">币种</th>
+                        <th rowspan="2" style="text-align:right;">当地价</th>
+                        <th rowspan="2" style="text-align:right;">市值<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">价格变动</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">空头持仓<br><span style="font-weight:400;font-size:10px;">(天)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">Nubank</td><td style="color:#6b7280;font-size:11px;">NU</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">13.50</td><td style="text-align:right;color:#374151;">67,008</td><td style="text-align:right;color:#dc2626;font-weight:500;">-4.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-9.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-22.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+5.2%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+128.4%</td><td style="text-align:right;color:#374151;">16.2x</td><td style="text-align:right;color:#374151;">12.2x</td><td style="text-align:right;color:#374151;">0.44</td><td style="text-align:right;color:#374151;">5.80</td><td style="text-align:right;color:#374151;">2.36</td><td style="text-align:right;color:#374151;">1.49</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Mercado Libre</td><td style="color:#6b7280;font-size:11px;">MELI</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">1,557.30</td><td style="text-align:right;color:#374151;">82,764</td><td style="text-align:right;color:#dc2626;font-weight:500;">-14.1%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-12.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-22.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-36.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+20.1%</td><td style="text-align:right;color:#374151;">35.6x</td><td style="text-align:right;color:#374151;">25.2x</td><td style="text-align:right;color:#374151;">1.48</td><td style="text-align:right;color:#374151;">10.80</td><td style="text-align:right;color:#374151;">0.49</td><td style="text-align:right;color:#374151;">0.74</td></tr>
+<tr><td style="font-weight:600;color:#111827;">SoFi</td><td style="color:#6b7280;font-size:11px;">SOFI</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">16.26</td><td style="text-align:right;color:#374151;">20,203</td><td style="text-align:right;color:#16a34a;font-weight:500;">+0.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+0.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-20.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+23.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+216.3%</td><td style="text-align:right;color:#374151;">27.3x</td><td style="text-align:right;color:#374151;">20.4x</td><td style="text-align:right;color:#374151;">0.58</td><td style="text-align:right;color:#374151;">1.90</td><td style="text-align:right;color:#374151;">2.50</td><td style="text-align:right;color:#374151;">2.49</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Revolut <span class="badge badge-private" style="margin-left:4px;">未上市</span></td><td style="color:#6b7280;font-size:11px;">—</td><td style="color:#6b7280;font-size:11px;">—</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="comps-sector-hdr">在线券商 <span class="count">3 家</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">公司</th>
+                        <th rowspan="2">代码</th>
+                        <th rowspan="2">币种</th>
+                        <th rowspan="2" style="text-align:right;">当地价</th>
+                        <th rowspan="2" style="text-align:right;">市值<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">价格变动</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">空头持仓<br><span style="font-weight:400;font-size:10px;">(天)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">Futu</td><td style="color:#6b7280;font-size:11px;">FUTU</td><td style="color:#6b7280;font-size:11px;">HKD</td><td style="text-align:right;color:#374151;">139.86</td><td style="text-align:right;color:#374151;">20,271</td><td style="text-align:right;color:#dc2626;font-weight:500;">-10.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-9.5%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-9.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+36.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+225.6%</td><td style="text-align:right;color:#374151;">11.5x</td><td style="text-align:right;color:#374151;">10.1x</td><td style="text-align:right;color:#374151;">0.69</td><td style="text-align:right;color:#374151;">3.80</td><td style="text-align:right;color:#374151;">1.14</td><td style="text-align:right;color:#374151;">1.04</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Robinhood</td><td style="color:#6b7280;font-size:11px;">HOOD</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">80.78</td><td style="text-align:right;color:#374151;">69,366</td><td style="text-align:right;color:#16a34a;font-weight:500;">+5.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+16.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+3.6%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+47.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+737.1%</td><td style="text-align:right;color:#374151;">42.6x</td><td style="text-align:right;color:#374151;">32.4x</td><td style="text-align:right;color:#374151;">4.00</td><td style="text-align:right;color:#374151;">7.80</td><td style="text-align:right;color:#374151;">1.43</td><td style="text-align:right;color:#374151;">5.82</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Webull</td><td style="color:#6b7280;font-size:11px;">BULL</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">7.07</td><td style="text-align:right;color:#374151;">3,818</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+43.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+13.3%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-56.9%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-32.8%</td><td style="text-align:right;color:#374151;">40.0x</td><td style="text-align:right;color:#374151;">24.8x</td><td style="text-align:right;color:#374151;">3.54</td><td style="text-align:right;color:#374151;">3.60</td><td style="text-align:right;color:#374151;">2.26</td><td style="text-align:right;color:#374151;">-0.34</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="comps-sector-hdr">中国消费金融 <span class="count">3 家</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">公司</th>
+                        <th rowspan="2">代码</th>
+                        <th rowspan="2">币种</th>
+                        <th rowspan="2" style="text-align:right;">当地价</th>
+                        <th rowspan="2" style="text-align:right;">市值<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">价格变动</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">空头持仓<br><span style="font-weight:400;font-size:10px;">(天)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">众安在线</td><td style="color:#6b7280;font-size:11px;">6060.HK</td><td style="color:#6b7280;font-size:11px;">CNY</td><td style="text-align:right;color:#374151;">12.00</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#16a34a;font-weight:500;">+0.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-11.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-27.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+0.0%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-51.9%</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">0.70</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">1.01</td></tr>
+<tr><td style="font-weight:600;color:#111827;">易鑫集团</td><td style="color:#6b7280;font-size:11px;">2858.HK</td><td style="color:#6b7280;font-size:11px;">CNY</td><td style="text-align:right;color:#374151;">1.90</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.0%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-13.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-28.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-5.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+108.8%</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">0.70</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">-0.21</td></tr>
+<tr><td style="font-weight:600;color:#111827;">奇富科技</td><td style="color:#6b7280;font-size:11px;">QFIN</td><td style="color:#6b7280;font-size:11px;">CNY</td><td style="text-align:right;color:#374151;">13.18</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.5%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.9%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-16.5%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-69.0%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-24.9%</td><td style="text-align:right;color:#374151;">3.1x</td><td style="text-align:right;color:#374151;">2.6x</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">0.50</td><td style="text-align:right;color:#374151;">1.91</td><td style="text-align:right;color:#374151;">0.47</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="comps-sector-hdr">信用评分 / 征信局 <span class="count">4 家</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">公司</th>
+                        <th rowspan="2">代码</th>
+                        <th rowspan="2">币种</th>
+                        <th rowspan="2" style="text-align:right;">当地价</th>
+                        <th rowspan="2" style="text-align:right;">市值<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">价格变动</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">空头持仓<br><span style="font-weight:400;font-size:10px;">(天)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">Fair Isaac</td><td style="color:#6b7280;font-size:11px;">FICO</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">1,092.00</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#16a34a;font-weight:500;">+3.0%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+18.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-19.9%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-47.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+45.7%</td><td style="text-align:right;color:#374151;">25.3x</td><td style="text-align:right;color:#374151;">20.1x</td><td style="text-align:right;color:#374151;">0.71</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">4.91</td><td style="text-align:right;color:#374151;">1.09</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Equifax</td><td style="color:#6b7280;font-size:11px;">EFX</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">167.82</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-5.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-15.1%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-37.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-17.6%</td><td style="text-align:right;color:#374151;">19.5x</td><td style="text-align:right;color:#374151;">16.3x</td><td style="text-align:right;color:#374151;">1.20</td><td style="text-align:right;color:#374151;">4.40</td><td style="text-align:right;color:#374151;">3.85</td><td style="text-align:right;color:#374151;">1.00</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Experian</td><td style="color:#6b7280;font-size:11px;">EXPN.L</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">26.56</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+3.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+11.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-30.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-3.2%</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">6.00</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">1.02</td></tr>
+<tr><td style="font-weight:600;color:#111827;">TransUnion</td><td style="color:#6b7280;font-size:11px;">TRU</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">69.99</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#16a34a;font-weight:500;">+1.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+3.1%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.5%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-18.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+5.1%</td><td style="text-align:right;color:#374151;">14.7x</td><td style="text-align:right;color:#374151;">12.5x</td><td style="text-align:right;color:#374151;">1.02</td><td style="text-align:right;color:#374151;">2.80</td><td style="text-align:right;color:#374151;">6.57</td><td style="text-align:right;color:#374151;">1.17</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="comps-sector-hdr">支付 <span class="count">8 家</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">公司</th>
+                        <th rowspan="2">代码</th>
+                        <th rowspan="2">币种</th>
+                        <th rowspan="2" style="text-align:right;">当地价</th>
+                        <th rowspan="2" style="text-align:right;">市值<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">价格变动</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">空头持仓<br><span style="font-weight:400;font-size:10px;">(天)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">Visa</td><td style="color:#6b7280;font-size:11px;">V</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">323.86</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-0.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+6.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-8.1%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+40.2%</td><td style="text-align:right;color:#374151;">24.7x</td><td style="text-align:right;color:#374151;">21.8x</td><td style="text-align:right;color:#374151;">1.78</td><td style="text-align:right;color:#374151;">17.40</td><td style="text-align:right;color:#374151;">3.01</td><td style="text-align:right;color:#374151;">0.36</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Mastercard</td><td style="color:#6b7280;font-size:11px;">MA</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">497.81</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-1.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-0.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-7.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-12.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+29.8%</td><td style="text-align:right;color:#374151;">25.3x</td><td style="text-align:right;color:#374151;">21.9x</td><td style="text-align:right;color:#374151;">1.44</td><td style="text-align:right;color:#374151;">65.70</td><td style="text-align:right;color:#374151;">1.60</td><td style="text-align:right;color:#374151;">0.56</td></tr>
+<tr><td style="font-weight:600;color:#111827;">American Express</td><td style="color:#6b7280;font-size:11px;">AXP</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">312.32</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-2.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-0.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-11.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+9.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+111.0%</td><td style="text-align:right;color:#374151;">17.7x</td><td style="text-align:right;color:#374151;">15.5x</td><td style="text-align:right;color:#374151;">1.25</td><td style="text-align:right;color:#374151;">6.30</td><td style="text-align:right;color:#374151;">2.24</td><td style="text-align:right;color:#374151;">1.27</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Stripe <span class="badge badge-private" style="margin-left:4px;">未上市</span></td><td style="color:#6b7280;font-size:11px;">—</td><td style="color:#6b7280;font-size:11px;">—</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td><td style="text-align:right;" class="placeholder">—</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Adyen</td><td style="color:#6b7280;font-size:11px;">ADYEN.AS</td><td style="color:#6b7280;font-size:11px;">EUR</td><td style="text-align:right;color:#374151;">921.00</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-5.1%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+7.2%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-20.3%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-41.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-36.8%</td><td style="text-align:right;color:#374151;">23.8x</td><td style="text-align:right;color:#374151;">19.4x</td><td style="text-align:right;color:#374151;">1.13</td><td style="text-align:right;color:#374151;">5.50</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">2.05</td></tr>
+<tr><td style="font-weight:600;color:#111827;">PayPal</td><td style="color:#6b7280;font-size:11px;">PYPL</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">45.07</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-10.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-0.4%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+11.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-35.9%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-29.8%</td><td style="text-align:right;color:#374151;">8.5x</td><td style="text-align:right;color:#374151;">7.8x</td><td style="text-align:right;color:#374151;">2.15</td><td style="text-align:right;color:#374151;">2.00</td><td style="text-align:right;color:#374151;">2.73</td><td style="text-align:right;color:#374151;">0.92</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Toast</td><td style="color:#6b7280;font-size:11px;">TOST</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">24.19</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-17.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-4.8%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-13.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-40.8%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+16.3%</td><td style="text-align:right;color:#374151;">18.6x</td><td style="text-align:right;color:#374151;">14.3x</td><td style="text-align:right;color:#374151;">0.63</td><td style="text-align:right;color:#374151;">7.10</td><td style="text-align:right;color:#374151;">1.14</td><td style="text-align:right;color:#374151;">2.77</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Shopify</td><td style="color:#6b7280;font-size:11px;">SHOP</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">102.54</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-19.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-7.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-13.6%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+11.7%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+63.0%</td><td style="text-align:right;color:#374151;">56.2x</td><td style="text-align:right;color:#374151;">44.2x</td><td style="text-align:right;color:#374151;">2.12</td><td style="text-align:right;color:#374151;">10.70</td><td style="text-align:right;color:#374151;">1.31</td><td style="text-align:right;color:#374151;">2.45</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="comps-sector-hdr">BNPL / 消费信贷 <span class="count">2 家</span></div>
+        <div class="table-wrap" style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr style="border-bottom:none;">
+                        <th rowspan="2">公司</th>
+                        <th rowspan="2">代码</th>
+                        <th rowspan="2">币种</th>
+                        <th rowspan="2" style="text-align:right;">当地价</th>
+                        <th rowspan="2" style="text-align:right;">市值<br><span style="font-weight:400;font-size:10px;">(USD $MM)</span></th>
+                        <th colspan="5" style="text-align:center;border-bottom:1px solid #d1d5db;">价格变动</th>
+                        <th colspan="2" style="text-align:center;border-bottom:1px solid #d1d5db;">P/E</th>
+                        <th rowspan="2" style="text-align:right;">2026<br>PEG</th>
+                        <th rowspan="2" style="text-align:right;">LTM<br>P/BV</th>
+                        <th rowspan="2" style="text-align:right;">空头持仓<br><span style="font-weight:400;font-size:10px;">(天)</span></th>
+                        <th rowspan="2" style="text-align:right;">Beta</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right;">L1W</th>
+                        <th style="text-align:right;">L1M</th>
+                        <th style="text-align:right;">L3M</th>
+                        <th style="text-align:right;">L1Y</th>
+                        <th style="text-align:right;">L3Y</th>
+                        <th style="text-align:right;">26E</th>
+                        <th style="text-align:right;">27E</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td style="font-weight:600;color:#111827;">Affirm</td><td style="color:#6b7280;font-size:11px;">AFRM</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">66.45</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-0.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+36.9%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+17.5%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+43.2%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+432.9%</td><td style="text-align:right;color:#374151;">21.2x</td><td style="text-align:right;color:#374151;">17.1x</td><td style="text-align:right;color:#374151;">0.54</td><td style="text-align:right;color:#374151;">5.90</td><td style="text-align:right;color:#374151;">2.15</td><td style="text-align:right;color:#374151;">2.96</td></tr>
+<tr><td style="font-weight:600;color:#111827;">Klarna</td><td style="color:#6b7280;font-size:11px;">KLAR</td><td style="color:#6b7280;font-size:11px;">USD</td><td style="text-align:right;color:#374151;">14.39</td><td style="text-align:right;" class="placeholder">[待填充]</td><td style="text-align:right;color:#dc2626;font-weight:500;">-3.3%</td><td style="text-align:right;color:#16a34a;font-weight:500;">+10.4%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-24.7%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-68.6%</td><td style="text-align:right;color:#dc2626;font-weight:500;">-68.6%</td><td style="text-align:right;color:#374151;">153.7x</td><td style="text-align:right;color:#374151;">15.2x</td><td style="text-align:right;color:#374151;">N/A</td><td style="text-align:right;color:#374151;">2.20</td><td style="text-align:right;color:#374151;">5.56</td><td style="text-align:right;color:#374151;">6.34</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="earnings">
+        <div class="section-title sub-section">3.3 &nbsp; 财报日历</div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead><tr><th>公司</th><th>代码</th><th>预期日期</th><th>共识 EPS</th><th>共识收入</th><th>关键观察项</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Nu Holdings</strong></td><td>NU</td><td>~2026 年 5 月 13 日</td><td>$0.12</td><td>$3.1bn</td><td>墨西哥贷款增长、NPL 走势、BRL/MXN 汇率影响</td></tr>
+                    <tr><td><strong>Futu Holdings</strong></td><td>FUTU</td><td>~2026 年 5 月 20 日</td><td>HK$9.85</td><td>HK$3.2bn</td><td>付费客户增长、海外扩张（新加坡 / 日本）</td></tr>
+                    <tr><td><strong>Webull</strong></td><td>BULL</td><td>~2026 年 5 月 15 日</td><td>&mdash;</td><td>&mdash;</td><td>SEPA 终止的影响、加密交易量趋势反转</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="coverage">
+        <div class="section-title sub-section">3.4 &nbsp; 覆盖范围 <span class="count">24 家</span></div>
+
+        <div class="sector-hdr">数字银行与拉美平台 <span class="count">4 家</span></div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">NU</div>
+                <div class="company-info"><div class="company-name">Nu Holdings</div><div class="company-desc">巴西 / 拉美数字银行</div></div>
+                <span class="perf-pill down">-4.7%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'nu-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'nu-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'nu-co')">公司动态</div>
+                </div>
+                <div id="nu-ov" class="tab-pane active">本周大盘整体上涨但 NU 下跌 -4.4%。主要拖累来自拉美板块情绪传染 —— MELI 一季报后下跌 11.8%。宏观叠加：4 月 IGP-DI 环比 +2.41%，作为 IPCA 的领先指标，意味着 4 月 IPCA 环比约 +0.9% / 同比约 4.5%，处于巴西央行 3±1.5% 容忍区间上限，制约后续宽松节奏。部分对冲：Desenrola 2.0（高盛 5 月 4 日报告）—— 政府债务重组方案瞄准 NU 核心低收入借款人客群；高盛认为对资产质量净利好。期权市场在 5 月 14 日财报前偏谨慎：看跌看涨比 1.11 vs 均值 0.86；隐含波动率处于近一年区间上沿。
+            </div>
+                <div id="nu-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">高盛 &middot; 5 月 4 日</span><strong>Desenrola 2.0 —— 对 NU 净利好：</strong>政府债务重组方案面向月收入不超过 8,000 雷亚尔（5 倍最低工资）的家庭，覆盖逾期 90 天–2 年的信用卡、透支、个人贷款，月最高利率 1.99%、最长 4 年期。FGO 担保基金最高 70 亿雷亚尔；政府承担前 40% 信贷损失。报名窗口 90 天。高盛指出 NU 因对低收入客群敞口较高（违约压力主要集中于此）是核心受益方 —— 对资产质量构成温和顺风；幅度取决于参与率与实际折扣力度。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">高盛 &middot; 5 月 4 日</span><strong>INSS 工资代扣上限下调（45% → 40%，目标 30%）—— 对 NU 中性：</strong>工资代扣上限立即下调。对 INSS 集中度高的存量银行（AGBK）负面；NU 工资代扣贷款敞口低，直接影响微小。同时缓解了此前被视为尾部风险的 INSS 贷款全面暂停的可能。<em>完整摘要见关键行业数据部分。</em></li></ul>
+            </div>
+                <div id="nu-co" class="tab-pane"><ul><li>财报 5 月 14 日（下周）：市场预期收入约 31 亿美元 / EPS 约 $0.12。关键观察：墨西哥贷款增速（3 月初步数据 +61% 同比）、NPL 走势、BRL/MXN 汇率对美元口径报表的影响，以及管理层首次对 Desenrola 2.0 参与情况的评述。</li><li>财报前期权偏空：看跌看涨比 1.11 vs 12 个月均值 0.86；看跌偏度走陡显示下行保护需求 —— 财报前不算异常，但相对同业偏高。</li></ul>
+            </div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">MELI</div>
+                <div class="company-info"><div class="company-name">MercadoLibre</div><div class="company-desc">拉美电商与金融科技</div></div>
+                <span class="perf-pill down">-14.1%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'meli-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'meli-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'meli-co')">公司动态</div>
+                </div>
+                <div id="meli-ov" class="tab-pane active">5 月 7 日发布一季报。收入 88.5 亿美元（同比 +49%、汇率中性 +46%）超预期约 5%；EPS $8.23 不及市场预期约 6%。当周下跌 11.8% —— 利润率压缩是抛售的触发因素。管理层指引近期将持续大举投入而非追求利润率修复：2/3 的利润率压力来自物流补贴（巴西免邮门槛降至 19 雷亚尔、Meli+ 拓展），1/3 来自巴西消费信贷常态化（仍盈利，但较去年减弱）。信贷余额同比近翻番至 146 亿美元；AUM 同比 +77%。广告业务同比 +73%，是利润率最高、增长最快的板块。
+            </div>
+                <div id="meli-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260506%20-%20JPMorgan%20Research%20-%20MELI%20-%20MercadoLibre%20Inc%20Traffic%20Tracker%20-%209%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根大通 &middot; 5 月 6 日</span></a><strong>巴西访问量 4 月同比 +53%：</strong>较 3 月 +55% 略放缓，但 MELI 仍保持主导份额。竞争对手全面走弱 —— Shopee 访问份额 -3pp 至 23%，Amazon -1pp 至 14%，MELI 绝对量仍领先。访问量与 GMV 相关性弱（巴西 R² = 47%），对本轮 GMV 预测能力有限，尤其当信贷与广告与纯 GMV 驱动因子分化时。</li><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260506%20-%20JPMorgan%20Research%20-%20MELI%20-%20MercadoLibre%20Inc%20Traffic%20Tracker%20-%209%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根大通 &middot; 5 月 6 日</span></a><strong>墨西哥加速 —— 关键利好：</strong>4 月访问量同比 +27%（3 月 +23%），首次超越 Amazon（21%，从 24% 回落）。线上渗透率仍处早期；MELI 在市场扩张中持续抢份额。阿根廷 +16%（前值 +14%）—— 在通胀稳定后的较高基数上势头改善。</li></ul>
+            </div>
+                <div id="meli-co" class="tab-pane"><ul><li>1Q26 业绩（5 月 7 日）：收入 88.5 亿美元（同比 +49%）超预期；EPS $8.23 不及预期。巴西转化率同比 +1pp —— 管理层称为"显著提升"，推动市占率创新高。阿根廷 GMV 汇率中性同比 +41%（高基数）。</li><li>管理层对 Amazon 竞争的回应："数据本身就在说话 —— 供给在增长、GMV 在增长、成功售出商品在加速、留存在改善。"将竞争定性为带动新增用户上线 —— 净 TAM 扩张。</li><li>广告收入同比 +73%（汇率中性 +63%）—— 持续加速；随着广告占比提升（vs 物流密集型 GMV），结构性利润率顺风。</li></ul>
+            </div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">SOFI</div>
+                <div class="company-info"><div class="company-name">SoFi Technologies</div><div class="company-desc">美国数字银行</div></div>
+                <span class="perf-pill up">+0.4%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'sofi-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'sofi-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'sofi-co')">公司动态</div>
+                </div>
+                <div id="sofi-ov" class="tab-pane active">一季报后压力延续（4 月 29 日披露），本周 -4.1%。一季度创纪录：收入 11 亿美元（同比 +43%），净利润 1.667 亿美元（同比翻倍以上）。市场反应负面源于 2026 全年指引未上调 —— 调整后收入约 46.55 亿美元、EBITDA 利润率约 34%、调整后 EPS 约 $0.60 —— 被解读为缺乏上调底气。股价约 $16，较 $33 高点回撤 52%。CEO Noto 于 5 月 9 日个人买入约 15,878 股（约 25 万美元）—— 内部人信号值得关注。Loan Platform 新增合作承诺超 36 亿美元，扩大轻资本费用收入。
+            </div>
+                <div id="sofi-br" class="tab-pane"><ul><li><i style="color:#9ca3af;">本周文件夹无新增个股研报。花旗目标价下调（$37→$30，维持买入）是上周动作 —— 按评级变动规则未纳入。</i></li></ul>
+            </div>
+                <div id="sofi-co" class="tab-pane"><ul><li>CEO Anthony Noto 于 5 月 9 日买入约 15,878 股（约 25 万美元）—— 约 $16 的内部人买入，是近几个季度首次值得关注的购入。</li><li>2Q 指引：调整后收入约 11.15 亿美元（同比 +30%），EBITDA 利润率约 30%。2026 全年：调整后收入约 46.55 亿美元（+30%），EBITDA 约 16 亿美元（34% 利润率），调整后 EPS 约 $0.60。</li><li>Loan Platform 新增合作承诺超 36 亿美元 —— 轻资本费用收入降低对利率走势的资产负债表敏感度。</li><li>Muddy Waters 做空报告（3 月 30 日）压制仍在；本周无新动作或回应。股价较花旗目标价 $30 折价 57%。</li></ul>
+            </div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill" style="background:#6d28d9;">REV</div>
+                <div class="company-info">
+                    <div class="company-name">Revolut &nbsp;<span class="badge badge-private">未上市</span></div>
+                    <div class="company-desc">英国数字银行 &middot; 仅业务更新</div>
+                </div>
+                <span style="font-size:11px;color:#9ca3af;padding:0 8px;">无股票数据</span>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar"><div class="tab active" onclick="switchTab(this,'rev-up')">公司动态</div></div>
+                <div id="rev-up" class="tab-pane active"><ul><li>墨西哥：4 月再投入 6,400 万美元（路透社 5 月 5 日报道）—— 自 2026 年 1 月开业以来累计投入 1.67 亿美元。截至 3 月末客户超 29 万；开业 9 周后存款 37.5 亿比索（2.18 亿美元）；总资产环比 +275%。净亏损 1.53 亿比索 —— 与扩张期一致。信贷组合中 99.98% 为 Stage 1（低风险）；活跃信用卡客户 12,000+。</li><li>BTC 显示异常（5 月 8 日）：第三方数据提供商错误导致 Revolut App 上比特币显示为 $0.02（UTC 约 23:45）。ETH、SOL、XRP 亦受影响。当晚修复；无成交确认按错误价格执行。外部服务商故障 —— 运营风险标记。</li><li>智利扩张：CEO 在智利金融科技论坛前接受采访 —— 走全牌照银行路径（非中介模式），与墨西哥打法一致。拉美布局持续构建。</li></ul>
+            </div>
+            </div>
+        </div>
+
+        <div class="sector-hdr">在线券商 <span class="count">3 家</span></div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill" style="background:#1e40af;">FUTU</div>
+                <div class="company-info"><div class="company-name">Futu Holdings</div><div class="company-desc">香港 / 中国在线券商</div></div>
+                <span class="perf-pill down">-10.4%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'futu-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'futu-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'futu-co')">公司动态</div>
+                </div>
+                <div id="futu-ov" class="tab-pane active">一季报（6 月 4 日披露）前下跌 -6.6%。三家卖方（美银、摩根大通、瑞银 —— 均 5 月 7 日）预览模型均显示 1Q 环比走弱：收入环比 -6% / 同比 +29%（约 61 亿港币），净利环比 -7-8% / 同比 +44-52%（约 31-33 亿港币）。表观疲弱源于净利息收入正常化（证券借贷环比 -12-13%，HIBOR 走低）与新客户放缓（1Q 约 22.3 万 vs 4Q 约 24 万）。结构面完好：客户 AUM 持平于 1.24 万亿港币，创纪录净流入（约 900 亿港币）抵消了市值损失；交易量创纪录 4 万亿港币。本周高盛纳入确信榜。2Q 设定更积极：截至 5 月初 QTD 恒指 +7.4%、纳指 +20.5%。
+            </div>
+                <div id="futu-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260507%20-%20Bank%20of%20America%20Global%20Research%20-%20FUTU%20-%20Estimates%20Down%20-%20Futu%20Holdings%201Q26%20preview%20-%209%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">美银 &middot; 5 月 7 日</span></a><strong>1Q26 收入 62.1 亿港币（环比 -3.5%）：</strong>主要拖累来自证券借贷（环比 -12.3%），4Q25 高基数回归常态。经纪收入环比 +6.1% 至 29.4 亿港币部分抵消。净利 32.7 亿港币（环比 -3.7% / <strong>同比 +52%</strong>）。新增入金账户 22.3 万（环比 -5% / 同比 -15%）；CAC 2,400 港币（环比 +11%），仍低于指引区间 2,500–3,000 港币 —— 成本纪律完好。目标价 $235→$223.50，EPS 下调 5-6%。维持买入。</li><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260507%20-%20JPMorgan%20Research%20-%20FUTU%20-%20Revision%20-%20Futu%20Holdings%20Look%20through%20-%2016%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根大通 &middot; 5 月 7 日</span></a><strong>NII 环比中双位数下滑，经纪环比 +3%：</strong>收入环比 -6% / 同比 +29%。NII 收缩源于证券借贷常态化与 HIBOR 走低 —— 结构性还是周期性取决于 HIBOR 路径。<strong>净流入 900 亿港币 vs 4Q 的 650 亿 —— 接近创纪录水平：</strong>尽管市值损失，客户 AUM 维持 1.24 万亿港币；付费客户 1Q +21.8 万。融资融券环比 +4% 至 700 亿港币（同比 +40%）—— HIBOR 企稳后为上行杠杆。CAC 2,300 港币，低于全年指引。目标价 $300（2026E 24x）。增持。</li><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260507%20-%20UBS%20Research%20-%20FUTU%20-%20First%20Read%20Futu%20Holdings%20-%2014%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">瑞银 &middot; 5 月 7 日</span></a><strong>NPAT 31 亿港币（环比 -8% / 同比 +45%），低于一致预期约 2%：</strong>利息收入环比 -13%，主因证券借贷与融资需求走弱。<strong>交易量创纪录 4 万亿港币（同比 +25%）</strong>—— 换手率与佣金率稳定，显示客户活跃度稳健。<strong>moomoo 美国获 NFA 预测市场经纪牌照（5 月）：</strong>新增业务线，将可触达市场拓展至核心港中零售之外。新增竞争信号：蚂蚁/耀才证券交易瞄准港股零售重叠客群；Webull 加强港股营销。目标价 $231。</li></ul>
+            </div>
+                <div id="futu-co" class="tab-pane"><ul><li>高盛将 FUTU 纳入亚太确信买入榜（约 5 月 5 日）—— 引用港股 IPO 管道复苏与中美关系缓和下的零售交易量回升。纳入当周受财报获利了结影响 -12%。</li><li>moomoo 美国获 NFA 预测市场经纪牌照（瑞银）—— 与核心零售经纪相邻的新业务线，拓展美国变现路径。</li><li>6 月 4 日一季报：关键观察 —— 新增付费客户进度 vs 全年 80 万目标、HIBOR 正常化下的 NII 走势、日本/新加坡地理结构。</li></ul>
+            </div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill" style="background:#065f46;">HOOD</div>
+                <div class="company-info"><div class="company-name">Robinhood Markets</div><div class="company-desc">美国零售券商</div></div>
+                <span class="perf-pill up">+5.5%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'hood-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'hood-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'hood-co')">公司动态</div>
+                </div>
+                <div id="hood-ov" class="tab-pane active">本周 +4.6%，跑赢板块（KBW 金融科技 -1.7%）。一季报后修复行情。1Q（4 月 28 日）：收入 10.7 亿美元（同比 +15%），稀释 EPS $0.38，平台总资产 3,070 亿美元（+39%），Gold 订阅 430 万（+36%）。预测市场、期货、指数期权交易量创纪录。关键竞争事件：摩根士丹利 5 月 8 日在 E-Trade 上线加密交易，费率 50bps —— 主流平台最低，挤压 Robinhood 价差（最高 95bps），加剧加密 take-rate 压缩。CEO Tenev 5 月 5 日 CNBC 访谈中将预测市场定位为合法金融信息基础设施，先于潜在监管审查作前瞻表态。
+            </div>
+                <div id="hood-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260507%20-%20Barclays%20Research%20-%20HOOD%20-%20Robinhood%20Markets%20Inc%20Americas%20-%2010%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">巴克莱 &middot; 5 月 7 日</span></a><strong>英国是国际化变现的概念验证：</strong>目前国际用户约 100 万。英国 ISA 产品：免费账户 vs 传统券商收 12 英镑 —— 与美国零佣金模式相同的结构性护城河。<strong>无 PFOF 的变现路径成立：</strong>期权 50 美分/笔 + 股票 10bps 外汇兑换费可达到接近美国的 take rate。该模式跨监管法域可复制。加密/代币化的英国产品发布会定于 7 月初。</li><li style="margin-bottom:6px;"><a href="file:///D:/DIDI/_Trackers/0504/single%20stock/20260507%20-%20Barclays%20Research%20-%20HOOD%20-%20Robinhood%20Markets%20Inc%20Americas%20-%2010%20pages.pdf" target="_blank" style="text-decoration:none;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">巴克莱 &middot; 5 月 7 日</span></a><strong>加密 take rate 受分层定价压力：</strong>活跃交易者享低费率，造成不利结构。部分对冲：最高档将在未来几周从 85bps → 95bps。管理层认为分层对量与底线净增。<strong>产品节奏支撑溢价倍数：</strong>Robinhood Social（1 万 beta 用户）、Cortex 助手（AI 实时洞察）、Gold Card 朝 1 亿美元 ARR 进度。目标价 $82（较 5/6 $79.05 上行约 3.7%）。2027 财年 EPS 33x。</li></ul>
+            </div>
+                <div id="hood-co" class="tab-pane"><ul><li>摩根士丹利 5 月 8 日在 E-Trade 上线加密交易，费率 50bps —— 低于 Coinbase（50bps+）、嘉信（75bps）、Robinhood（价差最高 95bps）。释放加密费率压缩周期加速的信号。</li><li>CEO Tenev 5 月 5 日 CNBC Squawk Box 访谈：预测市场是"信息的极佳来源"—— 监管叙事管理。Robinhood 通过与 Susquehanna 的 Rothera 合资保有垂直整合优势。</li><li>Trump Accounts：2026 年投入 1 亿美元（约一半用于 2Q App 上线），已签约 550 万儿童。Robinhood 技术承载美国财政部该项目 —— 结构性公共部门分发渠道。</li><li>新加坡 MAS 原则性同意经纪业务牌照 —— 首个亚洲监管接入点；加密/代币化英国产品发布会定于 7 月初。</li></ul>
+            </div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill" style="background:#4b5563;">BULL</div>
+                <div class="company-info"><div class="company-name">Webull</div><div class="company-desc">美国 / 全球零售券商 &middot; SPAC 上市后</div></div>
+                <span class="perf-pill down">-1.4%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'bull-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'bull-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'bull-co')">公司动态</div>
+                </div>
+                <div id="bull-ov" class="tab-pane active">本周持平（+0.0%），新增催化剂有限。Yong Rong（香港）资产管理披露 1Q 完全清仓 500 万股（SEC 备案 5 月 4 日），原持仓占该基金 AUM 的 11.8%，估值约 3,200 万美元。股价约 $7，较 52 周高点 $21.65 回撤约 67%。市场在 5 月 21 日财报前观望 —— 将首次详细看到 SEPA 终止（4 月 7 日）的财务影响及加密交易量走势。
+            </div>
+                <div id="bull-br" class="tab-pane"><ul><li><i style="color:#9ca3af;">本周文件夹无卖方研报。BULL 覆盖分析师 2 家，均为强烈买入，平均目标价 $15（较当前约 $7 上行约 115%）。</i></li></ul>
+            </div>
+                <div id="bull-co" class="tab-pane"><ul><li>Yong Rong（香港）资产管理 1Q 完全退出 500 万股仓位（5 月 4 日披露）。该基金 AUM 配置从 11.8% 降至 0。并非公司层面消息，但移除了一位已知的亚太机构锚定持有人。</li><li>5 月 4-9 日当周无公司层面新公告。关键观察：5 月 21 日 1Q 财报 —— SEPA 终止对平台收入的影响、加密交易量在上季度下降后的走势，以及 1 亿美元回购（4 月 21 日授权）进度。</li></ul>
+            </div>
+            </div>
+        </div>
+
+        <div class="sector-hdr">中国消费金融 <span class="count">3 家</span></div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">ZA</div>
+                <div class="company-info"><div class="company-name">ZhongAn Online P&amp;C Insurance</div><div class="company-desc">中国数字保险 &middot; 6060.HK</div></div>
+                <span class="perf-pill up">+0.6%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'za-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'za-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'za-co')">公司动态</div>
+                </div>
+                <div id="za-ov" class="tab-pane active">众安在本质上更像是一家披着保险外衣的资本市场载体：创始人欧亚平以保费规模锚定估值，再以科技输出标签与稳定币选择权赚取溢价。2025 年业绩（净利 11 亿元，同比 +83%；承保利润 14 亿元，同比 +42%；CoR 95.8%）确认连续 5 年承保盈利，但核心争议在于 2026 年能否延续。消费金融业务退出（保费指引同比 -50/-60%，约 7,000 万元一次性损失）拖累报表增速；汽车业务从平安五五分账中解绑才是真正的利润率杠杆；稳定币故事（"元币"已进入金管局沙盒，众安银行担任托管）是重估期权但市场热度已降。投资收益率 5.3% 不可持续。</div>
+                <div id="za-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根士丹利 &middot; 4 月</span><strong>增持，目标价 HK$18.10：</strong>DCF（WACC 12.2%）对应 2026E P/B 0.9x。模型 2026E 总保费 +3.1%，CoR 96.2%。乐观 HK$32.40（稳定币 / 科技重估）；悲观 HK$12.60（承保恶化）。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">瑞银 &middot; 4 月</span><strong>中性，目标价 HK$16.10：</strong>15x PE + 0.9x P/B。认为稳定币叙事与盈利修复已被定价；缺乏短期催化。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">国泰海通 &middot; 4 月</span><strong>买入，目标价 HK$25.09：</strong>1.4x 2026E P/B —— 卖方中最乐观，倚重汽车业务解绑与自营渠道占比扩张。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">管理层指引 &middot; FY26</span><strong>CoR 95-96%，承保利润同比持平：</strong>保费增长为正（汽车>健康>生活>消金）；剔除消金目标 >10%。2M26 保费同比 +11%。无回购；资本优先投向 AI 与汽车。</li></ul></div>
+                <div id="za-co" class="tab-pane"><ul><li>2025 年报（4 月 1 日）：总保费 357 亿元（+6.9%），净利 11 亿元（+83%），调整后净利 18 亿元（剔除众安国际 7 亿元减值后同比 +198%）。CoR 95.8%（-1.1ppt），优于市场预期 96.8%。</li><li>消费金融 2H CoR 升至 100.3%（同比 +20ppt）；保费同比 -39%。管理层 2026 年加速退出（约 7,000 万元一次性损失）；截至 2026 年 2 月，在册余额已降至 179 亿元。</li><li>汽车业务解绑：上海/浙江交强险独立完成；上海商业险试点上线。目标一年内 5-10 个省份落地 —— 降低与平安的五五分账比例。</li><li>众安银行扭亏：FY25 净利 1,700 万港币（FY24 亏损 2.3 亿港币）；非利息收入同比 +277.9%（加密相关服务）。"元币"进入金管局稳定币沙盒，众安银行担任托管。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">YX</div>
+                <div class="company-info"><div class="company-name">Yixin Group</div><div class="company-desc">中国汽车金融 &middot; 2858.HK</div></div>
+                <span class="perf-pill down">-1.0%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'yx-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'yx-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'yx-co')">公司动态</div>
+                </div>
+                <div id="yx-ov" class="tab-pane active">易鑫是中国最大的独立汽车金融平台，真正的护城河是全国性"解押—处置"线下运营能力 —— 经历 2020 年暴力催收整顿后仍存活，银行与互联网平台 2-3 年内难以复制。增长引擎是车抵贷："2025 年 GMV +70% 至约 220 亿元，占二手车 GMV 约 53%"。SaaS（不担保）是第二增长极 —— 收入同比 +150% 至 45 亿元（占总收入 39%），核心机构合作 24 家。2026 年核心争议：蚂蚁等巨头正在自建车抵贷业务，定价权向流量平台倾斜。易鑫指引 Non-GAAP 净利 17 亿元，我们预测 13 亿元 —— 反映我们对溢出消金客户带来的资产质量与 take rate 压力的担忧。</div>
+                <div id="yx-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">管理层指引 &middot; FY26</span><strong>贷款投放约 800+ 亿元，净利 17 亿元：</strong>交易量增速略快于贷款量；二手/新车结构维持 60/40。目标 50% 基础分红 + 10-20% 特别分红；回购可能性低（流通盘 30%）。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">House View &middot; FY26</span><strong>较管理层更谨慎：GMV 769 亿元（+3%），净利 13 亿元（+6%）：</strong>三点理由 —— (i) 蚂蚁等加速自建车抵贷；(ii) 溢出消金客户质量偏低，易鑫刻意放慢节奏；(iii) 跨平台消金信用风险传染。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">估值笔记 &middot; 4 月</span><strong>12x 2026E P/E vs 历史均值 9.5x（溢价 26%）：</strong>中国互联网金融罕见的高增长（10%+ 收入、50%+ 利润增速）支持一定溢价，但若按 2027E 净利 18.3 亿元给 8x 远期 PE，对应约 146 亿元市值 —— 较现价上行空间有限。</li></ul></div>
+                <div id="yx-co" class="tab-pane"><ul><li>FY25 业绩：总 GMV 751 亿元（+9%，超指引 720 亿元）；收入首次突破 100 亿元达 115.6 亿元（+17%）；Non-GAAP 净利 14.3 亿元（+33%）。毛利率 56%（+9ppt）。</li><li>SaaS 收入 45 亿元（同比 +150%），占总收入 39%，已成第一大板块。核心机构合作伙伴从 17 家增至 24 家；核心客户均收入 1.86 亿元。</li><li>二手车（含车抵贷）GMV 421 亿元（+38%）；平台 take rate 由 3.7% 升至 5.1%。新车 GMV 331 亿元（-15%），主动从价格战板块撤退。</li><li>FY25 派息 0.14 港币/股，约 8.4 亿元（派息率 58%）。2025 年推出自研金融大模型 XinMM-AM1 —— 自动审批率提升至 63%。</li><li>海外：新加坡稳定盈利，GMV 约 15 亿元（非银前三）；马来西亚 4Q25 进入，3 个月内月度新增贷款超过 1,500 万美元。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">QFIN</div>
+                <div class="company-info"><div class="company-name">Qifu Technology</div><div class="company-desc">中国消费信贷科技 &middot; QFIN</div></div>
+                <span class="perf-pill down">-1.5%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'qfin-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'qfin-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'qfin-co')">公司动态</div>
+                </div>
+                <div id="qfin-ov" class="tab-pane active">奇富是中国助贷行业的风向标，小贷新规（央行 247 号文/2025）使 2026 年成为结构性盈利底。战略转向是从 APR 24+ 高息（清退）切换至 APR 24- 产品（如"智信 G"），优质客户以更低收益率迁移、风险由资金方承担。4Q25 投放量 703 亿元（环比 -16%），表内 1,260 亿元；新发放贷款 IRR 19.5%，朝约 18% 走。Non-GAAP 净利 10.7 亿元（同比 -46%），含一次性可转债收益。核心争议：传闻中针对互联网银行的 12-18% 利率压缩压力测试是否落地（可能让业务规模减半）？还是保持结构性/部分性？以 2026E 3x P/E、约 9% 股息率叠加 4.6 亿元回购弹药，下行有资本回报托底 —— 上行取决于下半年信用成本是否正常化。</div>
+                <div id="qfin-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">瑞银 &middot; 3 月</span><strong>买入，目标价 US$20.70：</strong>模型 2026E Non-GAAP 净利 34 亿元。基本假设 18% 利率上限落地；下行情景预计季度盈利持续下滑至 2027Q2。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">花旗 &middot; 3 月</span><strong>买入，目标价 US$32（小幅下调）：</strong>卖方中最乐观 —— 认为 3x 远期 PE 已充分定价监管压制。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根大通 &middot; 3 月</span><strong>中性，目标价 US$14：</strong>2026E Non-GAAP 净利 33 亿元，但对监管情景的极端尾部权重导致目标价被压低。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">管理层指引 &middot; FY26</span><strong>Non-GAAP 净利 30-40 亿元；1Q26 投放量约 600 亿元（环比 -15%）：</strong>1Q26 IRR 19-19.5%，ROA 约 3%，净利 9-9.5 亿元（剔除可转债收益 7.5-8 亿元）。House view 28-32 亿元，偏区间下沿。</li></ul></div>
+                <div id="qfin-co" class="tab-pane"><ul><li>4Q25 业绩：投放量 703 亿元（同比 -21.8%）；收入 41 亿元（同比 -8.7%，较 House 低 10%）；Non-GAAP 净利 10.7 亿元，含 2.7 亿元可转债一次性收益。C-M2 比率 0.97%（环比 +18bps，接近疫情峰值）；30 天回收率 84%（同比 -400bps）。</li><li>2025 年 12 月：央行 247 号文发布 —— 小贷新发放贷款利率上限将逐步降至 1 年期 LPR 的 4 倍（约 12%）；高息存量需在 2027 年底前清零（2 年过渡期）。</li><li>2026 年 1-2 月：监管对部分互联网银行进行 12-18% 利率压缩压力测试。管理层认为 18% 在规模收缩下可承受；12% 将相当严苛。</li><li>资本回报：以 3.99 亿美元回购了 4.6 亿美元面值的可转债（4.2 亿美元一次性收益分拆为 4Q25 2.7 亿元 / 1Q26 1.5 亿元）。原 4.5 亿美元回购授权暂停以等待监管明朗。FY25 派息 14 亿元（派息率 24%）。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="sector-hdr">信用评分 / 征信局 <span class="count">4 家</span></div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">FICO</div>
+                <div class="company-info"><div class="company-name">Fair Isaac Corp.</div><div class="company-desc">美国信用评分 &middot; FICO</div></div>
+                <span class="perf-pill flat">[待填充]</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'fico-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'fico-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'fico-co')">公司动态</div>
+                </div>
+                <div id="fico-ov" class="tab-pane active placeholder">[待填充]</div>
+                <div id="fico-br" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+                <div id="fico-co" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">EFX</div>
+                <div class="company-info"><div class="company-name">Equifax</div><div class="company-desc">美国征信局 &middot; EFX</div></div>
+                <span class="perf-pill down">-2.6%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'efx-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'efx-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'efx-co')">公司动态</div>
+                </div>
+                <div id="efx-ov" class="tab-pane active">Equifax 4 月 21 日披露 1Q26：收入 16.5 亿美元（同比 +14.3% / 有机增长 +13%）超预期 16.2 亿美元；调整后 EBITDA 4.77 亿美元，高于市场约 4%；调整后 EPS $1.86 vs 共识 $1.69。USIS 大幅增长 +21.1%（Online +23.6%、按揭相关 +60%），但主要来自 FICO 批发提价的"过手"—— 接近零利润。Workforce Solutions / The Work Number（真正的护城河，EBITDA 利润率 52%）增长 +10.4%，验证类业务 +13.8%。两大压力点拖累股价：(1) 按揭强势在季度中段反转，因伊朗事件推升利率；(2) 政府验证类 1Q 仅 +14-17%（低于杰富瑞 17.5%），2Q 指引同比持平 —— 州级 OB3 合同启动慢于预期，效益后移至 2H26 / 2027。FY26 EPS 指引上调至 $8.34-$8.74（汇率因素）。真实尾部风险：FHFA 局长 Pulte 已将关注从 FICO 定价转向征信局费用。</div>
+                <div id="efx-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">高盛 &middot; 4 月 21 日</span><strong>1Q 喜忧参半 —— 按揭季中反转，OB3 效益后移（中性）：</strong>承认表观大超预期，但指出 FICO 零利润过手结构性压制 EBITDA 利润率（FY25 占收入约 3%，FY26 约 6%）。政府验证类爬坡慢于预期；担忧"剔除 FICO 后有机增长"的持续性。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根士丹利 &middot; 4 月 21 日</span><strong>1Q 按揭超预期、政府类指引偏弱（增持，目标价 $243，前值 $244）：</strong>基于 DCF，约 14x 2026 EV/EBITDA。剔除 FICO 后利润率同比 +70-80bps 才是真正的信号；FY26 剔除 FICO 有机收入 +5.5%-7.5%、剔除 FICO 利润率 +50-100bps 维持不变。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">杰富瑞 &middot; 4 月 24 日</span><strong>监管风险与政府验证展望是焦点（买入，目标价 $200，前值 $220）：</strong>下调目标价但维持买入。两大锚点：(1) FHFA 局长 Pulte 已从 FICO 定价转向征信局费用 —— 可能是远比 VantageScore 4.0 更大的尾部风险（VS4 即使 100% 渗透也仅增加约 1 美元/份）；(2) 州级 OB3 合同从"2026 年加速"推迟至"2H26 启动、2027 年爬坡"。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">花旗 &middot; 4 月 21 日</span><strong>模型更新，目标价 $238（前值 $256）：</strong>将 2Q26-4Q26 按揭量假设从同比 +20% 下调至持平。对 2027E EPS $11.04 应用 21.6x P/E。乐观情形需 2027 按揭量回归正常（+20%）+ VS4 不分流 + 无进一步监管压力。</li></ul></div>
+                <div id="efx-co" class="tab-pane"><ul><li>1Q26 业绩（4 月 21 日）：收入 16.5 亿美元（同比 +14.3% / 有机 +13%，超共识 16.2 亿美元）；调整后 EBITDA 4.77 亿美元（高于约 4%）；调整后 EBITDA 利润率报表 -30bps，剔除 FICO +70-80bps；调整后经营利润率 17.8%（共识 16.3%）；调整后 EPS $1.86（共识 $1.69，摩根士丹利 $1.63，杰富瑞 $1.74）。</li><li>分部表现：USIS 6.06 亿美元（+21.1%，Online +23.6%、Financial Marketing +0.2%）—— 按揭相关 USIS +60%，主要受 FICO 批发提价过手驱动。Workforce Solutions 6.83 亿美元（+10.4%）；验证服务 +13.8%（按揭验证 +14%、政府验证 +14-17%、Diversified Markets +14%、Talent 高个位数）；雇主服务 -4.0%。International 3.6 亿美元（汇率中性 +4%）。</li><li>FY26 指引维持/上调：剔除 FICO 收入增长 +5.5-7.5%（汇率中性），含 FICO 及汇率 +7-9%；调整后 EPS 上调至 $8.34-$8.74（汇率因素 +$0.04）；剔除 FICO EBITDA 利润率 +50-100bps；按揭量全年低个位数下降（比市场更保守）。2Q26 指引：剔除 FICO 收入 +5.5-7.5%，EPS $2.15-$2.25；2Q 政府验证类同比持平（SSA 高基数与州级 OB3 合同进度慢）。</li><li>FICO 相关项：FICO 收入占比由 FY25 约 3% 升至 FY26 约 6%（批发提价过手，基本零利润）。管理层 FY26 假设 (i) FICO Mortgage Direct License Program 不影响 EFX，(ii) VantageScore 不分流按揭份额。3 年内 AI 驱动节省成本约 7,500 万美元/年；约 90% 收入来自自有数据。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">EXPN</div>
+                <div class="company-info"><div class="company-name">Experian</div><div class="company-desc">英国 / 全球征信局 &middot; EXPN.L</div></div>
+                <span class="perf-pill flat">[待填充]</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'expn-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'expn-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'expn-co')">公司动态</div>
+                </div>
+                <div id="expn-ov" class="tab-pane active placeholder">[待填充]</div>
+                <div id="expn-br" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+                <div id="expn-co" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">TRU</div>
+                <div class="company-info"><div class="company-name">TransUnion</div><div class="company-desc">美国征信局 &middot; TRU</div></div>
+                <span class="perf-pill up">+1.4%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'tru-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'tru-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'tru-co')">公司动态</div>
+                </div>
+                <div id="tru-ov" class="tab-pane active">TransUnion 4 月 28 日披露 1Q26：收入 12.46 亿美元，超指引上限（11.95-12.05 亿美元）约 4,100 万美元；OCC +11%（剔除 FICO Royalty +7%）；调整后 EPS $1.18，高于指引上限 $0.08。美国市场 OCC +14% —— 美国金融服务剔除按揭后 +14%，其中消费贷 +13%、汽车 +11%、信用卡/银行 +5%。按揭收入 +50%（剔除 FICO +24%），查询量仅 +7% —— 纯 FICO 批发提价过手 + TRU 自身提价。EBITDA 利润率 35.2%（同比 -100bps），主要受 FICO Royalty 拖累（-120bps）。国际 OCC 持平：印度 -5%（仍好于指引）、加拿大 +9%、英国 +7%、非洲 +10%、亚太 -18%。FY26 EPS 指引上调至 $4.68-$4.75（前值 $4.63-$4.71），反映 TU de Mexico 收购完成（约 6.6 亿美元）。同周 VantageScore 4.0 在 GSEs / FHA 落地确认，价格 $0.99/份 —— 管理层明确表示 FY26 指引"不含份额转移收入"，2026 是"学习、测试、过渡之年"。</div>
+                <div id="tru-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">高盛 &middot; 4 月 28 日</span><strong>初读 —— 按揭强势带动收入超预期（中性）：</strong>表观大超预期清晰，但高盛指出剔除 FICO Royalty 过手后增长减速至 +7%，且 EBITDA 利润率受零利润 Royalty 收入结构性压制（1Q26 拖累 -120bps）。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根士丹利 &middot; 4 月 28 日</span><strong>1Q 稳健、指引维持 = 符合预期（增持，目标价 $100）：</strong>对应约 11x 2026 EV/EBITDA、上行约 30%。保守的指引在趋势延续下留有超预期空间。印度 FY26 由 +6% 下调至 +2%；中期看印度回升至低双位数是关键解锁。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">杰富瑞 &middot; 4 月 28 日</span><strong>业绩稳健、符合预期（买入，目标价 $95，前值 $105）：</strong>下调目标价。指出指引可信度下降 —— 管理层过于保守，使指引与实际之间的差距加大，建模难度上升，季度报"超预期惊喜"成色降低。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">管理层 &middot; 4 月 28 日</span><strong>FY26 指引因 TU de Mexico 上调，有机部分不变：</strong>收入上调至 51-51.35 亿美元（同比 +11-12%，M&amp;A +3.5%）；有机 OCC +8-9%（剔除 FICO +5-6%）维持；调整后 EBITDA 17.96-18.16 亿美元（利润率 35.2-35.4%，-60-80bps，FICO Royalty -90bps + M&amp;A -40bps 抵消基础 +50-70bps）；调整后 EPS $4.68-$4.75（前 $4.63-$4.71）。净利息支出上调至 2.45 亿美元（前值 2.20 亿美元）。按揭查询量指引下调至中个位数下降。"若当前趋势延续，预计达到或超越指引上限。"</li></ul></div>
+                <div id="tru-co" class="tab-pane"><ul><li>1Q26 业绩（4 月 28 日）：收入 12.46 亿美元，超指引上限（11.95-12.05 亿美元）4,100 万美元（剔除 TU de Mexico 2,200 万美元）；调整后 EBITDA 同比 +10%（超上限 1,800 万美元，剔除并购 800 万美元）；EBITDA 利润率 35.2%（同比 -100bps，FICO Royalty -120bps，M&amp;A +25bps）；调整后 EPS $1.18（同比 +12%，高于指引上限 $0.08，共识 $1.11）。</li><li>美国市场 OCC +14%（剔除 FICO Royalty +11%）；金融服务剔除按揭 +14%，其中消费贷 +13%、汽车 +11%、卡/银行 +5%。按揭报表 +50% / 剔除 FICO +24%，查询量仅 +7%（过手 + TRU 自身提价）。新兴垂直 +6%（保险双位数、公共部门高个位数）；Consumer Interactive 持平。</li><li>国际 OCC 持平：印度 -5%（略好于指引）、加拿大 +9%、英国 +7%、非洲 +10%、亚太 -18%（香港 MCRA 高基数 + 菲律宾基数）、拉美有机持平，含 TU de Mexico 同比 +56%。</li><li>资本：完成 TU de Mexico 收购约 6.6 亿美元（持股 26% → 94%），使用 5.2 亿美元循环贷 + 现金；净负债 56 亿美元 / 现金 7.33 亿美元 / 杠杆率 2.8x（目标 ≤2.5x）；10 亿美元授权下年初至今回购 2,500 万美元，节奏将加快。同周 VantageScore 4.0 在房利美/房地美 + FHA 确认上线，价格 $0.99/份；管理层明确将份额转移收入排除在 FY26 指引外，并将 2026 定性为"学习、测试、过渡之年"。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="sector-hdr">支付 <span class="count">8 家</span></div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">V</div>
+                <div class="company-info"><div class="company-name">Visa</div><div class="company-desc">全球卡组织网络 &middot; V</div></div>
+                <span class="perf-pill down">-0.9%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'v-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'v-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'v-co')">公司动态</div>
+                </div>
+                <div id="v-ov" class="tab-pane active">Visa 4 月 29 日披露 F2Q26：净收入 112 亿美元（同比 +17%，汇率中性 +16%）—— 自 2022 年以来最强增速，超市场 5ppt，是 4 年来最大幅度。调整后 EPS $3.31（+20%），超共识 $3.07。该业绩中和了三大空头逻辑：跨境并未崩塌（4 月剔除欧洲 CC +9%，主要受斋月/中东时点扰动）、稳定币尚未脱媒（管理的资金流仍小）、Agentic 商务可在 Visa 轨道上运行。管理层将 FY26 收入增速上调至"低双位数到 low-teens"。单季回购 79-80 亿美元 —— Visa 史上最大，叠加新增 200 亿美元多年期授权（总额度约 330 亿美元），是反脱媒叙事的强力资本回报信号。</div>
+                <div id="v-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根大通 &middot; 4 月 29 日</span><strong>重申增持，2026 年首选：</strong>F2Q26 净收入超共识 5ppt —— 4 年最大幅度。代币化重新定价将于 F3Q26 生效（约 +1ppt 收入贡献）。目标价框架对应约 $411 区间。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根士丹利 &middot; 4 月 29 日</span><strong>增持，目标价 $411 ——「护城河扩大的证明点」：</strong>VAS 33 亿美元（CC +27%，占收入 30%）是结构性重估锚。业绩后股价 +5%，FY26 指引上调。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">花旗 &middot; 4 月 28 日</span><strong>买入，目标价 $400 ——「担忧之下仍有显著上行」：</strong>跨境剔除欧洲 CC +11% 与 1Q 持平，尽管 4 月有斋月/中东拖累；CEMEA 仅占总 PV 约 6%。FIFA + 美国入境低基数构成 2H 反弹动能。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">高盛 &middot; 4 月 29 日</span><strong>「大幅超预期 + 指引上调」，估值处于历史低位：</strong>盈利预测上调。VAS 增长 + 收入率扩张未充分体现在估值中；Agentic / 稳定币折价提供重估期权。</li></ul></div>
+                <div id="v-co" class="tab-pane"><ul><li>F2Q26（4 月 29 日）：净收入 112 亿美元（同比 +17%，CC +16%）；调整后 EPS $3.31（+20%，超 $3.07）；全球支付量 3.73 万亿美元，CC +9%；剔除欧洲跨境 CC +11%；处理交易笔数 660 亿（+9%）。</li><li>VAS 收入 33 亿美元，CC +27%，占总收入 30%。与稳定币挂钩的卡项目全球达 160+，交易量同比 +200%；稳定币结算年化运行率 70 亿美元（环比 +50%），新增 5 条链至共 9 条。</li><li>资本回报：单季回购 79-80 亿美元（历史纪录）；股息 13 亿美元；4 月董事会授权新增 200 亿美元多年期回购 —— 总额度约 330 亿美元 vs 此前剩余 130 亿美元。</li><li>FY26 指引上调：CC 净收入增速由"低双位数"上调至"低双位数到 low-teens"；CC EPS 增速由"低双位数上沿"上调至"low-teens"。代币化重新定价 F3Q26 生效。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">MA</div>
+                <div class="company-info"><div class="company-name">Mastercard</div><div class="company-desc">全球卡组织网络 &middot; MA</div></div>
+                <span class="perf-pill down">-1.4%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'ma-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'ma-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'ma-co')">公司动态</div>
+                </div>
+                <div id="ma-ov" class="tab-pane active">Mastercard 4 月 30 日披露 1Q26：调整后 EPS $4.60，超共识 $4.39 约 5%；有机收入 CC +12%（vs 指引"低双位数下沿"）；支付网络净收入 +12%；VAS CC +18%（vs 整体 +12%），延续 6ppt 对网络业务的跑赢。经营利润率扩张约 150bps，是卖方预期的两倍。尽管业绩超预期，发布当日股价 -4%，因 4 月跨境减速至 +9%（1Q +13%），剔除欧洲后高收益部分跌至仅 +6% —— 受中东冲突、OTA/英国发卡组合流失、假日时点拖累。花旗目标价 $675、摩根士丹利 $678；两家均指出 MA 与 V 同档估值但长期增长更高，且较自身历史折价。Agent Pay（所有品牌卡均已激活）与拟收购的 BVNK 稳定币业务，将 MA 从被颠覆者重新定位为网络扩张的进攻方。</div>
+                <div id="ma-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根士丹利 &middot; 5 月 1 日</span><strong>增持，目标价 $678 ——「在艰难宏观中展现韧性」：</strong>MA/V 与银行股反向波动；近期跑输是轮动驱动，非基本面问题。中东旅游敞口仅占收入 1-2%。Agentic / 稳定币的颠覆担忧过度 —— 网络经济性、结算速度与合规护城河仍完好。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">花旗 &middot; 5 月 1 日</span><strong>买入，目标价 $675 ——「跨境旅游中的组合扰动」：</strong>4 月跨境 +9% vs 1Q +13% 的解释是中东 + OTA/英国发卡组合流失 + 假日时点。若中东冲突延续超过 2Q，预计全年收入拖累 -1ppt。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">高盛 &middot; 5 月 10 日</span><strong>管理层会议 —— 对 Agent Pay + BVNK 偏建设性：</strong>管理层对 Agentic 商务的姿态从"评估威胁"转向"作为催化剂执行"。看好 BVNK 收购（缩短稳定币上市时间、批量获取监管牌照）。MA 较自身历史显著折价，但增速快于 V。</li></ul></div>
+                <div id="ma-co" class="tab-pane"><ul><li>1Q26（4 月 30 日）：调整后 EPS $4.60 超 $4.39（+5%）；有机收入 CC +12%；支付网络净收入 +12%；VAS CC +18%；美国消费量 +5.0%（环比 +30bps）；跨境 CC +13%；经营利润率同比 +150bps。</li><li>4 月趋势（摩根大通跟踪）：跨境减速至 +9%（vs 1Q -4ppts）；剔除欧洲的高收益跨境仅 +6%（-6ppts）；美国处理量稳定于 +5%；欧洲内部跨境 +11%（-3ppts）。</li><li>战略动作：Mastercard Agent Pay（2025 年 4 月推出）通过 LLM 合作已激活近所有品牌卡 —— 2025 年 Q3 首笔交易完成；BVNK 稳定币收购已宣布、待交割 —— 将合规稳定币平台接入 MA 轨道。</li><li>FY26 指引：CC 有机收入"低双位数上沿"维持，报表口径因汇率上调至"低双位数中段"。2Q 指引"低双位数下沿"CC —— 被视为保守，假设 2Q 内中东事态缓解。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">AXP</div>
+                <div class="company-info"><div class="company-name">American Express</div><div class="company-desc">美国卡发行商 &middot; AXP</div></div>
+                <span class="perf-pill down">-2.2%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'axp-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'axp-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'axp-co')">公司动态</div>
+                </div>
+                <div id="axp-ov" class="tab-pane active">American Express 4 月 23 日披露 1Q26：调整后 EPS $4.28，超 $4.07 约 $0.22；收入 189 亿美元（+11%，汇率中性 +9.9%）超 186 亿美元；账单业务 4,850 亿美元（+10%，FX 调整 +9%）季节性表现热。国际账单 FX 调整 +13% 领涨；T&amp;E +9%、头等舱机票 +12%；美国千禧/Z 世代账单 +13%/+38%。尽管超预期，发布当日股价 -4.31%（板块 -1.46%），因管理层将上行空间全部用于再投资：营销增速指引由"低个位数"上调至"中个位数"，FY26 EPS 指引维持 $17.30-$17.90（暗示剩余三个季度仅同比 +10-15%）。2Q/3Q 两大结构性逆风：Lowe's（7 亿美元）与 Amazon（16 亿美元）商业卡组合退出，将机械性拖累账单业务增长。白金卡续约率"非常高"，验证了提价后的高端会员制逻辑。</div>
+                <div id="axp-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">杰富瑞 &middot; 4 月 23 日</span><strong>目标价上调至 $350 ——「消费动能驱动 EPS 上行，但成本同步抬升」：</strong>1Q EPS $4.28 干净超预期，但管理层将 FY26 营销增速由低个位数上调至中个位数 —— 良好的近期消费趋势正被再投资，而非流入 EPS。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根士丹利 &middot; 4 月 24 日</span><strong>「为长期增长再投资」—— 2026E EPS $17.65：</strong>1Q VCE/收入比 44.7%（vs 全年指引 44%）意味着剩余季度必须放缓。未来 12 个月计划推出 8 款新/换代商业卡 —— 近一年来最大规模产品扩张。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">花旗 &middot; 4 月 28 日</span><strong>1Q26 模型更新 —— 2026E/2027E EPS $17.60/$19.95：</strong>净核销率 2.3%（同比 -10bps），接近疫情前均值 1.84% —— 二阶改善收窄。准备金率从 2.9% 下调至 2.8%。拨备 12.5 亿美元，低于市场预期 13.4 亿美元。</li></ul></div>
+                <div id="axp-co" class="tab-pane"><ul><li>1Q26（4 月 23 日）：调整后 EPS $4.28 vs 市场 $4.07；收入 189 亿美元（+11%，FX 调整 +9.9%）；账单业务 4,850 亿美元（+10%）；NII 46.9 亿美元（+13%）；持卡人贷款 975 亿美元（同比 +8.2%，环比 +2.5%）；新增卡 310 万张（前季 290 万）。</li><li>FY26 指引：收入 +9-10% 维持；EPS $17.30-$17.90 维持；营销增速由低个位数上调至中个位数；VCE/收入比维持约 44%（暗示从 1Q 的 44.7% 回落）。</li><li>商业卡组合退出：Lowe's 7 亿美元 2Q26 退出；Amazon 16 亿美元 3Q26 退出 —— 2H 账单业务的机械性拖累。相关拨备此前已在分类为持有待售时释放。</li><li>资本：2026 年初股息上调 16%；资本回报率约 3.7%。管理层认为巴塞尔 III 终局影响"中性至略偏正面"（vs 原方案将消耗超额资本）。Cat II 合规通过美联储信函获得过渡期（3 月 10 日）。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill" style="background:#635bff;">STRP</div>
+                <div class="company-info">
+                    <div class="company-name">Stripe &nbsp;<span class="badge badge-private">未上市</span></div>
+                    <div class="company-desc">美国支付基础设施 &middot; 仅业务更新</div>
+                </div>
+                <span style="font-size:11px;color:#9ca3af;padding:0 8px;">无股票数据</span>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body">
+                <div class="tab-bar"><div class="tab active" onclick="switchTab(this,'strp-up')">公司动态</div></div>
+                <div id="strp-up" class="tab-pane active placeholder"><ul><li>[待填充]</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">ADYN</div>
+                <div class="company-info"><div class="company-name">Adyen</div><div class="company-desc">欧洲支付平台 &middot; ADYEN.AS</div></div>
+                <span class="perf-pill flat">[待填充]</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'adyn-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'adyn-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'adyn-co')">公司动态</div>
+                </div>
+                <div id="adyn-ov" class="tab-pane active placeholder">[待填充]</div>
+                <div id="adyn-br" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+                <div id="adyn-co" class="tab-pane placeholder"><ul><li>[待填充]</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">PYPL</div>
+                <div class="company-info"><div class="company-name">PayPal</div><div class="company-desc">美国数字支付 &middot; PYPL</div></div>
+                <span class="perf-pill down">-10.6%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'pypl-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'pypl-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'pypl-co')">公司动态</div>
+                </div>
+                <div id="pypl-ov" class="tab-pane active">PayPal 5 月 5 日披露 1Q26，新任 CEO Enrique Lores（前 HP CEO，2026 年 3 月接任）首次主持。表观超预期：调整后 EPS $1.34 vs 市场 $1.27（同比 +1%）；TPV CC +11%（vs 市场 +7%）；品牌结账 TPV FXN +2%（环比加速 +1ppt）；交易利润金额 +3%。但发布当日股价 -8%，因 2Q EPS 指引同比 -9%（vs 市场 -5%），品牌结账 QTD 回落至约 +1%，且对快速剥离资产的预期被熄灭。关键战略宣布：未来 2-3 年节省 15 亿美元年化总成本（约占 2025 年非交易性运营支出 16%），100% 用于再投资 —— 投向结账、Venmo 与支付服务。花旗目标价 $48（买入），摩根大通中性，摩根士丹利减持目标价 $34 —— 卖方分裂为 FCF 收益率多头（约 15%）与份额流失空头（Apple Pay、Shop Pay、Stripe）。</div>
+                <div id="pypl-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根大通 &middot; 5 月 5 日</span><strong>「业绩尚可、维持全年指引但 2Q 偏弱」—— 目标价 $46：</strong>1Q 超预期主要由其他增值/信贷驱动，非品牌业务核心。15 亿美元节省 = 2027E 调整后运营支出约 5%（非交易性约 15%）。品牌 FXN QTD 回落至约 1% —— 动能重置风险主导近期叙事。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">花旗 &middot; 5 月 5 日</span><strong>买入，目标价 $48 ——「自救最后一搏」：</strong>2Q 进展不及预期，增长步伐受限。15 亿美元节省暗示约 16% 人员裁减。支持 FCF 收益率（约 15%）作为下行保护的逻辑。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根士丹利 &middot; 4 月 30 日</span><strong>减持，目标价 $34 ——「业务拆分显示聚焦但再投资力度不足」：</strong>1Q26 Venmo 结账按钮历史首次出现商户净流出（毛流失 5.6%）。15x FCF（剔除股权激励）对应约 20% 下行空间；对 Apple Pay/Shop Pay/Stripe 的份额流失是结构性而非周期性。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">瑞银 &middot; 5 月 5 日</span><strong>目标价 $44 ——「重述」：</strong>预计 2026 年再投资将压缩品牌 take rate 约 6bps。2026 年调整后 FCF 约 60 亿美元（扣除约 10 亿美元股权激励后约 50 亿美元）。品牌结账净 take rate 1.6-1.7%。</li></ul></div>
+                <div id="pypl-co" class="tab-pane"><ul><li>1Q26（5 月 5 日）：调整后 EPS $1.34（+1%，vs 市场 $1.27）；TPV FXN +11%；品牌结账 TPV FXN +2%（环比 +1ppt）；Venmo TPV FXN +14%；PSP TPV FXN +11%；OVAS 收入 +10%；调整后经营利润率 18.4%；非交易性运营支出同比 +8%（高于市场 +5%）。</li><li>宣布 15 亿美元年化节省计划 —— 2-3 年内通过组织扁平化、AI 在研发/客服的应用、运营升级、工程效率实现。100% 再投资至结账方案、Venmo 与支付服务。</li><li>指引：FY26 交易利润金额维持"小幅下降"；FY26 调整后 EPS 由"低个位数下降"上调至"小幅正增长"；2Q26 交易利润金额低个位数下降；2Q26 EPS 同比约 -9%。2026 年消费者参与度投资 4 亿美元（约 2.7 亿至品牌结账，约 1.3 亿至 Agentic + Venmo 忠诚度）。</li><li>新任 CEO Enrique Lores（2026 年 3 月由董事会接任；前 HP CEO）确认三大业务部：结账方案与 PayPal；消费金融服务与 Venmo；支付服务（含 Braintree）。明确拒绝剥离 —— 排除快速催化的可能。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">TOST</div>
+                <div class="company-info"><div class="company-name">Toast</div><div class="company-desc">美国餐饮支付 / SaaS &middot; TOST</div></div>
+                <span class="perf-pill down">-17.7%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'tost-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'tost-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'tost-co')">公司动态</div>
+                </div>
+                <div id="tost-ov" class="tab-pane active">Toast 5 月 8 日交付了"增长与利润双优"的 1Q26：收入 16.3 亿美元（同比 +22%），活跃门店 17.1 万（+22%，净增 7,000 家超市场）；GPV 513 亿美元（+22%）；SaaS 毛利率首次突破 80% 至 81%；GAAP 经营利润率首次过 20%。调整后 EBITDA 1.79 亿美元（33.8% 利润率）超共识 1.69 亿美元 6%。卖方核心争议是 2Q26 EBITDA 指引 1.85-1.95 亿美元（低于市场约 7-8%），以及管理层指出 2027 年硬件拖累将超过 2026 年（DRAM 价格上行 + 关税，约拖累 FY26 EBITDA 150bps）。对冲：FY26 EBITDA 指引上调至 7.9-8.1 亿美元，长期 40%+ EBITDA 目标重申，年初至今回购 4 亿美元。远期 P/E &lt;15x、PEG 约 0.5x，被卖方视为最佳入场窗口。</div>
+                <div id="tost-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">高盛 &middot; 5 月 8 日</span><strong>季报稳健但 EBITDA 不及市场 —— 硬件评论将压制：</strong>Will Nance 将 1Q26 定性为经常性毛利润（+27% 同比，超共识约 4%）与运营杠杆的干净超预期，但指出 2Q26 EBITDA 指引偏软，以及 2027 年硬件 P&amp;L 拖累将超过 2026 年的不寻常表态（DRAM 与关税成本同时冲击）。估值约 16x 2027 EBITDA-SBC；问题定性为「真实但暂时」。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根士丹利 &middot; 5 月 8 日</span><strong>增长与利润双优的故事完好：</strong>Josh Baer 强调连续第 20 个季度同比净增门店加速、SaaS 毛利率破 80%、GAAP 经营利润率破 20%，总变现 take rate 首次过 1%（103bps，同比 +5bps）。将 AI 风险定性为低、AI 机会全开；20%+ 增速公司远期 P/E &lt;15x、PEG 约 0.5x 被称为"明显错配"。增持。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">杰富瑞 &middot; 5 月 8 日</span><strong>持续存储器逆风压制前景：</strong>Samad Samana 维持持有 —— 经常性毛利润指引中值（约 5.7 亿美元）低于市场约 1%，2Q EBITDA 指引低约 8%；警告同店 GPV 同比 -1% 显示中小餐饮疲弱。承认 Toast Capital 与 Toast IQ Grow（试点带动商户 GPV +8%）是正确的长期杠杆。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">管理层 &middot; 5 月 8 日</span><strong>FY26 指引上调，长期 40%+ EBITDA 利润率维持：</strong>经常性毛利润上调至 22.9-23.2 亿美元（同比 +21-23%）；调整后 EBITDA 上调至 7.9-8.1 亿美元（中值利润率约 34.7%）。硬件：FY26 EBITDA 拖累约 150bps，2027 影响大于 2026 但"非结构性"。AI 内部：工程编码效率同比 +60%，AI 解决 40% 客服交互。年初至今回购 1,400 万股 / 约 4 亿美元，剩余约 2 亿美元。</li></ul></div>
+                <div id="tost-co" class="tab-pane"><ul><li>1Q26 业绩（5 月 8 日）：收入 16.3 亿美元（同比 +22%），活跃门店 17.1 万（+22%，净增 7,000 家，连续第 20 个季度同比净增加速 —— 摩根士丹利），GPV 513 亿美元（+22%），ARR 21.51 亿美元（+26%）。支付 take rate 51bps（+2bps）；金融科技净 take rate 61bps；总变现 take rate 103bps —— 首次过 1%。</li><li>SaaS 毛利率 81%（同比 +约 300bps，首次过 80%）；经常性毛利润 5.29 亿美元（+27%，超市场约 4%）；调整后 EBITDA 1.79 亿美元 / 33.8% 利润率（市场 1.69 亿美元）；GAAP 经营利润率 21%（首次过 20%）；GAAP EPS $0.20（同比翻倍以上）。</li><li>2Q26 指引：经常性毛利润 5.65-5.75 亿美元，调整后 EBITDA 1.85-1.95 亿美元（33.3% 利润率，低于市场约 8%）；FY26 指引上调 —— 经常性毛利润 22.9-23.2 亿美元，调整后 EBITDA 7.9-8.1 亿美元；FY26 净增门店超 FY25；SaaS ARPU 中个位数增长。</li><li>Toast IQ 周活跃门店 4 万家（覆盖 &gt;50% 客户）；Toast IQ Grow 试点带动参与商户 GPV +8%。同店 GPV 同比 -1%（管理层称"处于合理区间"）；新增 TAM 推动 —— 得来速（约 14 万家潜在门店）、披萨（Hungry Howe's、Papa Murphy's 已签约）、杂货（&gt;2 万家独立店）以及国际市场（一线城市打法）。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">SHOP</div>
+                <div class="company-info"><div class="company-name">Shopify</div><div class="company-desc">全球电商 / 支付 &middot; SHOP</div></div>
+                <span class="perf-pill down">-19.6%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'shop-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'shop-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'shop-co')">公司动态</div>
+                </div>
+                <div id="shop-ov" class="tab-pane active">Shopify 1Q26（5 月 5 日披露）连续第 4 个季度 GMV 增长 30%+：GMV 1,007 亿美元（同比 +35% / 汇率中性 +30%），收入 31.7 亿美元（+34%），调整后经营利润率 16.5%（+256bps），FCF 利润率 15.0%。北美 +33%（4 年最强）、欧洲 +42%。真正的故事是 Agentic 商务的重新定位：Shopify 与 Google 共建 Universal Commerce Protocol（UCP），并将 Amazon、Meta、微软、Salesforce、Stripe 拉入其 Tech Council；AI 驱动流量同比 +8 倍，AI 搜索订单 +13 倍，Shop Pay GMV +59%（国际 +70%+）。股价压力来自 2Q26 FCF 利润率指引"mid-teens"（剔除会计调整后约 &lt;15%），以及大商户 + 支付渗透带来的毛利率压缩。卖方下调目标价（花旗 $156、瑞银 $130）但维持买入；年初至今 -19%。</div>
+                <div id="shop-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">花旗 &middot; 5 月 6 日</span><strong>顶线动能延续，Agentic 牵引力构建中：</strong>买入/高风险，目标价由 $163 下调至 $156，对应 2027 EV/Sales 约 10.5x。收入超预期约 2.5%，Merchant Solutions take rate 环比 +6bps 至 2.40%；UCP 加上 Stripe 默认 BNPL 的布局被定性为 Agentic 商务的进攻姿态。2Q26 指引：收入"高 20s"/ 毛利"中 20s"/ 运营支出 35-36%/ FCF 利润率 mid-teens —— 疲弱被称为"买入机会"。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">摩根士丹利 &middot; 5 月 5 日</span><strong>AI 在加速飞轮：</strong>增持。Sidekick 周活商户同比 +4 倍，季内创建定制应用 &gt;1.2 万个，近一半新 Shopify 流程由 AI 构建。内部 AI 让员工总数持平/下降 —— 运营支出比由 1Q25 的 41% 降至 37%。对"LLM 成本压制毛利率"的观点："很可能被证明站不住脚"。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">杰富瑞 &middot; 5 月 5 日</span><strong>业绩强、但前瞻略缺乏惊喜：</strong>持有偏正面。长期逻辑完好，但 2Q26 剔除会计调整后 FCF 利润率 &lt;15%、超预期幅度收窄（约 3.5pt vs 此前几个季度）将限制近期估值扩张。专家访谈：Agentic 商务将成为有意义的销售渠道；Shopify 凭借开发者生态与 UCP 在帮助商户部署方面定位最佳。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">瑞银 &middot; 5 月 5 日</span><strong>目标价由 $145 下调至 $130：</strong>对应 18x EV / 2027 非 GAAP 毛利润（前值 20x）。瑞银映射的几乎所有 Agentic 场景（ACP、UCP、Meta checkout）中，Shopify Payments 仍处理商户支付 —— 只有 Amazon 与 TikTok Shop 绕开 —— 单位经济性被定性为可防御。</li></ul></div>
+                <div id="shop-co" class="tab-pane"><ul><li>1Q26 业绩（5 月 5-6 日）：GMV 1,007 亿美元（同比 +35% / 汇率中性 +30%）；收入 31.7 亿美元（+34%）；Merchant Solutions 24.2 亿美元（+39%，take rate 2.40%，环比 +6bps）；订阅 7.5 亿美元（+21%，MRR 2.12 亿美元）；GAAP 经营利润率 12.1%（vs 市场 10.8%）；调整后经营利润率 16.5%（+256bps）；FCF 4.76 亿美元（15.0% 利润率）；非 GAAP EPS $0.36。</li><li>Shopify Payments GPV 670 亿美元（+41%），渗透率 67%；Shop Pay GMV 350 亿美元（+59%，国际 +70%+）；"Sign in with Shop"验证同比 +3 倍。B2B GMV +80%；线下 GMV +33%；国际 GMV +45%（占总 16%）。新增企业客户：LVMH、Victoria's Secret's Body、Lands' End、Mulberry、BevMo!、Rag &amp; Bone、Reitmans、Vail Resorts' Epic Shop。</li><li>Agentic 商务栈：UCP 与 Google 共建，Tech Council 含 Amazon、Meta、微软、Salesforce、Stripe。AI 驱动流量同比 +8 倍；AI 搜索订单 +13 倍；AI 渠道新买家下单率为其他渠道 2 倍。商品目录已结构化 &gt;10 亿件商品；基于目录的 AI 搜索转化率为普通 AI 搜索 2 倍。</li><li>2Q26 指引：收入增速"高 20s"，毛利"中 20s"，运营支出 35-36%，FCF 利润率"mid-teens"（含约 50bps 来自商户预付款会计调整；剔除调整后 &lt;15%）。Shopify Capital 在法国上线；20 亿美元回购授权进行中。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="sector-hdr">BNPL / 消费信贷 <span class="count">2 家</span></div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">AFRM</div>
+                <div class="company-info"><div class="company-name">Affirm</div><div class="company-desc">美国 BNPL &middot; AFRM</div></div>
+                <span class="perf-pill down">-0.9%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'afrm-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'afrm-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'afrm-co')">公司动态</div>
+                </div>
+                <div id="afrm-ov" class="tab-pane active">Affirm 是美国最大的独立 BNPL，定位为信用卡循环授信的挑战者：通过 Amazon 与 Shopify 的独家合作锁定线上分期入口，再以 Affirm Card（Evolve Bank 发行的借记卡）与 Apple Pay、Google Pay、Visa 灵活凭证的白标轨道延伸至线下。CY24Q4 是拐点：GMV 101 亿美元（+35.4%，超预期 5%），收入 8.66 亿美元（+47%，超预期 7%），Non-GAAP 经营利润率 27.4% vs 预期 22.1%，全年 OPM 指引由 20% 上调至 22.5-25%。逻辑与争议：信用卡循环授信"高利贷化"叙事（美国循环 APR 约 22.8%，平均余额约 5,300 美元）几乎无法反驳；公开问题包括 (i) Amazon 合约续约（Amazon+Shopify 合计 GMV 约 40%，2025 年 1 月 31 日到期），(ii) Affirm Card 单用户深度（月均消费 165 美元 vs Max 7,500 美元目标 = 45 倍缺口），以及 (iii) 衰退情景下信用损失的非线性（5.5% 准备金 vs 历史实际 &lt;4%）。</div>
+                <div id="afrm-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">管理层指引 &middot; CY24Q4</span><strong>全年 OPM 上调至 22.5-25%</strong>（前 20%）。Max 对 Affirm Card 的中期目标：2,000 万张活跃卡、单用户年消费 7,500 美元、总支付量 1,500 亿美元。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">Visible Alpha &middot; FY25/26</span><strong>市场预期 FY25 收入约 32 亿美元，FY26 约 40 亿美元：</strong>对应 Non-GAAP 经营利润约 7 亿美元 / 10 亿美元。按稀释后市值约 284 亿美元计算：FY26 P/S 7.1x，FY26 EV/EBIT 约 28x —— "击败巨龙"叙事已部分被定价。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">House View &middot; 5 月</span><strong>衰退是非对称风险：</strong>2024 年 1-9 月衰退叙事下回撤 -50%。机制是非线性的 —— Affirm 收紧承保（GMV 减速）的同时损失爬升超过 5.5% 准备金。Max 本人也指出，稳定的利率比利率水平本身更重要。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">House View &middot; 5 月</span><strong>Apple Pay = 期权而非基本情景：</strong>Apple Pay 年支付量 &gt;1 万亿美元，线下 &gt;5,000 亿美元。即便 Affirm 渗透率仅 1%，也将带来 100 亿美元增量 GMV（约 FY24 GMV 25%）。take rate 尚未披露。</li></ul></div>
+                <div id="afrm-co" class="tab-pane"><ul><li>CY24Q4 业绩：GMV 101 亿美元（同比 +35.4%，超预期 5%）；收入 8.66 亿美元（+47%，超预期 7%）；Non-GAAP 经营利润率 27.4% vs 预期 22.1%。资金成本均值 7.2%，环比下降。</li><li>Affirm Card：当季支付量 8.45 亿美元（仍同比翻倍）；活跃持卡人 170 万；单用户月均消费 165 美元。季度活跃用户合计 2,100 万；过去 12 个月用户平均 5.3 笔交易，单笔 266 美元。</li><li>Amazon 合约（2025 年 1 月 31 日到期）续约进行中。Walmart 独家合作 2024 年终止（Walmart 增加第二家 BNPL）—— 大客户集中度风险的首次实证。</li><li>战略轨道扩展：Apple Pay 合作自 2024 年 6 月生效（Apple 关闭自有 BNPL）；Visa 灵活凭证发布合作伙伴（2024 年 11 月），允许社区银行发行具备 BNPL 能力的借记卡，由 Affirm 担任信贷引擎。</li><li>核心零售商户 34 家；年销售 &gt;100 万美元的商户 136 家（同比 +25%）。CEO Levchin 价值创造奖：1,250 万份期权分 10 档授予，行权价 $49，触发价格从 $65.66 至 $371.91。</li></ul></div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header" onclick="toggleCard(this)">
+                <div class="ticker-pill">KLAR</div>
+                <div class="company-info"><div class="company-name">Klarna</div><div class="company-desc">全球 BNPL &middot; KLAR</div></div>
+                <span class="perf-pill down">-3.3%</span><span class="chevron">&#9660;</span>
+            </div>
+            <div class="company-body open">
+                <div class="tab-bar">
+                    <div class="tab active" onclick="switchTab(this,'klar-ov')">股价驱动</div>
+                    <div class="tab" onclick="switchTab(this,'klar-br')">卖方点评</div>
+                    <div class="tab" onclick="switchTab(this,'klar-co')">公司动态</div>
+                </div>
+                <div id="klar-ov" class="tab-pane active">Klarna 全球 BNPL 排名第二，仅次于 Affirm，活跃用户 1.18 亿、商户 96.6 万、覆盖 26 个市场 —— 但护城河在于资金工程，而非独家商户合作。1Q26 财报（预览周，5 月披露结果）前，KLAR 于 3 月 24 日将与 Elliott 的 Forward Flow 额度翻倍至 20 亿美元（3-5 年内支持最多 170 亿美元 Fair Financing 投放，已售出 16 亿美元贷款）；4 月 1 日完成由 Värde 主导的 17 亿美元显著风险转移（SRT）—— 第 6 次、规模最大的一次 —— 释放资本支持 3 年内 400 亿美元+ 新投放。4Q25 GMV 同比 +31.9%，但 TMD 3.72 亿美元低于指引 3.9-4.0 亿美元；FY26 指引隐含调整后经营利润率 ≥6.9% vs 市场 12.1%。股价较 IPO 高点回撤约 70%，约 1.1x FY26 EV/Sales；多头逻辑是若 1Q26 TMD 落在 3-3.4 亿美元指引上半区间，将触发估值修复。</div>
+                <div id="klar-br" class="tab-pane"><ul style="padding-left:16px;margin:0;font-size:12.5px;color:#374151;line-height:1.6;"><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">高盛 &middot; 3 月 24 日</span><strong>Forward Flow 额度翻倍至 20 亿美元（买入，目标价 $20）：</strong>Will Nance 指出 Elliott 延期 —— 3-5 年内可支持最多 170 亿美元 Fair Financing 投放（较原计划延长 1-3 年），已售出 16 亿美元。高盛此前估计 KLAR 需 20-25 亿美元增量资金；该交易"显著降低近期盈利不确定性"，但 2Q26 早期资产负债表预计收缩（贷款转出）。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">高盛 &middot; 4 月 1 日</span><strong>Värde 主导 SRT 覆盖 17 亿美元贷款，3 年内支持 400 亿美元+：</strong>KLAR 第 6 次、最大一次 SRT（按摩根士丹利）。与 Forward Flow 不同，贷款留在资产负债表 —— KLAR 支付风险转移溢价，降低风险权重并释放监管资本。高盛认为该交易确认了私募信贷对消费贷款的需求仍存，但利差"较 2025 年底低位走阔"。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">花旗 &middot; 4 月 20 日</span><strong>关注交易利润金额（买入/高风险，目标价 $25，前值 $45）：</strong>Bryan Keane 维持买入但大幅下调目标价，因 4Q 不及预期。TMD 是唯一需要兑现的变量 —— 4Q25 TMD 3.72 亿美元低于指引 3.9-4.0 亿美元（Fair Financing 前置 CECL 拨备）。1Q26 TMD 指引 3-3.4 亿美元（同比 +11-26%）远低于 FY26 +30% 框架，暗示改善后置。</li><li style="margin-bottom:6px;"><span style="background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;white-space:nowrap;">美银 &middot; 4 月 22 日</span><strong>财报前更偏好 AFRM（目标价 $21，4x EV/GP）：</strong>美银将核心差距定性为承保信誉 —— AFRM 有穿越周期记录，KLAR 仍需在规模化下证明承保能力与盈利稳定性。"任何小幅不及预期，市场都会立即重新质疑盈利质量。"</li></ul></div>
+                <div id="klar-co" class="tab-pane"><ul><li>4Q25 业绩：GMV 同比 +31.9%（汇率中性 +23%），收入 +38.6%（超 10 亿美元），美国 GMV +43%；TMD 3.72 亿美元低于指引 3.9-4.0 亿美元（Fair Financing 余额达 45 亿美元，同比 +165%，占 GMV 11.6%，CECL 拨备拖累）；Klarna Card 同比 +209%；商户 96.6 万（+43.1%，20% 接入 Fair Financing）；活跃用户 1.18 亿（美国 2,900 万，约美国人口 11%）。</li><li>3 月 24 日：与 Elliott Investment Management 的 Forward Flow 额度翻倍至 20 亿美元；已售出 16 亿美元；未来 3-5 年支持最多 170 亿美元 Fair Financing 投放。</li><li>4 月 1 日：完成由 Värde Partners 主导的 17 亿欧元 SRT —— 第 6 次、最大一次；支持 3 年内 400 亿美元+ 新投放；贷款留在资产负债表但风险权重下降。</li><li>1Q26 指引：GMV 320-330 亿美元（同比 +26-30%）；收入 9-9.8 亿美元（+28-40%）；TMD 3-3.4 亿美元（+11-26%）；调整后经营利润 50-350 万美元。FY26 指引：GMV ≥1,550 亿美元，收入/GMV ≥2.80%（收入 ≥43.4 亿美元），交易利润/GMV ≥1.04%，交易利润/收入 ≥37%，调整后经营利润率 ≥6.9% vs 市场 12.1%。2026 年分发合作伙伴上量：Nexi、Worldpay、摩根大通、Adyen；Stripe 已默认 BNPL。</li></ul></div>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    全球金融科技周报 &nbsp;&middot;&nbsp; 仅供内部使用 &nbsp;&middot;&nbsp; 2026 年 5 月 4 日 &ndash; 10 日
+</footer>
+
+<!-- Floating edit button -->
+<button id="edit-fab" title="编辑模式" style="
+    position: fixed; bottom: 28px; right: 28px;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: #0f1e3c; color: white; font-size: 20px;
+    border: none; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    z-index: 999; display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;">&#9998;</button>
+
+<!-- Edit mode top bar -->
+<div id="edit-bar" style="
+    display: none; position: fixed; top: 0; left: 0; right: 0;
+    background: #1d4ed8; color: white; padding: 8px 20px;
+    font-size: 13px; font-weight: 500; z-index: 1000;
+    align-items: center; gap: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+    <span>&#9998; 编辑模式 —— 点击任意文本编辑</span>
+    <button id="save-btn" style="
+        background: white; color: #1d4ed8; border: none;
+        padding: 5px 16px; border-radius: 5px; font-size: 12.5px;
+        font-weight: 600; cursor: pointer;">&#128190; 保存到文件</button>
+    <span id="save-status" style="font-size: 12px; opacity: 0.85;">点击任意文本进行编辑</span>
+</div>
+
+<script>
+    function toggleCard(header) {
+        const body = header.nextElementSibling;
+        const chevron = header.querySelector('.chevron');
+        const isOpen = body.classList.contains('open');
+        body.classList.toggle('open', !isOpen);
+        chevron.classList.toggle('open', !isOpen);
+    }
+    function switchTab(tabEl, paneId) {
+        const card = tabEl.closest('.company-card');
+        card.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        card.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        tabEl.classList.add('active');
+        document.getElementById(paneId).classList.add('active');
+    }
+
+
+    // ── Edit mode ──────────────────────────────────────────────
+    let editMode = false;
+    let fileHandle = null;
+
+    const fab = document.getElementById('edit-fab');
+    const bar = document.getElementById('edit-bar');
+    const saveBtn = document.getElementById('save-btn');
+    const statusMsg = document.getElementById('save-status');
+
+    const EDITABLE = [
+        '.commentary', '.theme-body', '.tab-pane',
+        '.workplan-card li', '.header-meta strong',
+        '.data-table tbody td'
+    ];
+
+    fab.addEventListener('click', () => {
+        editMode = !editMode;
+        fab.textContent = editMode ? '✕' : '✏️';
+        fab.title = editMode ? '退出编辑模式' : '编辑模式';
+        bar.style.display = editMode ? 'flex' : 'none';
+        EDITABLE.forEach(sel => {
+            document.querySelectorAll(sel).forEach(el => {
+                el.contentEditable = editMode ? 'true' : 'false';
+                el.style.outline = editMode ? '1px dashed #3b82f6' : '';
+                el.style.borderRadius = editMode ? '3px' : '';
+            });
+        });
+        if (editMode) statusMsg.textContent = '点击任意文本进行编辑';
+    });
+
+    saveBtn.addEventListener('click', async () => {
+        try {
+            if (!fileHandle) {
+                fileHandle = await window.showSaveFilePicker({
+                    suggestedName: 'index_cn.html',
+                    types: [{ description: 'HTML file', accept: { 'text/html': ['.html'] } }]
+                });
+            }
+            const writable = await fileHandle.createWritable();
+            // Strip edit-mode markers before saving
+            bar.style.display = 'none';
+            const editEls = document.querySelectorAll(EDITABLE.join(', '));
+            editEls.forEach(el => {
+                el.removeAttribute('contenteditable');
+                el.style.outline = '';
+                el.style.borderRadius = '';
+            });
+            const htmlToSave = document.documentElement.outerHTML;
+            // Restore edit mode
+            bar.style.display = 'flex';
+            editEls.forEach(el => {
+                el.contentEditable = 'true';
+                el.style.outline = '1px dashed #3b82f6';
+                el.style.borderRadius = '3px';
+            });
+            await writable.write(htmlToSave);
+            await writable.close();
+            statusMsg.textContent = '✓ 已保存至 ' + fileHandle.name;
+            setTimeout(() => { statusMsg.textContent = '点击任意文本进行编辑'; }, 3000);
+        } catch (e) {
+            if (e.name !== 'AbortError') statusMsg.textContent = '✗ 保存失败：' + e.message;
+        }
+    });
+</script>
+</body>
+</html>
